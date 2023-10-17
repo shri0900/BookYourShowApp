@@ -22,7 +22,8 @@ let accessToken = "";
             parseReturnedHash();
         }
 
-        document.getElementById('getConcert').addEventListener('click', function() {
+        document.getElementById('getConcert').addEventListener('click', function(event) {
+            event.preventDefault();
             const token = accessToken; // Replace with your actual token
             const instanceURL = instanceUrl; 
             const concertName = document.getElementById('concertName').value; 
