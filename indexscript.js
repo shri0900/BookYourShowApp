@@ -38,16 +38,7 @@ fetch(`${instanceURL}/services/apexrest/getConcerts/${concertName}`, {
 })
 .then(response => response.json())
 .then(data => {
-    console.log("Data"+JSON.stringify(data))
-    //if data is available show this modal box
-    if (data) {
-        
-        
-        document.getElementById("modalbox").style.display = "block"; // Show element
-    } else {
-        document.getElementById("modalbox").style.display = "none"; // Hide element
-    }
-    
+   console.log("Data"+JSON.stringify(data))
 })
 .catch(error => {
     console.error('Error:', error);
