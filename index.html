@@ -9,61 +9,63 @@
 </head>
 <body>
 
-  <!-- Navigation Tab Starts Here -->
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img src="logo.jpg" height="50px" width="50px"> Book Your Show!
-        
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+<!-- Navigation Tab Starts Here -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><img src="logo.jpg" height="50px" width="50px"> Book Your Show!
+      
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Concerts</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Reviews</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">My bookings</a>
-          </li>
-        </ul>
-        <!-- User can type name of concert and serach for concerts here -->
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="concertName">
-          <button class="btn btn-outline-success" type="button" id="getConcert">Search Concerts</button>    
-        </form>
-        <div class="modal" tabindex="-1" id="modalbox">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <p>Modal body text goes here.</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Concerts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Reviews</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">My bookings</a>
+        </li>
+      </ul>
+      <!-- User can type name of concert and serach for concerts here -->
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="concertName">
+        <button class="btn btn-outline-success" type="button" id="getConcert">Search Concerts</button>    
+      </form>
+      <div class="modal" tabindex="-1" id="modalbox">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Here You Go!!</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <h2 id="concertName"></h2>
+              <p id="concertType"></p>
+              <p id="concertVenue"></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close-button">Close</button>
+              <button type="button" class="btn btn-primary">Book Show</button>
             </div>
           </div>
         </div>
-  <!-- Login and Signup buttons -->
-  <a href="#" class="btn btn-danger me-2" onclick="authenticate()">Login</a>
-  <a href="#" class="btn btn-secondary">SignUp</a>
-  </nav>
+      </div>
+<!-- Login and Signup buttons -->
+<a href="#" class="btn btn-danger me-2" onclick="authenticate()">Login</a>
+<a href="#" class="btn btn-secondary">SignUp</a>
+</nav>
 
-        <footer class="container">
-            <p class="float-end"><a href="#">Back to top</a></p>
-            <p> Book Your Show! , Inc. <a href="#">Privacy</a> · <a href="#">Terms</a></p>
-  </footer>
-  <script src="indexscript.js"></script>
-   </body>       
+      <footer class="container">
+          <p class="float-end"><a href="#">Back to top</a></p>
+          <p> Book Your Show! , Inc. <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+</footer>
+<script src="indexscript.js"></script>
+  </body>       
