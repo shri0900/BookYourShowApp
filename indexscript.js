@@ -38,6 +38,13 @@ let accessToken = "";
             .then(response => response.json())
             .then(data => {
                 console.log("Data"+JSON.stringify(data))
+
+                if (data) {
+                    document.getElementById("modalbox").style.display = "block"; // Show element
+                } else {
+                    document.getElementById("modalbox").style.display = "none"; // Hide element
+                }
+                
                
             })
             .catch(error => {
