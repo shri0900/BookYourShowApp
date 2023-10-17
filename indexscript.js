@@ -47,7 +47,7 @@ document.getElementById('getConcert').addEventListener('click', function(event) 
         //if data is available show this modal box
         if (data) {
             const concert = data[0];
-            document.getElementById('concertName').textContent = concert.Name;
+            document.getElementById('concertName').textContent = `Name: ${concert.Name}`;
             document.getElementById('concertType').textContent = `Type: ${concert.Concert_Type__c}`;
             document.getElementById('concertVenue').textContent = `Venue: ${concert.Concert_Venue__c}`;
             document.getElementById("modalbox").style.display = "block"; // Show element
