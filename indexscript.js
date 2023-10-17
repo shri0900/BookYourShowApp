@@ -21,3 +21,25 @@ let accessToken = "";
         window.onload = () => {
             parseReturnedHash();
         }
+
+        document.getElementById('getconcerts').addEventListener('click', function() {
+            const token = accessToken; // Replace with your actual token
+            const instanceURL = instanceUrl; 
+            const concertName = document.getElementById('concertName').value; 
+            
+            fetch(`${instanceURL}/services/apexrest/ConcertAPI/${concertName}`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Data"+JSON.stringify(data))
+               
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
