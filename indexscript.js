@@ -51,7 +51,7 @@ document.getElementById('getConcert').addEventListener('click', function(event) 
             document.getElementById('concertType').textContent = `Type: ${concert.Concert_Type__c}`;
             document.getElementById('concertVenue').textContent = `Venue: ${concert.Concert_Venue__c}`;
             document.getElementById("modalbox").style.display = "block"; // Show element
-        } else if(data) {
+        } else {
             document.getElementById("modalbox").style.display = "none"; // Hide element
         }
         
