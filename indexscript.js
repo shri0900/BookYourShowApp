@@ -22,12 +22,12 @@ let accessToken = "";
             parseReturnedHash();
         }
 
-        document.getElementById('getconcerts').addEventListener('click', function() {
+        document.getElementById('getConcert').addEventListener('click', function() {
             const token = accessToken; // Replace with your actual token
             const instanceURL = instanceUrl; 
             const concertName = document.getElementById('concertName').value; 
             
-            fetch(`${instanceURL}/services/apexrest/ConcertAPI/${concertName}`, {
+            fetch(`${instanceURL}/services/apexrest/getConcerts/${concertName}`, {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`,
