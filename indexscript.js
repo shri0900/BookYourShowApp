@@ -6,7 +6,7 @@ let accessToken = "";
             const url = "https://login.salesforce.com/services/oauth2/authorize?" +
                 "response_type=token&" +
                 "client_id=3MVG9wt4IL4O5wvIrDAEJFQDJvCD2CuxIBViCEsFByBvbpFQgRN1szQBNOS6T9Km0sDco92ms7crHktOaf5yZ&" +
-                "redirect_uri=https://google.com";
+                "redirect_uri=https://shri0900.github.io/BookYourShowApp/#";
 
             window.location.href = url;
         }
