@@ -48,6 +48,7 @@ fetch(`${instanceURL}/services/apexrest/getConcerts/${cityName}`, {
    document.getElementById('concert-venue').textContent = concert.Concert_Venue__c;
    document.getElementById('concert-price').textContent = concert.Price__c;
    document.getElementById('concert-poster').textContent=concert.Concert_Poster__c;
+   console.log('Poster'+concert.Concert_Poster__c);
     }
 
 })
