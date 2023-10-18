@@ -28,7 +28,7 @@ event.preventDefault();
 $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus')
   })
-  
+
 const token = accessToken; // Replace with your actual token
 const instanceURL = instanceUrl; 
 const concertName = document.getElementById('concertName').value; 
@@ -44,12 +44,13 @@ fetch(`${instanceURL}/services/apexrest/getConcerts/${concertName}`, {
 .then(response => response.json())
 .then(data => {
    console.log("Data"+JSON.stringify(data))
-
+    if(data){
    const concert=data[0];
    document.getElementById('concert-name').textContent = concert.Name;
    document.getElementById('concert-type').textContent = concert.Concert_Type__c;
    document.getElementById('concert-venue').textContent = concert.Concert_Venue__c;
    document.getElementById('concert-price').textContent = concert.Price__c;
+    }
 
 })
 .catch(error => {
