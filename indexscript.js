@@ -25,16 +25,12 @@ parseReturnedHash();
 document.getElementById('getConcert').addEventListener('click', function(event) {
 event.preventDefault();
 
-$('#myModal').on('shown.bs.modal', function () {
-    $('#myInput').trigger('focus')
-  })
-
 const token = accessToken; // Replace with your actual token
 const instanceURL = instanceUrl; 
-const concertName = document.getElementById('concertName').value; 
+const cityName = document.getElementById('cityName').value; 
 
 
-fetch(`${instanceURL}/services/apexrest/getConcerts/${concertName}`, {
+fetch(`${instanceURL}/services/apexrest/getConcerts/${cityName}`, {
     method: 'GET',
     headers: {
         'Authorization': `Bearer ${token}`,
@@ -46,10 +42,12 @@ fetch(`${instanceURL}/services/apexrest/getConcerts/${concertName}`, {
    console.log("Data"+JSON.stringify(data))
     if(data){
    const concert=data[0];
+   document.getElementById('concert-date').textContent=concert.Date_of_Concert__c;
    document.getElementById('concert-name').textContent = concert.Name;
    document.getElementById('concert-type').textContent = concert.Concert_Type__c;
    document.getElementById('concert-venue').textContent = concert.Concert_Venue__c;
    document.getElementById('concert-price').textContent = concert.Price__c;
+   document.getElementById('concert-poster').textContent=concert.Concert_Poster__c;
     }
 
 })

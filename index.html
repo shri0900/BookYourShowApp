@@ -35,15 +35,16 @@
       </li>
     </ul>
     <!-- User can type name of concert and serach for concerts here -->
-    <form class="d-flex" role="search">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="concertName">
+    <form class="d-flex mx-3" role="search" >
+      <input class="form-control me-2" type="search" placeholder="Enter Your City" aria-label="Search" id="cityName">
       <button  type="button" id="getConcert" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Search Concerts</button>    
     </form>
 <!-- Login and Signup buttons -->
 <a href="#" class="btn btn-danger me-2" onclick="authenticate()">Login</a>
-<a href="#" class="btn btn-secondary">SignUp</a>
+<a href="https://www.salesforce.com/in/form/signup/freetrial-sales/?d=70130000000Enyk" class="btn btn-success">SignUp</a>
 </nav>
-<!-- Modal -->
+
+<!--Concert Serach Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -56,9 +57,11 @@
       <div class="modal-body">
         <div id="concert-info">
           <h2>Name: <span id="concert-name"></span></h2>
+          <p>Date:<span id="concert-date"></span></p>
           <p>Type: <span id="concert-type"></span></p>
           <p>Venue: <span id="concert-venue"></span></p>
           <p>Price: <span id="concert-price"></span></p>
+          <p>Poster:<span><img id="concert-poster" height="30px" width="20px"></span></p>
       </div>
       </div>
       <div class="modal-footer">
@@ -67,6 +70,9 @@
     </div>
   </div>
 </div>
+
+
+
     <footer class="container">
         <p class="float-end"><a href="#">Back to top</a></p>
         <p> Book Your Show! , Inc. <a href="#">Privacy</a> · <a href="#">Terms</a></p>
