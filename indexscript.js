@@ -20,6 +20,38 @@ instanceUrl = params.get("instance_url");
 
 window.onload = () => {
 parseReturnedHash();
+const params = new URLSearchParams(hash);
+    accessToken = params.get("access_token");
+    instanceUrl = params.get("instance_url");
+
+    if (accessToken && instanceUrl) {
+        fetchConcertImages();  // New function to fetch the images
+}
+
+function fetchConcertImages() {
+    // Define the city name here, or dynamically set it if needed.
+    const cityName = 'SomeCityName';  
+
+    fetch(`${instanceUrl}/services/apexrest/getPosters`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${accessToken}`,
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data) {
+            const concert = data[0];
+            if (concert && concert.Concert_Poster__c) {
+                
+                document.getElementById('concert-poster').src = concert.Concert_Poster__c;
+            }
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching concert images:', error);
+    });
 }
 
 document.getElementById('getConcert').addEventListener('click', function(event) {
