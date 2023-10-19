@@ -27,10 +27,10 @@ const params = new URLSearchParams(hash);
     if (accessToken && instanceUrl) {
         fetchConcertImages();  // New function to fetch the images
 }
-
+}
 function fetchConcertImages() {
     // Define the city name here, or dynamically set it if needed.
-    const cityName = 'SomeCityName';  
+     
 
     fetch(`${instanceUrl}/services/apexrest/getPosters`, {
         method: 'GET',
