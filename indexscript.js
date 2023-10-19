@@ -16,17 +16,15 @@ const hash = window.location.hash.substring(1);
 const params = new URLSearchParams(hash);
 accessToken = params.get("access_token");
 instanceUrl = params.get("instance_url");
+
+if (accessToken && instanceUrl) {
+    fetchConcertImages();  // New function to fetch the images
+}
 }
 
 window.onload = () => {
 parseReturnedHash();
-const params = new URLSearchParams(hash);
-    accessToken = params.get("access_token");
-    instanceUrl = params.get("instance_url");
 
-    if (accessToken && instanceUrl) {
-        fetchConcertImages();  // New function to fetch the images
-}
 }
 function fetchConcertImages() {
     // Define the city name here, or dynamically set it if needed.
