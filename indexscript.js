@@ -139,15 +139,15 @@ console.error('Error:', error);
 
 
 //For Search lookup component   
-document.getElementById('getConcert').addEventListener('click', function(event) {
+document.getElementById('searchButton').addEventListener('click', function(event) {
     event.preventDefault();
     
     const token = accessToken; // Replace with your actual token
     const instanceURL = instanceUrl; 
-    const cityName = document.getElementById('cityName').value; 
+    const cityName = document.getElementById('lookupInput').value; 
     
     
-    fetch(`${instanceURL}/services/apexrest/getConcerts/${cityName}`, {
+    fetch(`${instanceURL}/services/apexrest/getConcerts/${lookupInput}`, {
     method: 'GET',
     headers: {
         'Authorization': `Bearer ${token}`,
