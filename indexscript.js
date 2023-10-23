@@ -172,13 +172,13 @@ document.getElementById('searchButton').addEventListener('click', function(event
         let cardHtml = `
             <div class="col-md-4"> <!-- Assuming you want 3 cards in a row -->
                 <div class="card mb-4">
-                ${item.innerHTML=item.Concert_Poster__c}
+                ${item.Concert_Poster__c.innerHTML}
                     <div class="card-body">
                         <h5 class="card-title">Concert Name:${item.Name}</h5>
                         <p class="card-text">Date:${item.Date_of_Concert__c}</p>
                         <p class="card-text">Venue:${item.Concert_Venue__c}</p>
                         <p class="card-text">Price:(₹)${item.Price__c}</p>
-                        // <img class="card-img-top" src="${item.Concert_Poster__c}" alt="Concert Poster" style="height: 200px; width: 100%; object-fit: cover;">
+                     
 
                     </div>
                 </div>
