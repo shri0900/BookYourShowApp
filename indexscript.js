@@ -139,60 +139,122 @@ console.error('Error:', error);
 
 
 // For Search lookup component   
-document.getElementById('searchButton').addEventListener('click', function(event) {
-    event.preventDefault();
-    
-    const token = accessToken; // Replace with your actual token
-    const instanceURL = instanceUrl; 
-    const lookupInput = document.getElementById('lookupInput').value; 
-    
-    
-    fetch(`${instanceURL}/services/apexrest/getConcerts/${lookupInput}`, {
-    method: 'GET',
-    headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json'
-    }
-    })
-    .then(response => response.json())
-    .then(data => {
-    console.log("Data"+JSON.stringify(data))
-    if(data){
-    console.log("data for lookup>>"+JSON.stringify(data))
+
+document.addEventListener("DOMContentLoaded", function() {
     let resultsContainer = document.getElementById('results');
-
-
-    resultsContainer.innerHTML = '';
+    document.getElementById('searchButton').addEventListener('click', function(event) {
+        event.preventDefault();
+        
+        const token = accessToken; // Replace with your actual token
+        const instanceURL = instanceUrl; 
+        const lookupInput = document.getElementById('lookupInput').value; 
+        
+        
+        fetch(`${instanceURL}/services/apexrest/getConcerts/${lookupInput}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        }
+        })
+        .then(response => response.json())
+        .then(data => {
+        console.log("Data"+JSON.stringify(data))
+        if(data){
+        console.log("data for lookup>>"+JSON.stringify(data))
+        
     
-    // Loop through the data and create card elements
-    data.forEach(item => {
-        let cardHtml = `
-            <div class="col-md-4"> <!-- Assuming you want 3 cards in a row -->
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h5 class="card-title">Concert Name:${item.Name}</h5>
-                        <p class="card-text">Date:${item.Date_of_Concert__c}</p>
-                        <p class="card-text">Venue:${item.Concert_Venue__c}</p>
-                        <p class="card-text">Price:(₹)${item.Price__c}</p>
-                        <img class="card-img-top" src="${item.Concert_Poster__c}" alt="Concert Poster" style="height: 200px; width: 100%; object-fit: cover;">
-
+    
+        resultsContainer.innerHTML = '';
+        
+        // Loop through the data and create card elements
+        data.forEach(item => {
+            let cardHtml = `
+                <div class="col-md-4"> <!-- Assuming you want 3 cards in a row -->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Concert Name:${item.Name}</h5>
+                            <p class="card-text">Date:${item.Date_of_Concert__c}</p>
+                            <p class="card-text">Venue:${item.Concert_Venue__c}</p>
+                            <p class="card-text">Price:(₹)${item.Price__c}</p>
+                            <img class="card-img-top" src="${item.Concert_Poster__c}" alt="Concert Poster" style="height: 200px; width: 100%; object-fit: cover;">
+    
+                        </div>
                     </div>
                 </div>
-            </div>
-        `;
+            `;
+    
+            resultsContainer.innerHTML += cardHtml;
+        });
+    
+    
+        
+        }
+        
+        })
+        .catch(error => {
+        console.error('Error:', error);
+        });
+        });
+});
 
-        resultsContainer.innerHTML += cardHtml;
-    });
+
+
+
+// document.getElementById('searchButton').addEventListener('click', function(event) {
+//     event.preventDefault();
+    
+//     const token = accessToken; // Replace with your actual token
+//     const instanceURL = instanceUrl; 
+//     const lookupInput = document.getElementById('lookupInput').value; 
+    
+    
+//     fetch(`${instanceURL}/services/apexrest/getConcerts/${lookupInput}`, {
+//     method: 'GET',
+//     headers: {
+//         'Authorization': `Bearer ${token}`,
+//         'Content-Type': 'application/json'
+//     }
+//     })
+//     .then(response => response.json())
+//     .then(data => {
+//     console.log("Data"+JSON.stringify(data))
+//     if(data){
+//     console.log("data for lookup>>"+JSON.stringify(data))
+//     let resultsContainer = document.getElementById('results');
+
+
+//     resultsContainer.innerHTML = '';
+    
+//     // Loop through the data and create card elements
+//     data.forEach(item => {
+//         let cardHtml = `
+//             <div class="col-md-4"> <!-- Assuming you want 3 cards in a row -->
+//                 <div class="card mb-4">
+//                     <div class="card-body">
+//                         <h5 class="card-title">Concert Name:${item.Name}</h5>
+//                         <p class="card-text">Date:${item.Date_of_Concert__c}</p>
+//                         <p class="card-text">Venue:${item.Concert_Venue__c}</p>
+//                         <p class="card-text">Price:(₹)${item.Price__c}</p>
+//                         <img class="card-img-top" src="${item.Concert_Poster__c}" alt="Concert Poster" style="height: 200px; width: 100%; object-fit: cover;">
+
+//                     </div>
+//                 </div>
+//             </div>
+//         `;
+
+//         resultsContainer.innerHTML += cardHtml;
+//     });
 
 
     
-    }
+//     }
     
-    })
-    .catch(error => {
-    console.error('Error:', error);
-    });
-    });
+//     })
+//     .catch(error => {
+//     console.error('Error:', error);
+//     });
+//     });
     
 // document.getElementById('searchButton').addEventListener('click', function() {
 //     let resultsContainer = document.getElementById('results');
