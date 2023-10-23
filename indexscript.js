@@ -1,7 +1,7 @@
 // let accessToken = "";
 // let instanceUrl = "";
 function getURLParameter(name) {
-    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
 }
 
 let accessToken = getURLParameter('access_token');
@@ -41,16 +41,16 @@ console.log("Instance URl from webpage>>>"+instanceUrl);
 
 
 fetch(`${instanceUrl}/services/apexrest/getPosters`, {
-    method: 'GET',
-    headers: {
-        'Authorization': `Bearer ${accessToken}`,
-        'Content-Type': 'application/json'
-    }
+method: 'GET',
+headers: {
+    'Authorization': `Bearer ${accessToken}`,
+    'Content-Type': 'application/json'
+}
 })
 .then(response => response.json())
 .then(data => {
-    if (data) {
-        console.log("Data Received For Corolsol>>>"+JSON.stringify(data));
+if (data) {
+    console.log("Data Received For Corolsol>>>"+JSON.stringify(data));
 // Reference to the carousel container
 var carouselContainer = document.getElementById('carouselExampleIndicators');
 
@@ -60,40 +60,40 @@ var carouselInner = carouselContainer.querySelector('.carousel-inner');
 
 // Loop through the data to create indicators and carousel items
 data.forEach(function(item, index) {
-    // Creating the indicator
-    var indicator = document.createElement('li');
-    indicator.setAttribute('data-target', '#carouselExampleIndicators');
-    indicator.setAttribute('data-slide-to', index);
-    if(index === 0) {
-        indicator.classList.add('active');
-    }
-    carouselIndicators.appendChild(indicator);
-    
-    // Extracting image src from the Concert_Poster__c string
-    var imgTag = new DOMParser().parseFromString(item.Concert_Poster__c, 'text/html');
-    var imgSrc = imgTag.querySelector('img').src;
-    var imgAlt = imgTag.querySelector('img').alt;
+// Creating the indicator
+var indicator = document.createElement('li');
+indicator.setAttribute('data-target', '#carouselExampleIndicators');
+indicator.setAttribute('data-slide-to', index);
+if(index === 0) {
+    indicator.classList.add('active');
+}
+carouselIndicators.appendChild(indicator);
 
-    // Creating the carousel item
-    var carouselItem = document.createElement('div');
-    carouselItem.classList.add('carousel-item');
-    if(index === 0) {
-        carouselItem.classList.add('active');
-    }
-    var imgElement = document.createElement('img');
-    imgElement.classList.add('d-block', 'w-100');
-    imgElement.setAttribute('src', imgSrc);
-    imgElement.setAttribute('alt', imgAlt);
-    carouselItem.appendChild(imgElement);
-    
-    carouselInner.appendChild(carouselItem);
+// Extracting image src from the Concert_Poster__c string
+var imgTag = new DOMParser().parseFromString(item.Concert_Poster__c, 'text/html');
+var imgSrc = imgTag.querySelector('img').src;
+var imgAlt = imgTag.querySelector('img').alt;
+
+// Creating the carousel item
+var carouselItem = document.createElement('div');
+carouselItem.classList.add('carousel-item');
+if(index === 0) {
+    carouselItem.classList.add('active');
+}
+var imgElement = document.createElement('img');
+imgElement.classList.add('d-block', 'w-100');
+imgElement.setAttribute('src', imgSrc);
+imgElement.setAttribute('alt', imgAlt);
+carouselItem.appendChild(imgElement);
+
+carouselInner.appendChild(carouselItem);
 });
 
-        
-    }
+    
+}
 })
 .catch(error => {
-    console.error('Error fetching concert images:', error);
+console.error('Error fetching concert images:', error);
 });
 
 
@@ -112,8 +112,8 @@ const cityName = document.getElementById('cityName').value;
 fetch(`${instanceURL}/services/apexrest/getConcerts/${cityName}`, {
 method: 'GET',
 headers: {
-    'Authorization': `Bearer ${token}`,
-    'Content-Type': 'application/json'
+'Authorization': `Bearer ${token}`,
+'Content-Type': 'application/json'
 }
 })
 .then(response => response.json())
@@ -141,61 +141,59 @@ console.error('Error:', error);
 // For Search lookup component   
 
 document.addEventListener("DOMContentLoaded", function() {
-    let resultsContainer = document.getElementById('results');
-    document.getElementById('searchButton').addEventListener('click', function(event) {
-        event.preventDefault();
-        
-        const token = accessToken; // Replace with your actual token
-        const instanceURL = instanceUrl; 
-        const lookupInput = document.getElementById('lookupInput').value; 
-        
-        
-        fetch(`${instanceURL}/services/apexrest/getConcerts/${lookupInput}`, {
-        method: 'GET',
-        headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-        }
-        })
-        .then(response => response.json())
-        .then(data => {
-        console.log("Data"+JSON.stringify(data))
-        if(data){
-        console.log("data for lookup>>"+JSON.stringify(data))
-        
+let resultsContainer = document.getElementById('results');
+document.getElementById('searchButton').addEventListener('click', function(event) {
+    event.preventDefault();
+    
+    const token = accessToken; // Replace with your actual token
+    const instanceURL = instanceUrl; 
+    const lookupInput = document.getElementById('lookupInput').value; 
     
     
-        resultsContainer.innerHTML = '';
-        
-        // Loop through the data and create card elements
-        data.forEach(item => {
-            let cardHtml = `
-                <div class="col-md-4"> <!-- Assuming you want 3 cards in a row -->
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <h5 class="card-title">Concert Name:${item.Name}</h5>
-                            <p class="card-text">Date:${item.Date_of_Concert__c}</p>
-                            <p class="card-text">Venue:${item.Concert_Venue__c}</p>
-                            <p class="card-text">Price:(₹)${item.Price__c}</p>
-                            <img class="card-img-top" src="${item.Concert_Poster__c}" alt="Concert Poster" style="height: 200px; width: 100%; object-fit: cover;">
+    fetch(`${instanceURL}/services/apexrest/getConcerts/${lookupInput}`, {
+    method: 'GET',
+    headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+    }
+    })
+    .then(response => response.json())
+    .then(data => {
+    console.log("Data"+JSON.stringify(data))
+    if(data){
+    console.log("data for lookup>>"+JSON.stringify(data))
     
-                        </div>
+
+
+    resultsContainer.innerHTML = '';
+    
+    // Loop through the data and create card elements
+    data.forEach(item => {
+        let cardHtml = `
+            <div class="col-md-4"> <!-- Assuming you want 3 cards in a row -->
+                <div class="card mb-4">
+                ${item.imageString}
+                    <div class="card-body">
+                        <h5 class="card-title">Concert Name:${item.Name}</h5>
+                        <p class="card-text">Date:${item.Date_of_Concert__c}</p>
+                        <p class="card-text">Venue:${item.Concert_Venue__c}</p>
+                        <p class="card-text">Price:(₹)${item.Price__c}</p>
+                        // <img class="card-img-top" src="${item.Concert_Poster__c}" alt="Concert Poster" style="height: 200px; width: 100%; object-fit: cover;">
+
                     </div>
                 </div>
-            `;
+            </div>
+        `;
+
+        resultsContainer.innerHTML += cardHtml;
+    });
+   }
     
-            resultsContainer.innerHTML += cardHtml;
-        });
-    
-    
-        
-        }
-        
-        })
-        .catch(error => {
-        console.error('Error:', error);
-        });
-        });
+    })
+    .catch(error => {
+    console.error('Error:', error);
+    });
+    });
 });
 
 
@@ -203,12 +201,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // document.getElementById('searchButton').addEventListener('click', function(event) {
 //     event.preventDefault();
-    
+
 //     const token = accessToken; // Replace with your actual token
 //     const instanceURL = instanceUrl; 
 //     const lookupInput = document.getElementById('lookupInput').value; 
-    
-    
+
+
 //     fetch(`${instanceURL}/services/apexrest/getConcerts/${lookupInput}`, {
 //     method: 'GET',
 //     headers: {
@@ -225,7 +223,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 //     resultsContainer.innerHTML = '';
-    
+
 //     // Loop through the data and create card elements
 //     data.forEach(item => {
 //         let cardHtml = `
@@ -247,18 +245,18 @@ document.addEventListener("DOMContentLoaded", function() {
 //     });
 
 
-    
+
 //     }
-    
+
 //     })
 //     .catch(error => {
 //     console.error('Error:', error);
 //     });
 //     });
-    
+
 // document.getElementById('searchButton').addEventListener('click', function() {
 //     let resultsContainer = document.getElementById('results');
-    
+
 //     // Simulate the received data
 //     let data = [
 //         {
@@ -293,10 +291,10 @@ document.addEventListener("DOMContentLoaded", function() {
 //           }
 //         // ... Add more data as needed
 //     ];
-    
+
 //     // Clear previous results
 //     resultsContainer.innerHTML = '';
-    
+
 //     // Loop through the data and create card elements
 //     data.forEach(item => {
 //         let cardHtml = `
