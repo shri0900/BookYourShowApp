@@ -138,7 +138,7 @@ console.error('Error:', error);
 
 
 
-//For Search lookup component   
+For Search lookup component   
 document.getElementById('searchButton').addEventListener('click', function(event) {
     event.preventDefault();
     
@@ -159,6 +159,31 @@ document.getElementById('searchButton').addEventListener('click', function(event
     console.log("Data"+JSON.stringify(data))
     if(data){
     console.log("data for lookup>>"+JSON.stringify(data))
+
+    resultsContainer.innerHTML = '';
+    
+    // Loop through the data and create card elements
+    data.forEach(item => {
+        let cardHtml = `
+            <div class="col-md-4"> <!-- Assuming you want 3 cards in a row -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Concert Name:${item.Name}</h5>
+                        <p class="card-text">Date:${item.Date_of_Concert__c}</p>
+                        <p class="card-text">Venue:${item.Concert_Venue__c}</p>
+                        <p class="card-text">Price:(₹)${item.Price__c}</p>
+                        <img class="card-img-top" src="${item.Concert_Poster__c}" alt="Concert Poster" style="height: 200px; width: 100%; object-fit: cover;">
+
+                    </div>
+                </div>
+            </div>
+        `;
+
+        resultsContainer.innerHTML += cardHtml;
+    });
+
+
+    
     }
     
     })
@@ -167,3 +192,64 @@ document.getElementById('searchButton').addEventListener('click', function(event
     });
     });
     
+// document.getElementById('searchButton').addEventListener('click', function() {
+//     let resultsContainer = document.getElementById('results');
+    
+//     // Simulate the received data
+//     let data = [
+//         {
+//             "attributes": {
+//               "type": "Concert__c",
+//               "url": "/services/data/v59.0/sobjects/Concert__c/a035i00000BXeuKAAT"
+//             },
+//             "Name": "A R Rehman Live",
+//             "Date_of_Concert__c": "2023-08-31",
+//             "No_of_Tickets_Available__c": 1000,
+//             "Price__c": 3660.25,
+//             "Venue_Address__c": "Wankhede Cricket Stadium,Mumbai",
+//             "Concert_Poster__c": "<img src=\"https://blog.olacabs.com/wp-content/uploads/2017/12/Privileges-Rahman-Mailer-Blog.jpg\" alt=\"A R Rehman Live\" border=\"0\"/>",
+//             "Concert_Venue__c": "Mumbai",
+//             "Concert_Type__c": "Premier",
+//             "Id": "a035i00000BXeuKAAT"
+//           },
+//           {
+//             "attributes": {
+//               "type": "Concert__c",
+//               "url": "/services/data/v59.0/sobjects/Concert__c/a035i00000BY3lWAAT"
+//             },
+//             "Name": "Lucky Ali",
+//             "Date_of_Concert__c": "2023-08-31",
+//             "No_of_Tickets_Available__c": 500,
+//             "Price__c": 2500,
+//             "Venue_Address__c": "DYP Stadium Mumbai",
+//             "Concert_Poster__c": "<img src=\"https://res.cloudinary.com/dwzmsvp7f/image/fetch/q_75,f_auto,w_800/https%3A%2F%2Fmedia.insider.in%2Fimage%2Fupload%2Fc_crop%2Cg_custom%2Fv1677418303%2Fiy2jbjwutixhthikncos.png\" alt=\"Lucky Ali\" border=\"0\"/>",
+//             "Concert_Venue__c": "Mumbai",
+//             "Concert_Type__c": "Premier",
+//             "Id": "a035i00000BY3lWAAT"
+//           }
+//         // ... Add more data as needed
+//     ];
+    
+//     // Clear previous results
+//     resultsContainer.innerHTML = '';
+    
+//     // Loop through the data and create card elements
+//     data.forEach(item => {
+//         let cardHtml = `
+//             <div class="col-md-4"> <!-- Assuming you want 3 cards in a row -->
+//                 <div class="card mb-4">
+//                     <div class="card-body">
+//                         <h5 class="card-title">Concert Name:${item.Name}</h5>
+//                         <p class="card-text">Date:${item.Date_of_Concert__c}</p>
+//                         <p class="card-text">Venue:${item.Concert_Venue__c}</p>
+//                         <p class="card-text">Price:(₹)${item.Price__c}</p>
+//                         <img class="card-img-top" src="${item.Concert_Poster__c}" alt="Concert Poster" style="height: 200px; width: 100%; object-fit: cover;">
+
+//                     </div>
+//                 </div>
+//             </div>
+//         `;
+
+//         resultsContainer.innerHTML += cardHtml;
+//     });
+// });
