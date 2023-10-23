@@ -11,4 +11,14 @@
 <body>
     <iframe src="https://sselectricals-dev-ed.develop.my.salesforce.com/apex/loginPage" width="100%" height="500" frameborder="0"></iframe>
 </body>
+<script>
+    window.addEventListener('message', function(event) {
+        // Check if the message is what you expect
+        if (event.data === 'loggedIn') {
+            // Redirect to the desired URL or Salesforce instance
+            window.location.href = 'https://shri0900.github.io/BookYourShowApp/#access_token='+accessToken+'&instance_url='+instanceUrl+'&id=https%3A%2F%2Flogin.salesforce.com%2Fid%2F00D5i00000EUbhtEAD%2F0055i000009HMonAAG&issued_at=1697712621178&signature=pAjn8vCGlBHRz%2FLwgoyNwn%2BSB7dXg3e43e0LI7NODoI%3D&scope=id+api+web+full+chatter_api+visualforce+openid+custom_permissions+wave_api+eclair_api+pardot_api+lightning+content+cdp_ingest_api+cdp_profile_api+cdp_query_api+chatbot_api+cdp_segment_api+cdp_identityresolution_api+forgot_password+cdp_calculated_insight_api+user_registration_api+sfap_api+interaction_api+cdp_api+einstein_gpt_api+pwdless_login_api&token_type=Bearer';
+        }
+    }, false);
+    
+</script>
 </html>

@@ -1,12 +1,13 @@
 let accessToken = "";
 let instanceUrl = "";
 
+
 function authenticate() {
 // Salesforce OAuth2 endpoint
 const url = "https://login.salesforce.com/services/oauth2/authorize?" +
-    "response_type=token&" +
-    "client_id=3MVG9wt4IL4O5wvIrDAEJFQDJvCD2CuxIBViCEsFByBvbpFQgRN1szQBNOS6T9Km0sDco92ms7crHktOaf5yZ&" +
-    "redirect_uri=https://shri0900.github.io/BookYourShowApp/";
+"response_type=token&" +
+"client_id=3MVG9wt4IL4O5wvIrDAEJFQDJvCD2CuxIBViCEsFByBvbpFQgRN1szQBNOS6T9Km0sDco92ms7crHktOaf5yZ&" +
+"redirect_uri=https://shri0900.github.io/BookYourShowApp/";
 
 window.location.href = url;
 }
@@ -17,7 +18,7 @@ const params = new URLSearchParams(hash);
 accessToken = params.get("access_token");
 instanceUrl = params.get("instance_url");
 if (accessToken && instanceUrl) {
-    fetchConcertImages();  // New function to fetch the images
+fetchConcertImages();  // New function to fetch the images
 }
 
 }
@@ -27,30 +28,31 @@ parseReturnedHash();
 }
 
 function fetchConcertImages() {
-    
 
-    fetch(`${instanceUrl}/services/apexrest/getPosters`, {
-        method: 'GET',
-        headers: {
-            'Authorization': `Bearer ${accessToken}`,
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data) {
-            console.log("Data Received==="+JSON.stringify(data));
-            const concert = data[0];
-            if (concert && concert.Concert_Poster__c) {
-                // Assuming concert-poster is an img tag, set its source
-                document.getElementById('concert-poster').src = concert.Concert_Poster__c;
-            }
-        }
-    })
-    .catch(error => {
-        console.error('Error fetching concert images:', error);
-    });
+
+fetch(`${instanceUrl}/services/apexrest/getPosters`, {
+    method: 'GET',
+    headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/json'
+    }
+})
+.then(response => response.json())
+.then(data => {
+    if (data) {
+        
+        console.log("Data Received==="+JSON.stringify(data));
+        
+    }
+})
+.catch(error => {
+    console.error('Error fetching concert images:', error);
+});
+
+
 }
+
+
 
 document.getElementById('getConcert').addEventListener('click', function(event) {
 event.preventDefault();
@@ -61,29 +63,29 @@ const cityName = document.getElementById('cityName').value;
 
 
 fetch(`${instanceURL}/services/apexrest/getConcerts/${cityName}`, {
-    method: 'GET',
-    headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json'
-    }
+method: 'GET',
+headers: {
+    'Authorization': `Bearer ${token}`,
+    'Content-Type': 'application/json'
+}
 })
 .then(response => response.json())
 .then(data => {
-   console.log("Data"+JSON.stringify(data))
-    if(data){
-   const concert=data[0];
-   document.getElementById('concert-date').textContent=concert.Date_of_Concert__c;
-   document.getElementById('concert-name').textContent = concert.Name;
-   document.getElementById('concert-type').textContent = concert.Concert_Type__c;
-   document.getElementById('concert-venue').textContent = concert.Concert_Venue__c;
-   document.getElementById('concert-price').textContent = concert.Price__c;
-   document.getElementById('concert-poster').innerHTML=concert.Concert_Poster__c;
-   console.log('Poster'+concert.Concert_Poster__c);
-    }
+console.log("Data"+JSON.stringify(data))
+if(data){
+const concert=data[0];
+document.getElementById('concert-date').textContent=concert.Date_of_Concert__c;
+document.getElementById('concert-name').textContent = concert.Name;
+document.getElementById('concert-type').textContent = concert.Concert_Type__c;
+document.getElementById('concert-venue').textContent = concert.Concert_Venue__c;
+document.getElementById('concert-price').textContent = concert.Price__c;
+document.getElementById('concert-poster').innerHTML=concert.Concert_Poster__c;
+console.log('Poster'+concert.Concert_Poster__c);
+}
 
 })
 .catch(error => {
-    console.error('Error:', error);
+console.error('Error:', error);
 });
 });
 
