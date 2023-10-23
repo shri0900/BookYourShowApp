@@ -138,7 +138,7 @@ console.error('Error:', error);
 
 
 
-For Search lookup component   
+// For Search lookup component   
 document.getElementById('searchButton').addEventListener('click', function(event) {
     event.preventDefault();
     
