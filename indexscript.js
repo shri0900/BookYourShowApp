@@ -144,7 +144,7 @@ document.getElementById('searchButton').addEventListener('click', function(event
     
     const token = accessToken; // Replace with your actual token
     const instanceURL = instanceUrl; 
-    const cityName = document.getElementById('lookupInput').value; 
+    const lookupInput = document.getElementById('lookupInput').value; 
     
     
     fetch(`${instanceURL}/services/apexrest/getConcerts/${lookupInput}`, {
