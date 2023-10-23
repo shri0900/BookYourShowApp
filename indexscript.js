@@ -50,6 +50,7 @@ fetch(`${instanceUrl}/services/apexrest/getPosters`, {
 .then(response => response.json())
 .then(data => {
     if (data) {
+        console.log("Data Received For Corolsol>>>"+data);
 // Reference to the carousel container
 var carouselContainer = document.getElementById('carouselExampleIndicators');
 
