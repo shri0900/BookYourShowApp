@@ -159,6 +159,8 @@ document.getElementById('searchButton').addEventListener('click', function(event
     console.log("Data"+JSON.stringify(data))
     if(data){
     console.log("data for lookup>>"+JSON.stringify(data))
+    let resultsContainer = document.getElementById('results');
+
 
     resultsContainer.innerHTML = '';
     
