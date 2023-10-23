@@ -5,7 +5,9 @@ function getURLParameter(name) {
 }
 
 let accessToken = getURLParameter('access_token');
+console.log("Access Token FROM Webpage>>>"+accessToken);
 let instanceUrl = getURLParameter('instance_url');
+console.log("Instance URl from webpage>>>"+instanceUrl);
 
 // Now you can use accessToken and instanceUrl for further API calls
 
@@ -48,8 +50,44 @@ fetch(`${instanceUrl}/services/apexrest/getPosters`, {
 .then(response => response.json())
 .then(data => {
     if (data) {
-        
-        console.log("Data Received==="+JSON.stringify(data));
+// Reference to the carousel container
+var carouselContainer = document.getElementById('carouselExampleIndicators');
+
+// Reference to carousel indicators and inner elements
+var carouselIndicators = carouselContainer.querySelector('.carousel-indicators');
+var carouselInner = carouselContainer.querySelector('.carousel-inner');
+
+// Loop through the data to create indicators and carousel items
+data.forEach(function(item, index) {
+    // Creating the indicator
+    var indicator = document.createElement('li');
+    indicator.setAttribute('data-target', '#carouselExampleIndicators');
+    indicator.setAttribute('data-slide-to', index);
+    if(index === 0) {
+        indicator.classList.add('active');
+    }
+    carouselIndicators.appendChild(indicator);
+    
+    // Extracting image src from the Concert_Poster__c string
+    var imgTag = new DOMParser().parseFromString(item.Concert_Poster__c, 'text/html');
+    var imgSrc = imgTag.querySelector('img').src;
+    var imgAlt = imgTag.querySelector('img').alt;
+
+    // Creating the carousel item
+    var carouselItem = document.createElement('div');
+    carouselItem.classList.add('carousel-item');
+    if(index === 0) {
+        carouselItem.classList.add('active');
+    }
+    var imgElement = document.createElement('img');
+    imgElement.classList.add('d-block', 'w-100');
+    imgElement.setAttribute('src', imgSrc);
+    imgElement.setAttribute('alt', imgAlt);
+    carouselItem.appendChild(imgElement);
+    
+    carouselInner.appendChild(carouselItem);
+});
+
         
     }
 })
