@@ -138,5 +138,32 @@ console.error('Error:', error);
 
 
 
-
-
+//For Search lookup component   
+document.getElementById('getConcert').addEventListener('click', function(event) {
+    event.preventDefault();
+    
+    const token = accessToken; // Replace with your actual token
+    const instanceURL = instanceUrl; 
+    const cityName = document.getElementById('cityName').value; 
+    
+    
+    fetch(`${instanceURL}/services/apexrest/getConcerts/${cityName}`, {
+    method: 'GET',
+    headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+    }
+    })
+    .then(response => response.json())
+    .then(data => {
+    console.log("Data"+JSON.stringify(data))
+    if(data){
+    console.log("data for lookup>>"+JSON.stringify(data))
+    }
+    
+    })
+    .catch(error => {
+    console.error('Error:', error);
+    });
+    });
+    
