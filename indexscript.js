@@ -1,5 +1,5 @@
-let accessToken = "";
-let instanceUrl = "";
+//let accessToken = "";
+//let instanceUrl = "";
 
 
 function authenticate() {
@@ -88,4 +88,15 @@ console.log('Poster'+concert.Concert_Poster__c);
 console.error('Error:', error);
 });
 });
+
+function getURLParameter(name) {
+    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+}
+
+var accessToken = getURLParameter('access_token');
+var instanceUrl = getURLParameter('instance_url');
+
+// Now you can use accessToken and instanceUrl for further API calls
+
+
 
