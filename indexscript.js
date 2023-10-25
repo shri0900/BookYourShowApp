@@ -162,9 +162,9 @@ document.getElementById('searchButton').addEventListener('click', function(event
     console.log("Data"+JSON.stringify(data))
     resultsContainer.innerHTML = '';
 
-    if(data.lemgth===0){
-        var toastEl=document.getElementById('emptyDataToast');
-        var toast=new bootstrap.Toast(toastEl);
+    if(data.length===0){
+        var toastEl = document.getElementById('emptyDataToast');
+        var toast = new bootstrap.Toast(toastEl);
         toast.show();
     }
     else{
