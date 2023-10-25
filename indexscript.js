@@ -163,19 +163,19 @@ document.getElementById('searchButton').addEventListener('click', function(event
     resultsContainer.innerHTML = '';
 
     if(data.length===0){
-        // var toastEl = document.getElementById('emptyDataToast');
-        // var toast = new bootstrap.Toast(toastEl);
-        // toast.show();
-      //  const toastTrigger = document.getElementById('liveToastBtn')
-    const toastLiveExample = document.getElementById('liveToast')
+        var toastEl = document.getElementById('liveToast');
+        var toast = new bootstrap.Toast(toastEl);
+        toast.show();
+//        const toastTrigger = document.getElementById('liveToastBtn')
+//    const toastLiveExample = document.getElementById('liveToast')
 
-if (toastLiveExample) {
-    console.log("Toast triggered")
-  const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
-  toastTrigger.addEventListener('click', () => {
-    toastBootstrap.show()
-  })
-}
+// if (toastLiveExample) {
+//     console.log("Toast triggered")
+//   const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+//   toastTrigger.addEventListener('click', () => {
+//     toastBootstrap.show()
+//   })
+// }
     }
     else{
  // Loop through the data and create card elements
