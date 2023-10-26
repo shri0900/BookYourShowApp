@@ -162,7 +162,7 @@ document.getElementById('searchButton').addEventListener('click', function(event
     console.log("Data"+data)
     resultsContainer.innerHTML = '';
 
-    if(data.length===0){
+    if(data.length<0){
         var toastEl = document.getElementById('liveToast');
         var toast = new bootstrap.Toast(toastEl);
         toast.show();
