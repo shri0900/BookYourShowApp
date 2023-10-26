@@ -163,6 +163,7 @@ document.getElementById('searchButton').addEventListener('click', function(event
     resultsContainer.innerHTML = '';
 
     if(data.length<0){
+        console.log("Data length is less than zero")
         var toastEl = document.getElementById('liveToast');
         var toast = new bootstrap.Toast(toastEl);
         toast.show();
