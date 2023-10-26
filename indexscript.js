@@ -159,7 +159,7 @@ document.getElementById('searchButton').addEventListener('click', function(event
     })
     .then(response => response.json())
     .then(data => {
-    console.log("Data"+data)
+    console.log("Data"+JSON.stringify(data))
     resultsContainer.innerHTML = '';
 
     if (data.length === 0) {
