@@ -162,21 +162,24 @@ document.getElementById('searchButton').addEventListener('click', function(event
     console.log("Data"+JSON.stringify(data))
     resultsContainer.innerHTML = '';
 
-    if (data.length === 0) {
-        console.log("data length>>." + data.length);
-        // const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
-        
-        // // Show the toast automatically
-        // toastBootstrap.show();
-        console.log("Toast shown automatically because data length is 0.");
-      }
+    document.addEventListener('DOMContentLoaded', function() {
+        const toastLiveExample = document.getElementById('liveToast')
+        let data = [];
+      
+        // Check the length of data
+        if (data.length === 0) {
+          console.log("data length>>." + data.length);
+          const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+          
+          // Show the toast automatically
+          toastBootstrap.show();
+          console.log("Toast shown automatically because data length is 0.");
+        }
+     
     
     else{
  // Loop through the data and create card elements
- const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
-        
- // // Show the toast automatically
- toastBootstrap.show();
+
  data.forEach(item => {
     let cardHtml = `
         <div class="col-md-4"> <!-- Assuming you want 3 cards in a row -->
@@ -206,7 +209,7 @@ console.error('Error:', error);
 });
 });
     
-
+});
 
    
     
