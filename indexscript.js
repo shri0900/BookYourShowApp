@@ -173,6 +173,10 @@ document.getElementById('searchButton').addEventListener('click', function(event
     
     else{
  // Loop through the data and create card elements
+ const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+        
+ // // Show the toast automatically
+ toastBootstrap.show();
  data.forEach(item => {
     let cardHtml = `
         <div class="col-md-4"> <!-- Assuming you want 3 cards in a row -->
@@ -191,10 +195,7 @@ document.getElementById('searchButton').addEventListener('click', function(event
     `;
 
     resultsContainer.innerHTML += cardHtml;
-     const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
-        
-        // // Show the toast automatically
-        toastBootstrap.show();
+    
 });
 }
 
