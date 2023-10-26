@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function() {
 let resultsContainer = document.getElementById('results');
 document.getElementById('searchButton').addEventListener('click', function(event) {
     event.preventDefault();
-    
+    const toastLiveExample = document.getElementById('liveToast')
     const token = accessToken; // Replace with your actual token
     const instanceURL = instanceUrl; 
     const lookupInput = document.getElementById('lookupInput').value; 
@@ -162,22 +162,15 @@ document.getElementById('searchButton').addEventListener('click', function(event
     console.log("Data"+data)
     resultsContainer.innerHTML = '';
 
-    if(data.length<0){
-        console.log("Data length is less than zero")
-        var toastEl = document.getElementById('liveToast');
-        var toast = new bootstrap.Toast(toastEl);
-        toast.show();
-//        const toastTrigger = document.getElementById('liveToastBtn')
-//    const toastLiveExample = document.getElementById('liveToast')
-
-// if (toastLiveExample) {
-//     console.log("Toast triggered")
-//   const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
-//   toastTrigger.addEventListener('click', () => {
-//     toastBootstrap.show()
-//   })
-// }
-    }
+    if (data.length === 0) {
+        console.log("data length>>." + data.length);
+        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+        
+        // Show the toast automatically
+        toastBootstrap.show();
+        console.log("Toast shown automatically because data length is 0.");
+      }
+    
     else{
  // Loop through the data and create card elements
  data.forEach(item => {
