@@ -161,14 +161,15 @@ document.getElementById('searchButton').addEventListener('click', function(event
     .then(data => {
     console.log("Data"+JSON.stringify(data))
     resultsContainer.innerHTML = '';
-
+        let datareceived=[];
+        data=datareceived;
     document.addEventListener('DOMContentLoaded', function() {
         const toastLiveExample = document.getElementById('liveToast')
         
       
         // Check the length of data
-        if (data.length === 0) {
-          console.log("data length>>." + data.length);
+        if (datareceived.length === 0) {
+          console.log("datareceived length>>." + datareceived.length);
           const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
           
           // Show the toast automatically
