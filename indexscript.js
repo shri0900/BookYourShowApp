@@ -164,7 +164,7 @@ document.getElementById('searchButton').addEventListener('click', function(event
 
     document.addEventListener('DOMContentLoaded', function() {
         const toastLiveExample = document.getElementById('liveToast')
-        let data = [];
+        
       
         // Check the length of data
         if (data.length === 0) {
