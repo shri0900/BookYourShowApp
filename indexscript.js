@@ -164,10 +164,10 @@ document.getElementById('searchButton').addEventListener('click', function(event
 
     if (data.length === 0) {
         console.log("data length>>." + data.length);
-        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+        // const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
         
-        // Show the toast automatically
-        toastBootstrap.show();
+        // // Show the toast automatically
+        // toastBootstrap.show();
         console.log("Toast shown automatically because data length is 0.");
       }
     
@@ -191,6 +191,10 @@ document.getElementById('searchButton').addEventListener('click', function(event
     `;
 
     resultsContainer.innerHTML += cardHtml;
+     const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+        
+        // // Show the toast automatically
+        toastBootstrap.show();
 });
 }
 
