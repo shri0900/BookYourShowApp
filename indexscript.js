@@ -140,78 +140,128 @@ console.error('Error:', error);
 
 // For Search lookup component   
 
-document.addEventListener("DOMContentLoaded", function() {
-let resultsContainer = document.getElementById('results');
-document.getElementById('searchButton').addEventListener('click', function(event) {
-    event.preventDefault();
-    const toastLiveExample = document.getElementById('liveToast')
-    const token = accessToken; // Replace with your actual token
-    const instanceURL = instanceUrl; 
-    const lookupInput = document.getElementById('lookupInput').value; 
+// document.addEventListener("DOMContentLoaded", function() {
+// let resultsContainer = document.getElementById('results');
+// document.getElementById('searchButton').addEventListener('click', function(event) {
+//     event.preventDefault();
+//     const toastLiveExample = document.getElementById('liveToast')
+//     const token = accessToken; // Replace with your actual token
+//     const instanceURL = instanceUrl; 
+//     const lookupInput = document.getElementById('lookupInput').value; 
     
     
-    fetch(`${instanceURL}/services/apexrest/getConcerts/${lookupInput}`, {
-    method: 'GET',
-    headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json'
-    }
-    })
-    .then(response => response.json())
-    .then(data => {
-    console.log("Data"+JSON.stringify(data))
-    resultsContainer.innerHTML = '';
-        let datareceived=[];
-        data=datareceived;
-    document.addEventListener('DOMContentLoaded', function() {
-        const toastLiveExample = document.getElementById('liveToast')
+//     fetch(`${instanceURL}/services/apexrest/getConcerts/${lookupInput}`, {
+//     method: 'GET',
+//     headers: {
+//         'Authorization': `Bearer ${token}`,
+//         'Content-Type': 'application/json'
+//     }
+//     })
+//     .then(response => response.json())
+//     .then(data => {
+//     console.log("Data"+JSON.stringify(data))
+//     resultsContainer.innerHTML = '';
+//         let datareceived=[];
+//         data=datareceived;
+//     document.addEventListener('DOMContentLoaded', function() {
+//         const toastLiveExample = document.getElementById('liveToast')
         
       
-        // Check the length of data
-        if (datareceived.length === 0) {
-          console.log("datareceived length>>." + datareceived.length);
-          const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+//         // Check the length of data
+//         if (datareceived.length === 0) {
+//           console.log("datareceived length>>." + datareceived.length);
+//           const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
           
-          // Show the toast automatically
-          toastBootstrap.show();
-          console.log("Toast shown automatically because data length is 0.");
-        }
+//           // Show the toast automatically
+//           toastBootstrap.show();
+//           console.log("Toast shown automatically because data length is 0.");
+//         }
      
     
-    else{
- // Loop through the data and create card elements
+//     else{
+//  // Loop through the data and create card elements
 
- data.forEach(item => {
-    let cardHtml = `
-        <div class="col-md-4"> <!-- Assuming you want 3 cards in a row -->
-            <div class="card mb-4">
+//  data.forEach(item => {
+//     let cardHtml = `
+//         <div class="col-md-4"> <!-- Assuming you want 3 cards in a row -->
+//             <div class="card mb-4">
           
-                <div class="card-body">
-                    <h5 class="card-title">Concert Name:${item.Name}</h5>
-                    <p class="card-text">Date:${item.Date_of_Concert__c}</p>
-                    <p class="card-text">Venue:${item.Concert_Venue__c}</p>
-                    <p class="card-text">Price:(₹)${item.Price__c}</p>
-                    <img src="${item.Concert_Promotion_Image_Url__c}" alt="Taylor Swift" style="height: 200px; width: 100%; object-fit: cover;">
+//                 <div class="card-body">
+//                     <h5 class="card-title">Concert Name:${item.Name}</h5>
+//                     <p class="card-text">Date:${item.Date_of_Concert__c}</p>
+//                     <p class="card-text">Venue:${item.Concert_Venue__c}</p>
+//                     <p class="card-text">Price:(₹)${item.Price__c}</p>
+//                     <img src="${item.Concert_Promotion_Image_Url__c}" alt="Taylor Swift" style="height: 200px; width: 100%; object-fit: cover;">
 
-                </div>
-            </div>
-        </div>
-    `;
+//                 </div>
+//             </div>
+//         </div>
+//     `;
 
-    resultsContainer.innerHTML += cardHtml;
+//     resultsContainer.innerHTML += cardHtml;
     
-});
-}
+// });
+// }
 
-})
-.catch(error => {
-console.error('Error:', error);
-});
-});
-});
+// })
+// .catch(error => {
+// console.error('Error:', error);
+// });
+// });
+// });
     
+// });
+
+document.addEventListener("DOMContentLoaded", function() {
+    let resultsContainer = document.getElementById('results');
+    document.getElementById('searchButton').addEventListener('click', function(event) {
+        event.preventDefault();
+
+        const token = accessToken; // Replace with your actual token
+        const instanceURL = instanceUrl; 
+        const lookupInput = document.getElementById('lookupInput').value; 
+
+        fetch(`${instanceURL}/services/apexrest/getConcerts/${lookupInput}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            resultsContainer.innerHTML = '';
+            console.log("Data: " + JSON.stringify(data));
+
+            if (data.length === 0) {
+                const toastLiveExample = document.getElementById('liveToast');
+                const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+                toastBootstrap.show();
+                console.log("Toast shown automatically because data length is 0.");
+            } else {
+                data.forEach(item => {
+                    let cardHtml = `
+                        <div class="col-md-4">
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h5 class="card-title">Concert Name: ${item.Name}</h5>
+                                    <p class="card-text">Date: ${item.Date_of_Concert__c}</p>
+                                    <p class="card-text">Venue: ${item.Concert_Venue__c}</p>
+                                    <p class="card-text">Price: (₹) ${item.Price__c}</p>
+                                    <img src="${item.Concert_Promotion_Image_Url__c}" alt="Taylor Swift" style="height: 200px; width: 100%; object-fit: cover;">
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    resultsContainer.innerHTML += cardHtml;
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
 });
 
-   
     
    
