@@ -249,12 +249,25 @@ document.addEventListener("DOMContentLoaded", function() {
                                     <p class="card-text">Venue: ${item.Concert_Venue__c}</p>
                                     <p class="card-text">Price: (₹) ${item.Price__c}</p>
                                     <img src="${item.Concert_Promotion_Image_Url__c}" alt="Taylor Swift" style="height: 200px; width: 100%; object-fit: cover;">
+                                    <button class="btn btn-primary open-modal" data-id="${item.Id}">Book now!!</button>
                                 </div>
                             </div>
                         </div>
                     `;
                     resultsContainer.innerHTML += cardHtml;
                 });
+
+                document.querySelectorAll('.open-modal').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const itemId = this.getAttribute('data-id');
+                        
+                        // Load details into the modal if necessary using the itemId
+                        
+                        const modal = new bootstrap.Modal(document.getElementById('myModal'));
+                        modal.show();
+                    });
+                });
+                
             }
         })
         .catch(error => {
