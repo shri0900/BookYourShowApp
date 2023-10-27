@@ -268,13 +268,6 @@ console.error('Error:', error);
 
 document.addEventListener("DOMContentLoaded", function() {
 let resultsContainer = document.getElementById('results');
-
-
-
-
-
-
-
 document.getElementById('searchButton').addEventListener('click', function(event) {
     event.preventDefault();
 
@@ -332,53 +325,98 @@ document.getElementById('searchButton').addEventListener('click', function(event
         console.error('Error:', error);
     });
 });
+});
+// resultsContainer.addEventListener('click', function(event) {
+//     if (event.target.classList.contains('open-modal')) {
+//         let concertId = event.target.getAttribute('data-id');
+//         let concertName = event.target.getAttribute('data-name');
+//         let concertDate = event.target.getAttribute('data-date');
+//         let concertPrice=event.target.getAttribute('data-price');
+//         // Populate the modal placeholders with the data
+//         $('#concertName').text(concertName);
+//         $('#concertDate').text(concertDate);
+//         $('#concertPrice').text(concertPrice);
+//         // Open the modal using Bootstrap's method
+//         $('#bookingModal').modal('show');
+//     }
+// });
+
+// });
+
+// // Code to individual Records
+// document.addEventListener("DOMContentLoaded", function() {
+//     fetch(`${instanceUrl}/services/apexrest/getIndividuals/`, {
+//         method: 'GET',
+//         headers: {
+//         'Authorization': `Bearer ${accessToken}`,
+//         'Content-Type': 'application/json'
+//         }
+//         })
+//     .then(response => response.json())
+//     .then(data => {
+//         console.log("Drop Down Data"+JSON.stringify(data))
+//         let dropdownMenu = document.querySelector(".dropdown-menu");
+//         dropdownMenu.innerHTML = '';  // Clear existing items
+//         data.forEach(individual => {
+//             let li = document.createElement('li');
+//             let button = document.createElement('button');
+//             button.className = 'dropdown-item';
+//             button.setAttribute('type', 'button');
+//             button.textContent = individual.Name;
+//             li.appendChild(button);
+//             dropdownMenu.appendChild(li);
+//         });
+//     })
+//     .catch(error => {
+//         console.error('Error fetching individuals:', error);
+//     });
+// });
+
+
+
 
 resultsContainer.addEventListener('click', function(event) {
     if (event.target.classList.contains('open-modal')) {
         let concertId = event.target.getAttribute('data-id');
         let concertName = event.target.getAttribute('data-name');
         let concertDate = event.target.getAttribute('data-date');
-        let concertPrice=event.target.getAttribute('data-price');
-        // Populate the modal placeholders with the data
+        let concertPrice = event.target.getAttribute('data-price');
+
+        // Populate the modal placeholders with the concert details
         $('#concertName').text(concertName);
         $('#concertDate').text(concertDate);
         $('#concertPrice').text(concertPrice);
+        
+        // Fetch and populate the individuals in the dropdown
+        fetch(`${instanceUrl}/services/apexrest/getIndividuals/`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            let dropdownMenu = document.getElementById("individualDropdown");
+            dropdownMenu.innerHTML = '';  // Clear existing items
+
+            data.forEach(individual => {
+                let li = document.createElement('li');
+                let button = document.createElement('button');
+                button.className = 'dropdown-item';
+                button.setAttribute('type', 'button');
+                button.textContent = individual.Name;
+                button.setAttribute('data-id', individual.Id); // Store the Id for future use
+                li.appendChild(button);
+                dropdownMenu.appendChild(li);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching individuals:', error);
+        });
+
         // Open the modal using Bootstrap's method
         $('#bookingModal').modal('show');
     }
 });
-
-});
-
-// Code to individual Records
-document.addEventListener("DOMContentLoaded", function() {
-    fetch(`${instanceUrl}/services/apexrest/getIndividuals/`, {
-        method: 'GET',
-        headers: {
-        'Authorization': `Bearer ${accessToken}`,
-        'Content-Type': 'application/json'
-        }
-        })
-    .then(response => response.json())
-    .then(data => {
-        console.log("Drop Down Data"+JSON.stringify(data))
-        let dropdownMenu = document.querySelector(".dropdown-menu");
-        dropdownMenu.innerHTML = '';  // Clear existing items
-        data.forEach(individual => {
-            let li = document.createElement('li');
-            let button = document.createElement('button');
-            button.className = 'dropdown-item';
-            button.setAttribute('type', 'button');
-            button.textContent = individual.Name;
-            li.appendChild(button);
-            dropdownMenu.appendChild(li);
-        });
-    })
-    .catch(error => {
-        console.error('Error fetching individuals:', error);
-    });
-});
-
-
-
 
