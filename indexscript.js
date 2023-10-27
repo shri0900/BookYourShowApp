@@ -250,7 +250,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                     <p class="card-text">Price: (₹) ${item.Price__c}</p>
                                     <img src="${item.Concert_Promotion_Image_Url__c}" alt="Taylor Swift" style="height: 200px; width: 100%; object-fit: cover;">
                                     <br>
-                                    <button class="btn btn-secondary open-modal"
+                                    <button class="btn btn-secondary open-modal mt-3"
                                                   data-id="${item.Id}"
                                                   data-name="${item.Name}"
                                                   data-date="${item.Date_of_Concert__c}"
