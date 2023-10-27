@@ -355,7 +355,7 @@ document.addEventListener("DOMContentLoaded", function() {
     fetch(`${instanceUrl}/services/apexrest/getIndividuals/`, {
         method: 'GET',
         headers: {
-        'Authorization': `Bearer ${token}`,
+        'Authorization': `Bearer ${accessToken}`,
         'Content-Type': 'application/json'
         }
         })
