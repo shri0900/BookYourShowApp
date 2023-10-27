@@ -101,57 +101,57 @@ console.log("Instance URl from webpage>>>"+instanceUrl);
 
 document.addEventListener("DOMContentLoaded", function() {
 fetch(`${instanceUrl}/services/apexrest/getPosters`, {
-    method: 'GET',
-    headers: {
-        'Authorization': `Bearer ${accessToken}`,
-        'Content-Type': 'application/json'
-    }
-    })
-    .then(response => response.json())
-    .then(data => {
-    if (data) {
-        console.log("Data Received For Corolsol>>>"+JSON.stringify(data));
-    // Reference to the carousel container
-    const concertData = data;
-    const carouselContainer = document.getElementById('carouselExampleIndicators');
-    const carouselIndicators = carouselContainer.querySelector('.carousel-indicators');
-    const carouselInner = carouselContainer.querySelector('.carousel-inner');
+method: 'GET',
+headers: {
+    'Authorization': `Bearer ${accessToken}`,
+    'Content-Type': 'application/json'
+}
+})
+.then(response => response.json())
+.then(data => {
+if (data) {
+    console.log("Data Received For Corolsol>>>"+JSON.stringify(data));
+// Reference to the carousel container
+const concertData = data;
+const carouselContainer = document.getElementById('carouselExampleIndicators');
+const carouselIndicators = carouselContainer.querySelector('.carousel-indicators');
+const carouselInner = carouselContainer.querySelector('.carousel-inner');
 
-    
-    // Loop through the data to create indicators and carousel items
-    concertData.forEach((item, index) => {
-        // Creating the indicator
-        const indicator = document.createElement('li');
-        indicator.setAttribute('data-target', '#carouselExampleIndicators');
-        indicator.setAttribute('data-slide-to', index);
-        if (index === 0) {
-            indicator.classList.add('active');
-        }
-        carouselIndicators.appendChild(indicator);
-    
-        // Getting the image URL
-        const imgSrc = item.Concert_Promotion_Image_Url__c;
-    
-        // Creating the carousel item
-        const carouselItem = document.createElement('div');
-        carouselItem.classList.add('carousel-item');
-        if (index === 0) {
-            carouselItem.classList.add('active');
-        }
-        const imgElement = document.createElement('img');
-        imgElement.classList.add('d-block', 'w-100');
-        imgElement.setAttribute('src', imgSrc);
-        imgElement.setAttribute('alt', `Slide ${index + 1}`);
-        carouselItem.appendChild(imgElement);
-    
-        carouselInner.appendChild(carouselItem);
-    });  
+
+// Loop through the data to create indicators and carousel items
+concertData.forEach((item, index) => {
+    // Creating the indicator
+    const indicator = document.createElement('li');
+    indicator.setAttribute('data-target', '#carouselExampleIndicators');
+    indicator.setAttribute('data-slide-to', index);
+    if (index === 0) {
+        indicator.classList.add('active');
     }
-    })
-    .catch(error => {
-    console.error('Error fetching concert images:', error);
-    });
-    
+    carouselIndicators.appendChild(indicator);
+
+    // Getting the image URL
+    const imgSrc = item.Concert_Promotion_Image_Url__c;
+
+    // Creating the carousel item
+    const carouselItem = document.createElement('div');
+    carouselItem.classList.add('carousel-item');
+    if (index === 0) {
+        carouselItem.classList.add('active');
+    }
+    const imgElement = document.createElement('img');
+    imgElement.classList.add('d-block', 'w-100');
+    imgElement.setAttribute('src', imgSrc);
+    imgElement.setAttribute('alt', `Slide ${index + 1}`);
+    carouselItem.appendChild(imgElement);
+
+    carouselInner.appendChild(carouselItem);
+});  
+}
+})
+.catch(error => {
+console.error('Error fetching concert images:', error);
+});
+
 });
 
 
@@ -219,18 +219,18 @@ console.error('Error:', error);
 //         data=datareceived;
 //     document.addEventListener('DOMContentLoaded', function() {
 //         const toastLiveExample = document.getElementById('liveToast')
-    
-    
+
+
 //         // Check the length of data
 //         if (datareceived.length === 0) {
 //           console.log("datareceived length>>." + datareceived.length);
 //           const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
-        
+    
 //           // Show the toast automatically
 //           toastBootstrap.show();
 //           console.log("Toast shown automatically because data length is 0.");
 //         }
-    
+
 
 //     else{
 //  // Loop through the data and create card elements
@@ -239,7 +239,7 @@ console.error('Error:', error);
 //     let cardHtml = `
 //         <div class="col-md-4"> <!-- Assuming you want 3 cards in a row -->
 //             <div class="card mb-4">
-        
+    
 //                 <div class="card-body">
 //                     <h5 class="card-title">Concert Name:${item.Name}</h5>
 //                     <p class="card-text">Date:${item.Date_of_Concert__c}</p>
@@ -269,61 +269,61 @@ console.error('Error:', error);
 document.addEventListener("DOMContentLoaded", function() {
 //let resultsContainer = document.getElementById('results');
 document.getElementById('searchButton').addEventListener('click', function(event) {
-    event.preventDefault();
+event.preventDefault();
 
-    const token = accessToken; // Replace with your actual token
-    const instanceURL = instanceUrl; 
-    const lookupInput = document.getElementById('lookupInput').value; 
+const token = accessToken; // Replace with your actual token
+const instanceURL = instanceUrl; 
+const lookupInput = document.getElementById('lookupInput').value; 
 
-    fetch(`${instanceURL}/services/apexrest/getConcerts/${lookupInput}`, {
-        method: 'GET',
-        headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        resultsContainer.innerHTML = '';
-        console.log("Data: " + JSON.stringify(data));
+fetch(`${instanceURL}/services/apexrest/getConcerts/${lookupInput}`, {
+    method: 'GET',
+    headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+    }
+})
+.then(response => response.json())
+.then(data => {
+    resultsContainer.innerHTML = '';
+    console.log("Data: " + JSON.stringify(data));
 
-        if (data.length === 0) {
-            const toastLiveExample = document.getElementById('liveToast');
-            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
-            toastBootstrap.show();
-            console.log("Toast shown automatically because data length is 0.");
-        } else {
-            data.forEach(item => {
-                let cardHtml = `
-                    <div class="col-md-4">
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <h5 class="card-title">Concert Name: ${item.Name}</h5>
-                                <p class="card-text">Date: ${item.Date_of_Concert__c}</p>
-                                <p class="card-text">Venue: ${item.Concert_Venue__c}</p>
-                                <p class="card-text">Price: (₹) ${item.Price__c}</p>
-                                <img src="${item.Concert_Promotion_Image_Url__c}" alt="Taylor Swift" style="height: 200px; width: 100%; object-fit: cover;">
-                                <br>
-                                
-                                <button class="btn btn-info open-modal mt-3"
-                                        data-id="${item.Id}"
-                                        data-name="${item.Name}"
-                                        data-date="${item.Date_of_Concert__c}"
-                                        data-price="${item.Price__c}">
-                                    Book Now!
-                                </button>
+    if (data.length === 0) {
+        const toastLiveExample = document.getElementById('liveToast');
+        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+        toastBootstrap.show();
+        console.log("Toast shown automatically because data length is 0.");
+    } else {
+        data.forEach(item => {
+            let cardHtml = `
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Concert Name: ${item.Name}</h5>
+                            <p class="card-text">Date: ${item.Date_of_Concert__c}</p>
+                            <p class="card-text">Venue: ${item.Concert_Venue__c}</p>
+                            <p class="card-text">Price: (₹) ${item.Price__c}</p>
+                            <img src="${item.Concert_Promotion_Image_Url__c}" alt="Taylor Swift" style="height: 200px; width: 100%; object-fit: cover;">
+                            <br>
                             
-                            </div>
+                            <button class="btn btn-info open-modal mt-3"
+                                    data-id="${item.Id}"
+                                    data-name="${item.Name}"
+                                    data-date="${item.Date_of_Concert__c}"
+                                    data-price="${item.Price__c}">
+                                Book Now!
+                            </button>
+                        
                         </div>
                     </div>
-                `;
-                resultsContainer.innerHTML += cardHtml;
-            });
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+                </div>
+            `;
+            resultsContainer.innerHTML += cardHtml;
+        });
+    }
+})
+.catch(error => {
+    console.error('Error:', error);
+});
 });
 });
 // resultsContainer.addEventListener('click', function(event) {
@@ -376,47 +376,50 @@ document.getElementById('searchButton').addEventListener('click', function(event
 
 let resultsContainer = document.getElementById('results');
 resultsContainer.addEventListener('click', function(event) {
-    if (event.target.classList.contains('open-modal')) {
-        let concertId = event.target.getAttribute('data-id');
-        let concertName = event.target.getAttribute('data-name');
-        let concertDate = event.target.getAttribute('data-date');
-        let concertPrice = event.target.getAttribute('data-price');
+if (event.target.classList.contains('open-modal')) {
+    let concertId = event.target.getAttribute('data-id');
+    let concertName = event.target.getAttribute('data-name');
+    let concertDate = event.target.getAttribute('data-date');
+    let concertPrice = event.target.getAttribute('data-price');
 
-        // Populate the modal placeholders with the concert details
-        $('#concertName').text(concertName);
-        $('#concertDate').text(concertDate);
-        $('#concertPrice').text(concertPrice);
-        
-        // Fetch and populate the individuals in the dropdown
-        fetch(`${instanceUrl}/services/apexrest/getIndividuals/`, {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${accessToken}`,
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            let dropdownMenu = document.getElementById("individualDropdown");
-            dropdownMenu.innerHTML = '';  // Clear existing items
+    // Populate the modal placeholders with the concert details
+    $('#concertName').text(concertName);
+    $('#concertDate').text(concertDate);
+    $('#concertPrice').text(concertPrice);
+    
+    // Fetch and populate the individuals in the dropdown
+    fetch(`${instanceUrl}/services/apexrest/getIndividuals/`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${accessToken}`,
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        let dropdownMenu = document.getElementById("individualDropdown");
+        dropdownMenu.innerHTML = '';  // Clear existing items
 
-            data.forEach(individual => {
-                let li = document.createElement('li');
-                let button = document.createElement('button');
-                button.className = 'dropdown-item';
-                button.setAttribute('type', 'button');
-                button.textContent = individual.Name;
-                button.setAttribute('data-id', individual.Id); // Store the Id for future use
-                li.appendChild(button);
-                dropdownMenu.appendChild(li);
-            });
-        })
-        .catch(error => {
-            console.error('Error fetching individuals:', error);
-        });
+    // Inside your fetch success callback:
+data.forEach(individual => {
+let li = document.createElement('li');
+let button = document.createElement('button');
+button.className = 'dropdown-item';
+button.setAttribute('type', 'button');
+button.setAttribute('data-id', individual.Id); // Store the Id for future use
+button.textContent = individual.Name;
 
-        // Open the modal using Bootstrap's method
-        $('#bookingModal').modal('show');
-    }
+li.appendChild(button);
+document.getElementById('individualDropdown').appendChild(li);
+});
+
+    })
+    .catch(error => {
+        console.error('Error fetching individuals:', error);
+    });
+
+    // Open the modal using Bootstrap's method
+    $('#bookingModal').modal('show');
+}
 });
 
