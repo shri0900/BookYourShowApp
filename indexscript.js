@@ -104,7 +104,7 @@ console.error('Error fetching concert images:', error);
 document.getElementById('getConcert').addEventListener('click', function(event) {
 event.preventDefault();
 
-const token = accessToken; // Replace with your actual token
+const token = accessToken; 
 const instanceURL = instanceUrl; 
 const cityName = document.getElementById('cityName').value; 
 
@@ -254,7 +254,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                                   data-id="${item.Id}"
                                                   data-name="${item.Name}"
                                                   data-date="${item.Date_of_Concert__c}">
-                                                     Book Now!
+                                                 Book Now!
                                   </button>
                                 </div>
                             </div>
@@ -262,32 +262,30 @@ document.addEventListener("DOMContentLoaded", function() {
                     `;
                     resultsContainer.innerHTML += cardHtml;
                 });
-
-                $('.open-modal').click(function() {
-                    let concertId = $(this).data('id');
-                    let concertName = $(this).data('name');
-                    let concertDate = $(this).data('date');
-                
-                    // Populate the modal placeholders with the data
-                    $('#concertName').text(concertName);
-                    $('#concertDate').text(concertDate);
-                    
-                    // Display the modal
-                    $('#bookingModal').show();
-                });
-                
-                // Optionally, you can also add functionality to close the modal when the close button is clicked
-                $('.close-button').click(function() {
-                    $('#bookingModal').hide();
-                });
-                
             }
         })
         .catch(error => {
             console.error('Error:', error);
         });
     });
+
+    resultsContainer.addEventListener('click', function(event) {
+        if (event.target.classList.contains('open-modal')) {
+            let concertId = event.target.getAttribute('data-id');
+            let concertName = event.target.getAttribute('data-name');
+            let concertDate = event.target.getAttribute('data-date');
+            
+            // Populate the modal placeholders with the data
+            $('#concertName').text(concertName);
+            $('#concertDate').text(concertDate);
+            
+            // Open the modal using Bootstrap's method
+            $('#bookingModal').modal('show');
+        }
+    });
+
 });
+
 
     
    
