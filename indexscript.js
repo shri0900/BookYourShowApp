@@ -425,19 +425,31 @@ document.getElementById('individualDropdown').appendChild(li);
 });
 
 //For Reserve button
+
+let selectedIndividualId;
+document.getElementById('individualDropdown').addEventListener('click', function(event) {
+    if (event.target && event.target.classList.contains('dropdown-item')) {
+        selectedIndividualId = event.target.getAttribute('data-id');
+        // Optionally, update the dropdown button text to show the selected individual's name
+        document.getElementById('individualDropdownButton').textContent = event.target.textContent;
+    }
+});
+
 document.getElementById('modalBookButton').addEventListener('click', function() {
-    let selectedIndividualButton = document.querySelector('.dropdown-menu .dropdown-item.active');
-    if (selectedIndividualButton) {
-        let individualId = selectedIndividualButton.getAttribute('data-id');
+    if (selectedIndividualId) {
+        let individualId = selectedIndividualId;
+        console.log("individualId: " + individualId);
         
         // Retrieve the concertId from the modal
         let concertId = $('#bookingModal').attr('data-concert-id');
+        console.log("concertId: " + concertId);
         
         bookTicket(concertId, individualId);
     } else {
         console.error('No individual selected.');
     }
 });
+
 
 
 function bookTicket(concertId, individualId) {
