@@ -112,7 +112,7 @@ fetch(`${instanceUrl}/services/apexrest/getPosters`, {
     if (data) {
         console.log("Data Received For Corolsol>>>"+JSON.stringify(data));
     // Reference to the carousel container
-    const concertData=JSON.stringify(data);
+    const concertData = data;
     const carouselContainer = document.getElementById('carouselExampleIndicators');
     const carouselIndicators = carouselContainer.querySelector('.carousel-indicators');
     const carouselInner = carouselContainer.querySelector('.carousel-inner');
