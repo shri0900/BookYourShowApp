@@ -343,5 +343,35 @@ resultsContainer.addEventListener('click', function(event) {
 
 });
 
+// Code to individual Records
+document.addEventListener("DOMContentLoaded", function() {
+    fetch(`${instanceURL}/services/apexrest/getIndividuals/`, {
+        method: 'GET',
+        headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+        }
+        })
+    .then(response => response.json())
+    .then(data => {
+        console.log("Drop Down Data"+JSON.stringify(data))
+        let dropdownMenu = document.querySelector(".dropdown-menu");
+        dropdownMenu.innerHTML = '';  // Clear existing items
+        data.forEach(individual => {
+            let li = document.createElement('li');
+            let button = document.createElement('button');
+            button.className = 'dropdown-item';
+            button.setAttribute('type', 'button');
+            button.textContent = individual.Name;
+            li.appendChild(button);
+            dropdownMenu.appendChild(li);
+        });
+    })
+    .catch(error => {
+        console.error('Error fetching individuals:', error);
+    });
+});
+
+
 
 
