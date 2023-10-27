@@ -361,7 +361,7 @@ document.addEventListener("DOMContentLoaded", function() {
         })
     .then(response => response.json())
     .then(data => {
-        console.log("Drop Down Data"+JSON.stringify(data))
+        console.log("Drop Down Data"+data)
         let dropdownMenu = document.querySelector(".dropdown-menu");
         dropdownMenu.innerHTML = '';  // Clear existing items
         data.forEach(individual => {
