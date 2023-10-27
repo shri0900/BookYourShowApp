@@ -297,14 +297,14 @@ document.getElementById('searchButton').addEventListener('click', function(event
                 let cardHtml = `
                     <div class="col-md-4">
                         <div class="card mb-4">
-                            <div class="card-body">
+                            < class="card-body">
                                 <h5 class="card-title">Concert Name: ${item.Name}</h5>
                                 <p class="card-text">Date: ${item.Date_of_Concert__c}</p>
                                 <p class="card-text">Venue: ${item.Concert_Venue__c}</p>
                                 <p class="card-text">Price: (₹) ${item.Price__c}</p>
                                 <img src="${item.Concert_Promotion_Image_Url__c}" alt="Taylor Swift" style="height: 200px; width: 100%; object-fit: cover;">
                                 <br>
-                                <div class="d-flex justify-content-center align-items-center vh-100">
+                                
                                 <button class="btn btn-info open-modal mt-3"
                                         data-id="${item.Id}"
                                         data-name="${item.Name}"
@@ -312,7 +312,7 @@ document.getElementById('searchButton').addEventListener('click', function(event
                                         data-price="${item.Price__c}">
                                     Book Now!
                                 </button>
-                            </div>
+                            
                             </div>
                         </div>
                     </div>
