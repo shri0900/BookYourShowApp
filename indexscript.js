@@ -268,6 +268,13 @@ console.error('Error:', error);
 
 document.addEventListener("DOMContentLoaded", function() {
 let resultsContainer = document.getElementById('results');
+
+
+
+
+
+
+
 document.getElementById('searchButton').addEventListener('click', function(event) {
     event.preventDefault();
 
@@ -345,7 +352,7 @@ resultsContainer.addEventListener('click', function(event) {
 
 // Code to individual Records
 document.addEventListener("DOMContentLoaded", function() {
-    fetch(`${instanceURL}/services/apexrest/getIndividuals/`, {
+    fetch(`${instanceUrl}/services/apexrest/getIndividuals/`, {
         method: 'GET',
         headers: {
         'Authorization': `Bearer ${token}`,
