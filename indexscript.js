@@ -267,7 +267,7 @@ console.error('Error:', error);
 // });
 
 document.addEventListener("DOMContentLoaded", function() {
-let resultsContainer = document.getElementById('results');
+//let resultsContainer = document.getElementById('results');
 document.getElementById('searchButton').addEventListener('click', function(event) {
     event.preventDefault();
 
@@ -374,7 +374,7 @@ document.getElementById('searchButton').addEventListener('click', function(event
 
 
 
-
+let resultsContainer = document.getElementById('results');
 resultsContainer.addEventListener('click', function(event) {
     if (event.target.classList.contains('open-modal')) {
         let concertId = event.target.getAttribute('data-id');
