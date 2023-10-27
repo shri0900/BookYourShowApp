@@ -465,6 +465,7 @@ function bookTicket(concertId, individualId) {
         })
     })
     .then(response => response.json())
+    console.log("Response for fetch reserve"+response)
     .then(data => {
         if (data && data.Id) {
             console.log('Ticket booked successfully with ID:', data.Id);
