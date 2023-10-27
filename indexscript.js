@@ -304,13 +304,15 @@ document.getElementById('searchButton').addEventListener('click', function(event
                                 <p class="card-text">Price: (₹) ${item.Price__c}</p>
                                 <img src="${item.Concert_Promotion_Image_Url__c}" alt="Taylor Swift" style="height: 200px; width: 100%; object-fit: cover;">
                                 <br>
+                                <div class="d-flex justify-content-center align-items-center vh-100">
                                 <button class="btn btn-secondary open-modal mt-3"
-                                                data-id="${item.Id}"
-                                                data-name="${item.Name}"
-                                                data-date="${item.Date_of_Concert__c}"
-                                                data-price="${item.Price__c}">
-                                                Book Now!
+                                        data-id="${item.Id}"
+                                        data-name="${item.Name}"
+                                        data-date="${item.Date_of_Concert__c}"
+                                        data-price="${item.Price__c}">
+                                    Book Now!
                                 </button>
+                            </div>
                             </div>
                         </div>
                     </div>
