@@ -273,12 +273,12 @@ document.addEventListener("DOMContentLoaded", function() {
                     $('#concertDate').text(concertDate);
                     
                     // Display the modal
-                    $('#concertModal').show();
+                    $('#bookingModal').show();
                 });
                 
                 // Optionally, you can also add functionality to close the modal when the close button is clicked
                 $('.close-button').click(function() {
-                    $('#concertModal').hide();
+                    $('#bookingModal').hide();
                 });
                 
             }
