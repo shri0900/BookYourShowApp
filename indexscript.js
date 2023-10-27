@@ -253,7 +253,8 @@ document.addEventListener("DOMContentLoaded", function() {
                                     <button class="btn btn-secondary open-modal"
                                                   data-id="${item.Id}"
                                                   data-name="${item.Name}"
-                                                  data-date="${item.Date_of_Concert__c}">
+                                                  data-date="${item.Date_of_Concert__c}"
+                                                  data-price="${item.Price__c}">
                                                  Book Now!
                                   </button>
                                 </div>
@@ -274,11 +275,11 @@ document.addEventListener("DOMContentLoaded", function() {
             let concertId = event.target.getAttribute('data-id');
             let concertName = event.target.getAttribute('data-name');
             let concertDate = event.target.getAttribute('data-date');
-            
+            let concertPrice=event.target.getAttribute('data-price');
             // Populate the modal placeholders with the data
             $('#concertName').text(concertName);
             $('#concertDate').text(concertDate);
-            
+            $('#concertPrice').text(concertPrice);
             // Open the modal using Bootstrap's method
             $('#bookingModal').modal('show');
         }
