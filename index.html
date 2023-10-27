@@ -15,32 +15,32 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
 <div class="container-fluid">
 <a class="navbar-brand" href="#"><img src="logo.jpg" height="50px" width="50px"> Book Your Show!
-  
+
 </a>
 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
+<span class="navbar-toggler-icon"></span>
 </button>
 
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-    <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="#">Home</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Concerts</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Reviews</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Bookings</a>
-    </li>
-  </ul>
-  <!-- User can type name of concert and serach for concerts here -->
-  <form class="d-flex mx-3" role="search" >
-    <input class="form-control me-2" type="search" placeholder="Enter Your City" aria-label="Search" id="cityName">
-    <button  type="button" id="getConcert" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Search Concerts</button>    
-  </form>
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Concerts</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Reviews</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Bookings</a>
+  </li>
+</ul>
+<!-- User can type name of concert and serach for concerts here -->
+<form class="d-flex mx-3" role="search" >
+  <input class="form-control me-2" type="search" placeholder="Enter Your City" aria-label="Search" id="cityName">
+  <button  type="button" id="getConcert" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Search Concerts</button>    
+</form>
 <!-- Login and Signup buttons -->
 <a href="#" class="btn btn-danger me-2" onclick="authenticate()">Login</a>
 <a href="https://www.salesforce.com/in/form/signup/freetrial-sales/?d=70130000000Enyk" class="btn btn-success">SignUp</a>
@@ -49,63 +49,63 @@
 <!--Concert Serach Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog" role="document">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Here We Go!!🍿</h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <div id="concert-info">
-        <h2>Name: <span id="concert-name"></span></h2>
-        <p>Date:<span id="concert-date"></span></p>
-        <p>Type: <span id="concert-type"></span></p>
-        <p>Venue: <span id="concert-venue"></span></p>
-        <p>Price(₹): <span id="concert-price"></span></p>
-        <div id="concert-poster"></div>
-        <style>
-          #concert-poster img {
-              height: 30%;
-              width: 30%;
-              image-rendering: auto;
-              text-align: center;
-          }
-      </style>
-    </div>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-    </div>
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Here We Go!!🍿</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
+  <div class="modal-body">
+    <div id="concert-info">
+      <h2>Name: <span id="concert-name"></span></h2>
+      <p>Date:<span id="concert-date"></span></p>
+      <p>Type: <span id="concert-type"></span></p>
+      <p>Venue: <span id="concert-venue"></span></p>
+      <p>Price(₹): <span id="concert-price"></span></p>
+      <div id="concert-poster"></div>
+      <style>
+        #concert-poster img {
+            height: 30%;
+            width: 30%;
+            image-rendering: auto;
+            text-align: center;
+        }
+    </style>
+  </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+  </div>
+</div>
 </div>
 </div>
 
 <!-- carusel starts here -->
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 <ol class="carousel-indicators">
-  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 </ol>
 <div class="carousel-inner">
-  <div class="carousel-item active">
-    <img class="d-block w-100" src="..." alt="First slide">
-  </div>
-  <div class="carousel-item">
-    <img class="d-block w-100" src="..." alt="Second slide">
-  </div>
-  <div class="carousel-item">
-    <img class="d-block w-100" src="..." alt="Third slide">
-  </div>
+<div class="carousel-item active">
+  <img class="d-block w-100" src="..." alt="First slide">
+</div>
+<div class="carousel-item">
+  <img class="d-block w-100" src="..." alt="Second slide">
+</div>
+<div class="carousel-item">
+  <img class="d-block w-100" src="..." alt="Third slide">
+</div>
 </div>
 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-  <span class="sr-only" style="color: black;">Previous</span>
+<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+<span class="sr-only" style="color: black;">Previous</span>
 </a>
 <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-  <span class="sr-only" style="color: black;">Next</span>
+<span class="carousel-control-next-icon" aria-hidden="true"></span>
+<span class="sr-only" style="color: black;">Next</span>
 </a>
 </div>
 
@@ -114,7 +114,7 @@
 <input type="text" class="form-control me-2" id="lookupInput" placeholder="Search...">
 
 <div class="input-group-append">
-    <button class="btn btn-primary" type="button" id="searchButton" aria-colspan="">Search</button>
+  <button class="btn btn-primary" type="button" id="searchButton" aria-colspan="">Search</button>
 </div>
 <div id="lookupDropdown" class="dropdown-menu">
 
@@ -125,7 +125,7 @@
 <input type="text" class="form-control me-2" id="lookupInput" placeholder="Search...">
 
 <div class="input-group-append">
-    <button class="btn btn-primary" type="button" id="searchButton" aria-colspan="">Search</button>
+  <button class="btn btn-primary" type="button" id="searchButton" aria-colspan="">Search</button>
 </div>
 <div id="lookupDropdown" class="dropdown-menu"></div>
 
@@ -136,15 +136,15 @@
 <!-- Toast Notification for card data -->
 <div class="toast-container position-fixed bottom-0 end-0 p-3">
 <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-  <div class="toast-header">
-    <img src="..." class="rounded me-2" alt="...">
-    <strong class="me-auto">Bootstrap</strong>
-    <small>11 mins ago</small>
-    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-  </div>
-  <div class="toast-body">
-    Hello, world! This is a toast message.
-  </div>
+<div class="toast-header">
+  <img src="..." class="rounded me-2" alt="...">
+  <strong class="me-auto">Bootstrap</strong>
+  <small>11 mins ago</small>
+  <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+</div>
+<div class="toast-body">
+  Hello, world! This is a toast message.
+</div>
 </div>
 </div>
 <!-- 
@@ -152,33 +152,43 @@ Modal Box Booking window -->
 
 <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Booking Details!</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div id="booking-info">
-            <h2>Book Concert</h2>
-  <p id="concertName">Concert:</p>
-  <p id="concertDate">Date:</p>
-  <p id="concertPrice">Price:</p>          
-  
-  <button id="modalBookButton btn-secondary" >Book Now</button>
-        </div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
-    </div>
+  <div class="modal-content">
+      <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Booking Details!</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="booking-info">
+          <h2>Book Concert</h2>
+<p id="concertName">Concert:</p>
+<p id="concertDate">Date:</p>
+<p id="concertPrice">Price:</p>     
+<!-- //dropdown Strats Here -->
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Individual
+  </button>
+  <ul class="dropdown-menu">
+    <li><button class="dropdown-item" type="button">Action</button></li>
+    <li><button class="dropdown-item" type="button">Another action</button></li>
+    <li><button class="dropdown-item" type="button">Something else here</button></li>
+  </ul>
+</div>  
+<button type="button" class="btn btn-warning" id="modalBookButton">Book Now!</button>
+      </div>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+  </div>
 </div>
 </div>
 
 
 <!-- Footer code Starts here -->
-  <footer class="container">
-      <p class="float-end"><a href="#">Back to top</a></p>
-      <p> Book Your Show! , Inc. <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+<footer class="container">
+    <p class="float-end"><a href="#">Back to top</a></p>
+    <p> Book Your Show! , Inc. <a href="#">Privacy</a> · <a href="#">Terms</a></p>
 </footer>
 <script src="indexscript.js"></script>
 <!-- Include jQuery -->
