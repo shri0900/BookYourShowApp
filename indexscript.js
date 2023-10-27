@@ -249,7 +249,13 @@ document.addEventListener("DOMContentLoaded", function() {
                                     <p class="card-text">Venue: ${item.Concert_Venue__c}</p>
                                     <p class="card-text">Price: (₹) ${item.Price__c}</p>
                                     <img src="${item.Concert_Promotion_Image_Url__c}" alt="Taylor Swift" style="height: 200px; width: 100%; object-fit: cover;">
-                                    <button class="btn btn-primary open-modal" data-id="${item.Id}">Book now!!</button>
+                                    <br>
+                                    button class="btn btn-secondary open-modal"
+                    data-id="${item.Id}"
+                    data-name="${item.Name}"
+                    data-date="${item.Date_of_Concert__c}">
+                Book Now!
+            </button>
                                 </div>
                             </div>
                         </div>
@@ -257,15 +263,22 @@ document.addEventListener("DOMContentLoaded", function() {
                     resultsContainer.innerHTML += cardHtml;
                 });
 
-                document.querySelectorAll('.open-modal').forEach(button => {
-                    button.addEventListener('click', function() {
-                        const itemId = this.getAttribute('data-id');
-                        
-                        // Load details into the modal if necessary using the itemId
-                        
-                        const modal = new bootstrap.Modal(document.getElementById('myModal'));
-                        modal.show();
-                    });
+                $('.open-modal').click(function() {
+                    let concertId = $(this).data('id');
+                    let concertName = $(this).data('name');
+                    let concertDate = $(this).data('date');
+                
+                    // Populate the modal placeholders with the data
+                    $('#concertName').text(concertName);
+                    $('#concertDate').text(concertDate);
+                    
+                    // Display the modal
+                    $('#concertModal').show();
+                });
+                
+                // Optionally, you can also add functionality to close the modal when the close button is clicked
+                $('.close-button').click(function() {
+                    $('#concertModal').hide();
                 });
                 
             }

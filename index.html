@@ -150,7 +150,7 @@
 <!-- 
 Modal Box Booking window -->
 
-<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
           <div class="modal-header">
@@ -158,7 +158,13 @@ Modal Box Booking window -->
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-              <!-- Details will go here -->
+            <div id="booking-info">
+              <h2>Book Concert</h2>
+    <p id="concertName"></p>
+    <p id="concertDate"></p>
+    <!-- Add other details, input fields, etc. as necessary -->
+    <button id="modalBookButton">Book Now</button>
+          </div>
           </div>
           <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
