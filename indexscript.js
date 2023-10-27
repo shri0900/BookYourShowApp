@@ -304,7 +304,7 @@ document.getElementById('searchButton').addEventListener('click', function(event
                 let cardHtml = `
                     <div class="col-md-4">
                         <div class="card mb-4">
-                            < class="card-body">
+                            <div class="card-body">
                                 <h5 class="card-title">Concert Name: ${item.Name}</h5>
                                 <p class="card-text">Date: ${item.Date_of_Concert__c}</p>
                                 <p class="card-text">Venue: ${item.Concert_Venue__c}</p>
