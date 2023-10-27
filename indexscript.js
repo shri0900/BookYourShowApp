@@ -420,6 +420,50 @@ document.getElementById('individualDropdown').appendChild(li);
 
     // Open the modal using Bootstrap's method
     $('#bookingModal').modal('show');
+    $('#bookingModal').attr('data-concert-id', concertId);
 }
 });
+
+//For Reserve button
+document.getElementById('modalBookButton').addEventListener('click', function() {
+    let selectedIndividualButton = document.querySelector('.dropdown-menu .dropdown-item.active');
+    if (selectedIndividualButton) {
+        let individualId = selectedIndividualButton.getAttribute('data-id');
+        
+        // Retrieve the concertId from the modal
+        let concertId = $('#bookingModal').attr('data-concert-id');
+        
+        bookTicket(concertId, individualId);
+    } else {
+        console.error('No individual selected.');
+    }
+});
+
+
+function bookTicket(concertId, individualId) {
+    fetch(`${instanceUrl}/services/apexrest/bookTickets/`, {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${accessToken}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            concertId: concertId,
+            individualId: individualId
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data && data.Id) {
+            console.log('Ticket booked successfully with ID:', data.Id);
+            // Optionally, close the modal or show a success message to the user
+            $('#bookingModal').modal('hide');
+        } else {
+            console.error('Failed to book ticket.');
+        }
+    })
+    .catch(error => {
+        console.error('Error booking ticket:', error);
+    });
+}
 
