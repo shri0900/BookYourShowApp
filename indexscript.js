@@ -480,3 +480,25 @@ function bookTicket(concertId, individualId) {
     });
 }
 
+//logout functionality code
+
+document.addEventListener("DOMContentLoaded", function() {
+    const logoutButton = document.getElementById("logoutButton");
+
+    logoutButton.addEventListener("click", function() {
+        // Perform the logout action by making a request to Salesforce's logout endpoint
+        fetch(`${instanceUrl}/secur/logout.jsp`, {
+            method: "GET",
+            mode: "no-cors" // Necessary to make a cross-origin request to the logout endpoint
+        })
+        .then(response => {
+            // The logout request will log the user out, and the response status is typically 200 OK
+            if (response.status === 200) {
+                alert("You have been logged out!");
+            }
+        })
+        .catch(error => {
+            console.error("Error during logout:", error);
+        });
+    });
+});
