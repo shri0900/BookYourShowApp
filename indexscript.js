@@ -489,7 +489,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Perform the logout action by making a request to Salesforce's logout endpoint
         fetch(`${instanceUrl}/secur/logout.jsp`, {
             method: "GET",
-            mode: "no-cors" // Necessary to make a cross-origin request to the logout endpoint
+          //  mode: "no-cors" // Necessary to make a cross-origin request to the logout endpoint
         })
         .then(response => {
             // The logout request will log the user out, and the response status is typically 200 OK
