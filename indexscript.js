@@ -492,6 +492,7 @@ document.addEventListener("DOMContentLoaded", function() {
            mode: "no-cors" // Necessary to make a cross-origin request to the logout endpoint
         })
         .then(response => {
+            console.log("Response"+json.stringify(response))
             // The logout request will log the user out, and the response status is typically 200 OK
             if (response.status === 200) {
                 alert("You have been logged out!");
