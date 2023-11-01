@@ -496,16 +496,12 @@ document.addEventListener("DOMContentLoaded", function() {
             } 
         })
         .then(response => {
-            // Convert the response object to a JSON string and log it
-            return response.json();
-        })
-        .then(data => {
-            // Log the JSON response to the console
-            console.log("Response: " + JSON.stringify(data));
-
-            // The logout request will log the user out, and the response status is typically 200 OK
             if (response.status === 200) {
+                // The logout request will log the user out, and the response status is typically 200 OK
                 alert("You have been logged out!");
+            } else {
+                // Handle other response status codes here
+                console.error("Logout failed with status: " + response.status);
             }
         })
         .catch(error => {
