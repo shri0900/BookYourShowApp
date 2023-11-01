@@ -489,19 +489,23 @@ document.addEventListener("DOMContentLoaded", function() {
         // Perform the logout action by making a request to Salesforce's logout endpoint
         fetch(`${instanceUrl}/secur/logout.jsp`, {
             method: "GET",
-           mode: "no-cors",
-           headers: {
-            'Authorization': `Bearer ${accessToken}`,
-            'Content-Type': 'application/x-www-form-urlencoded'
-        } 
+            mode: "no-cors",
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+                'Content-Type': 'application/x-www-form-urlencoded'
+            } 
         })
         .then(response => {
-           // console.log("Response"+json.stringify(response))
-           console.log("Response"+JSON.stringify(response));
+            // Convert the response object to a JSON string and log it
+            return response.json();
+        })
+        .then(data => {
+            // Log the JSON response to the console
+            console.log("Response: " + JSON.stringify(data));
+
             // The logout request will log the user out, and the response status is typically 200 OK
             if (response.status === 200) {
                 alert("You have been logged out!");
-                
             }
         })
         .catch(error => {
@@ -509,3 +513,4 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
