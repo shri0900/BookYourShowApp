@@ -491,7 +491,7 @@ document.addEventListener("DOMContentLoaded", function() {
             method: "GET",
            mode: "no-cors",
            headers: {
-            'Authorization': `Bearer ${token}`,
+            'Authorization': `Bearer ${accessToken}`,
             'Content-Type': 'application/json'
         } 
         })
