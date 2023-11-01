@@ -487,7 +487,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     logoutButton.addEventListener("click", function() {
         // Perform the logout action by making a request to Salesforce's logout endpoint
-        fetch(`${instanceUrl}/services/apexrest/secur/logout.jsp`, {
+        fetch(`${instanceUrl}/secur/logout.jsp`, {
             method: "GET",
            mode: "no-cors",
            headers: {
