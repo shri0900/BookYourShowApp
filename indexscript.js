@@ -489,7 +489,11 @@ document.addEventListener("DOMContentLoaded", function() {
         // Perform the logout action by making a request to Salesforce's logout endpoint
         fetch(`${instanceUrl}/services/apexrest/secur/logout.jsp`, {
             method: "GET",
-           mode: "no-cors" // Necessary to make a cross-origin request to the logout endpoint
+           mode: "no-cors",
+           headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        } 
         })
         .then(response => {
             console.log("Response"+json.stringify(response))
