@@ -8,6 +8,8 @@ let accessToken = getURLParameter('access_token');
 console.log("Access Token FROM Webpage>>>"+accessToken);
 let instanceUrl = getURLParameter('instance_url');
 console.log("Instance URl from webpage>>>"+instanceUrl);
+localStorage.setItem('accessToken', accessToken);
+localStorage.setItem('instanceUrl', instanceUrl);
 
 // Now you can use accessToken and instanceUrl for further API calls
 
