@@ -1,15 +1,13 @@
-// Retrieve the values from local storage
-let storedAccessToken = localStorage.getItem('accessToken');
-let storedInstanceUrl = localStorage.getItem('instanceUrl');
+// Retrieve the instanceUrl and accessToken from Local Storage
+let instanceUrl = localStorage.getItem('instanceUrl');
+let accessToken = localStorage.getItem('accessToken');
 
-// Check if the values exist and are not null
-if (storedAccessToken && storedInstanceUrl) {
-  // You can use storedAccessToken and storedInstanceUrl for making API calls
-  console.log("Access Token from local storage: " + storedAccessToken);
-  console.log("Instance URL from local storage: " + storedInstanceUrl);
+// Check if they exist and are not null
+if (instanceUrl && accessToken) {
+  // You can use the instanceUrl and accessToken for making API calls
+  console.log("Instance URL from Local Storage: " + instanceUrl);
+  console.log("Access Token from Local Storage: " + accessToken);
+} else {
+  // Handle the case where they are not found in Local Storage
+  // You might want to redirect the user to the login page or perform some other action.
 }
-
-
-  const scrollSpy = new bootstrap.ScrollSpy(document.body, {
-    target: '#navbar-example'
-  })
