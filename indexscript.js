@@ -497,9 +497,11 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .then(response => {
            // console.log("Response"+json.stringify(response))
+           console.log("Response"+response);
             // The logout request will log the user out, and the response status is typically 200 OK
             if (response.status === 200) {
                 alert("You have been logged out!");
+                
             }
         })
         .catch(error => {
