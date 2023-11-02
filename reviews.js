@@ -15,7 +15,7 @@ function fetchAndDisplayReviews(instanceUrl, accessToken) {
   .then(data => {
       // Handle the data received from the API call
       // You can update your UI to display the reviews here
-      console.log("Reviews Data:", data);
+      console.log("Reviews Data:", JSON.stringify(data));
       // Example: Update your UI to display the reviews data
       // document.getElementById('reviewsContainer').innerHTML = JSON.stringify(data, null, 2);
   })
