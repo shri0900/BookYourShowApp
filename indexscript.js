@@ -529,7 +529,7 @@ function retrieveInstanceAndAccessToken() {
   }
 
   // Add an event listener to the "Review" page link
-document.getElementById('reviewLink').addEventListener('click', function (event) {
+document.getElementById('indexLink').addEventListener('click', function (event) {
     // Prevent the default link behavior
     event.preventDefault();
   
