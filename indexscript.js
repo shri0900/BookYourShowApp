@@ -1,19 +1,49 @@
-// let accessToken = "";
-// let instanceUrl = "";
-function getURLParameter(name) {
-return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+// Retrieve the access token and instance URL from the URL parameters
+let accessToken = getURLParameter('access_token');
+let instanceUrl = getURLParameter('instance_url');
+
+// Check if they are available in the URL parameters
+if (accessToken && instanceUrl) {
+    // Store the values in localStorage
+    localStorage.setItem('accessToken', accessToken);
+    localStorage.setItem('instanceUrl', instanceUrl);
+
+    console.log("Access Token from URL parameter: " + accessToken);
+    console.log("Instance URL from URL parameter: " + instanceUrl);
+} else {
+    // If not found in URL parameters, check if they are available in localStorage
+    accessToken = localStorage.getItem('accessToken');
+    instanceUrl = localStorage.getItem('instanceUrl');
+
+    if (accessToken && instanceUrl) {
+        console.log("Access Token from localStorage: " + accessToken);
+        console.log("Instance URL from localStorage: " + instanceUrl);
+    } else {
+        // Handle the case where the values are not available
+        console.log("Access Token and Instance URL not found.");
+    }
 }
 
-let accessToken = getURLParameter('access_token');
-console.log("Access Token FROM Webpage>>>"+accessToken);
-let instanceUrl = getURLParameter('instance_url');
-console.log("Instance URl from webpage>>>"+instanceUrl);
 
 
-localStorage.setItem('accessToken', accessToken);
-console.log("access token from storage>>"+accessToken)
-localStorage.setItem('instanceUrl', instanceUrl);
-console.log("access token from storage>>>"+instanceUrl);
+
+
+// // let accessToken = "";
+// // let instanceUrl = "";
+// function getURLParameter(name) {
+// return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+// }
+
+// let accessToken = getURLParameter('access_token');
+// console.log("Access Token FROM Webpage>>>"+accessToken);
+// let instanceUrl = getURLParameter('instance_url');
+// console.log("Instance URl from webpage>>>"+instanceUrl);
+
+
+// localStorage.setItem('accessToken', accessToken);
+// console.log("access token from storage>>"+accessToken)
+// localStorage.setItem('instanceUrl', instanceUrl);
+// console.log("access token from storage>>>"+instanceUrl);
 
 // Now you can use accessToken and instanceUrl for further API calls
 
