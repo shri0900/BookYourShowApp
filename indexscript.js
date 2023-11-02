@@ -1,4 +1,8 @@
-// Retrieve the access token and instance URL from the URL parameters
+
+function getURLParameter(name) {
+return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
+}
+//Retrieve the access token and instance URL from the URL parameters
 let accessToken = getURLParameter('access_token');
 let instanceUrl = getURLParameter('instance_url');
 
