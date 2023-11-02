@@ -22,7 +22,7 @@ function fetchAndDisplayReviews(instanceUrl, accessToken) {
   const scrollspyContainer = document.querySelector('.scrollspy-example');
   
   // Iterate through the reviews data and create the content
-  reviewsData.forEach((review, index) => {
+  data.forEach((review, index) => {
     // // Create an anchor link for the navigation menu
     const navLink = document.createElement('a');
     navLink.className = 'nav-link';
