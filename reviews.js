@@ -71,6 +71,7 @@ document.getElementById('reviewLink').addEventListener('click', function (event)
       // Call the function to fetch and display reviews
       fetchAndDisplayReviews(instanceUrl, accessToken);
       populateIndividuals(instanceUrl,accessToken);
+      populateconcerts(instanceUrl,accessToken);
 
   } else {
       // Handle the case where instanceUrl and accessToken are not found
@@ -111,4 +112,36 @@ function populateIndividuals(instanceUrl, accessToken) {
 document.getElementById('individualSelect').addEventListener('change', function () {
   const selectedValue = this.value;
   document.getElementById('selectedIndividualId').value = selectedValue;
+});
+
+//Function to get concert data for review card
+
+function populateconcerts(instanceUrl,accessToken){
+  const apiUrl=`${instanceUrl}/services/apexrest/getConcertsdata`;
+  fetch(apiUrl,{
+    method:'GET',
+    headers:{
+      'Authorization':`Bearer ${accessToken}`,
+      'Content-Type':'application/json'
+    }
+  })
+  .then(response=>response.json())
+  .then(data=>{
+    console.log("Concerts Data",JSON.stringify(data));
+
+    const concertselect=document.getElementById('concertSelect');
+    data.forEach(concert=>{
+      const option=document.createElement('option');
+      option.value=concert.Id;
+      option.textContent=concert.Name;
+      concertselect.appendChild(option);
+    });
+  })
+  .catch(error=>{
+    console.log("Error Finding concerts"+error);
+  });
+}
+document.getElementById('concertselect').addEventListener('change', function () {
+  const selectedValue = this.value;
+  document.getElementById('selectedconcertId').value = selectedValue;
 });

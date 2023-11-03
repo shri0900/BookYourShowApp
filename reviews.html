@@ -69,14 +69,13 @@
       <label for="formGroupExampleInput" class="form-label">Review Title:</label>
       <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Review title Here!">
     </div>
+    <!-- concerts option list -->
     <div class="mb-3">
-      <label for="formGroupExampleInput2" class="form-label">Concert Name:</label>
-      <select class="form-select" aria-label="Default select example">
-        <option selected>Select Concert</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+      <label for="formGroupExampleInput" class="form-label">Concerts:</label>
+      <select class="form-select" id="concertSelect" aria-label="Default select example">
+        <option value="" selected>Select Concert</option>
       </select>
+      <input type="hidden" id="selectedconcertId" name="selectedconcertId" value="">
     </div>
     <!-- individual options set -->
     <div class="mb-3">
