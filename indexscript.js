@@ -549,6 +549,8 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
+//Function to retrive instance url and access token while changing from one page to another
 function retrieveInstanceAndAccessToken() {
     // Retrieve the instanceUrl and accessToken from Local Storage
     let instanceUrl = localStorage.getItem('instanceUrl');

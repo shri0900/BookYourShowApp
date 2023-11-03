@@ -10,58 +10,93 @@
 <body>
 <!-- Navigation Tab Starts Here -->
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-  <a class="navbar-brand" href="#"><img src="logo.jpg" height="50px" width="50px"> Book Your Show!
-  
-  </a>
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-  </button>
-  
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-    <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="index.html" id="indexLink">Home</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="concerts.html" id="concertLink">Concerts</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="reviews.html" id="reviewLink">Reviews</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="bookings.html" id="bookingLink">Bookings</a>
-    </li>
-  </ul>
+<div class="container-fluid">
+<a class="navbar-brand" href="#"><img src="logo.jpg" height="50px" width="50px"> Book Your Show!
+
+</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="index.html" id="indexLink">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="concerts.html" id="concertLink">Concerts</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="reviews.html" id="reviewLink">Reviews</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="bookings.html" id="bookingLink">Bookings</a>
+  </li>
+</ul>
 </nav>
 
 
 
-    <!-- Scrollspy starts here -->
-    <nav id="navbar-example2" class="navbar bg-body-tertiary px-3 mb-3">
-      <a class="navbar-brand" href="#">Reviews By Customers</a>
-      <ul class="nav nav-pills">
-        <li class="nav-item">
-          <a class="nav-link" href="#scrollspyHeading1">First</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#scrollspyHeading2">Second</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#scrollspyHeading1">Most Recent</a></li>
-            <li><a class="dropdown-item" href="#scrollspyHeading10">Most Older</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#scrollspyHeading5">Fifth</a></li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
-    <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
-    
-    </div> 
-    
+  <!-- Scrollspy starts here -->
+  <nav id="navbar-example2" class="navbar bg-body-tertiary px-3 mb-3">
+    <a class="navbar-brand" href="#">Reviews By Customers</a>
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link" href="#scrollspyHeading1">First</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#scrollspyHeading2">Second</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Filters</a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#scrollspyHeading1">Most Recent</a></li>
+          <li><a class="dropdown-item" href="#scrollspyHeading10">Most Older</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="#scrollspyHeading5">Fifth</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
+  </div> 
+  
+  <!-- Review Form Starts Here -->
+
+  <div class="p-4 border" title="Write a Review"> <!-- Add padding to create space around the cards -->
+    <h5 class="card-title my-4">Write a Review!</h5>
+    <div class="mb-3">
+      <label for="formGroupExampleInput" class="form-label">Review Title:</label>
+      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
+    </div>
+    <div class="mb-3">
+      <label for="formGroupExampleInput2" class="form-label">Concert Name:</label>
+      <select class="form-select" aria-label="Default select example">
+        <option selected>Select Concert</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="formGroupExampleInput2" class="form-label">Individual:</label>
+      <select class="form-select" aria-label="Default select example">
+        <option selected>Select Individual</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <div class="input-group">
+        <span class="input-group-text">Detailed Review:</span>
+        <textarea class="form-control" aria-label="With textarea"></textarea>
+      </div>
+    </div>
+    <button type="button" class="btn btn-success">Submit!</button>
+  </div>
+  
+
 
 
 
@@ -69,8 +104,8 @@
 
 <!-- Footer code Starts here -->
 <footer class="container">
-    <p class="float-end"><a href="#">Back to top</a></p>
-    <p> Book Your Show! , Inc. <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+  <p class="float-end"><a href="#">Back to top</a></p>
+  <p> Book Your Show! , Inc. <a href="#">Privacy</a> · <a href="#">Terms</a></p>
 </footer>
 <script src="reviews.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
