@@ -145,3 +145,41 @@ document.getElementById('concertselect').addEventListener('change', function () 
   const selectedValue = this.value;
   document.getElementById('selectedconcertId').value = selectedValue;
 });
+
+
+document.getElementById('submitButton').addEventListener('click', function () {
+  // Retrieve the data from the input fields
+  const reviewTitle = document.getElementById('formGroupExampleInput').value;
+  const detailedReview = document.querySelector('textarea').value;
+
+  // Do something with the retrieved data, such as posting it to your server
+  const reviewData = {
+    Title: reviewTitle,
+    DetailedReview: detailedReview,
+    IndividualId: document.getElementById('selectedIndividualId').value,
+    ConcertId: document.getElementById('selectedconcertId').value,
+  };
+
+  function createReview(instanceUrl, accessToken, reviewData) {
+    const apiUrl = `${instanceUrl}/services/apexrest/createReview`; // Replace with the correct endpoint URL
+  
+    fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(reviewData),
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log("Review created:", JSON.stringify(data));
+      })
+      .catch(error => {
+        console.error('Error creating review:', error);
+      });
+  }
+  
+  createReview(instanceUrl, accessToken, reviewData);
+  
+});
