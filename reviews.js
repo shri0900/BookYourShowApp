@@ -70,6 +70,7 @@ document.getElementById('reviewLink').addEventListener('click', function (event)
   if (instanceUrl && accessToken) {
       // Call the function to fetch and display reviews
       fetchAndDisplayReviews(instanceUrl, accessToken);
+      populateIndividuals(instanceUrl,accessToken);
 
   } else {
       // Handle the case where instanceUrl and accessToken are not found
