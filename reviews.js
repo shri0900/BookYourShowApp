@@ -52,6 +52,11 @@ function fetchAndDisplayReviews(instanceUrl, accessToken) {
   });
 }
 
+//function get individuals
+
+
+
+
 // Add an event listener to the "Review" page link
 document.getElementById('reviewLink').addEventListener('click', function (event) {
   // Prevent the default link behavior
@@ -65,10 +70,43 @@ document.getElementById('reviewLink').addEventListener('click', function (event)
   if (instanceUrl && accessToken) {
       // Call the function to fetch and display reviews
       fetchAndDisplayReviews(instanceUrl, accessToken);
+
   } else {
       // Handle the case where instanceUrl and accessToken are not found
       console.log("Instance URL and Access Token not found in Local Storage.");
   }
 });
 
-  
+//Function to get individual data for review card
+
+function populateIndividuals(instanceUrl, accessToken) {
+  const apiUrl = `${instanceUrl}/services/apexrest/getIndividuals`;
+
+  fetch(apiUrl, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${accessToken}`,
+      'Content-Type': 'application/json'
+    }
+  })
+    .then(response => response.json())
+    .then(data => {
+      const individualSelect = document.getElementById('individualSelect');
+
+      data.forEach(individual => {
+        const option = document.createElement('option');
+        option.value = individual.Id;
+        option.textContent = individual.Name;
+        individualSelect.appendChild(option);
+      });
+    })
+    .catch(error => {
+      console.error('Error fetching individuals:', error);
+    });
+}
+
+// Add an event listener to the select element
+document.getElementById('individualSelect').addEventListener('change', function () {
+  const selectedValue = this.value;
+  document.getElementById('selectedIndividualId').value = selectedValue;
+});

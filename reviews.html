@@ -67,7 +67,7 @@
     <h5 class="card-title my-4">Write a Review!</h5>
     <div class="mb-3">
       <label for="formGroupExampleInput" class="form-label">Review Title:</label>
-      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
+      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Review title Here!">
     </div>
     <div class="mb-3">
       <label for="formGroupExampleInput2" class="form-label">Concert Name:</label>
@@ -78,15 +78,16 @@
         <option value="3">Three</option>
       </select>
     </div>
+    <!-- individual options set -->
     <div class="mb-3">
       <label for="formGroupExampleInput2" class="form-label">Individual:</label>
-      <select class="form-select" aria-label="Default select example">
-        <option selected>Select Individual</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+      <select class="form-select" id="individualSelect" aria-label="Default select example">
+        <option value="" selected>Select Individual</option>
       </select>
+      <input type="hidden" id="selectedIndividualId" name="selectedIndividualId" value="">
     </div>
+    
+    
     <div class="mb-3">
       <div class="input-group">
         <span class="input-group-text">Detailed Review:</span>
