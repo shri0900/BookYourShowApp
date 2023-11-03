@@ -92,6 +92,7 @@ function populateIndividuals(instanceUrl, accessToken) {
   })
     .then(response => response.json())
     .then(data => {
+      console.log("Individual Options  Data:", JSON.stringify(data));
       const individualSelect = document.getElementById('individualSelect');
 
       data.forEach(individual => {
