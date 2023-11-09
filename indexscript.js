@@ -550,7 +550,7 @@ document.getElementById('modalBookButton').addEventListener('click', function() 
         let concertId = $('#bookingModal').attr('data-concert-id');
         console.log("concertId: " + concertId);
         
-        bookTicket(concertId, individualId);
+        bookTicket(concertId, individualId,numSeats);
     } else {
         console.error('No individual selected.');
     }
@@ -558,7 +558,7 @@ document.getElementById('modalBookButton').addEventListener('click', function() 
 
 
 
-function bookTicket(concertId, individualId) {
+function bookTicket(concertId, individualId,numSeats) {
     fetch(`${instanceUrl}/services/apexrest/bookTickets/`, {
         method: 'POST',
         headers: {
