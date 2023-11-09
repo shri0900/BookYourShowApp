@@ -148,60 +148,112 @@ if (accessToken && instanceUrl) {
 
 //}
 
+// document.addEventListener("DOMContentLoaded", function() {
+// fetch(`${instanceUrl}/services/apexrest/getPosters`, {
+// method: 'GET',
+// headers: {
+//     'Authorization': `Bearer ${accessToken}`,
+//     'Content-Type': 'application/json'
+// }
+// })
+// .then(response => response.json())
+// .then(data => {
+// if (data) {
+//     console.log("Data Received For Corolsol>>>"+JSON.stringify(data));
+// // Reference to the carousel container
+// const concertData = data;
+// const carouselContainer = document.getElementById('carouselExampleIndicators');
+// const carouselIndicators = carouselContainer.querySelector('.carousel-indicators');
+// const carouselInner = carouselContainer.querySelector('.carousel-inner');
+
+
+// // Loop through the data to create indicators and carousel items
+// concertData.forEach((item, index) => {
+//     // Creating the indicator
+//     const indicator = document.createElement('li');
+//     indicator.setAttribute('data-target', '#carouselExampleIndicators');
+//     indicator.setAttribute('data-slide-to', index);
+//     if (index === 0) {
+//         indicator.classList.add('active');
+//     }
+//     carouselIndicators.appendChild(indicator);
+
+//     // Getting the image URL
+//     const imgSrc = item.Concert_Promotion_Image_Url__c;
+
+//     // Creating the carousel item
+//     const carouselItem = document.createElement('div');
+//     carouselItem.classList.add('carousel-item');
+//     if (index === 0) {
+//         carouselItem.classList.add('active');
+//     }
+//     const imgElement = document.createElement('img');
+//     imgElement.classList.add('d-block', 'w-100');
+//     imgElement.setAttribute('src', imgSrc);
+//     imgElement.setAttribute('alt', `Slide ${index + 1}`);
+//     carouselItem.appendChild(imgElement);
+
+//     carouselInner.appendChild(carouselItem);
+// });  
+// }
+// })
+// .catch(error => {
+// console.error('Error fetching concert images:', error);
+// });
+
+// });
+
+
 document.addEventListener("DOMContentLoaded", function() {
-fetch(`${instanceUrl}/services/apexrest/getPosters`, {
-method: 'GET',
-headers: {
-    'Authorization': `Bearer ${accessToken}`,
-    'Content-Type': 'application/json'
-}
-})
-.then(response => response.json())
-.then(data => {
-if (data) {
-    console.log("Data Received For Corolsol>>>"+JSON.stringify(data));
-// Reference to the carousel container
-const concertData = data;
-const carouselContainer = document.getElementById('carouselExampleIndicators');
-const carouselIndicators = carouselContainer.querySelector('.carousel-indicators');
-const carouselInner = carouselContainer.querySelector('.carousel-inner');
-
-
-// Loop through the data to create indicators and carousel items
-concertData.forEach((item, index) => {
-    // Creating the indicator
-    const indicator = document.createElement('li');
-    indicator.setAttribute('data-target', '#carouselExampleIndicators');
-    indicator.setAttribute('data-slide-to', index);
-    if (index === 0) {
-        indicator.classList.add('active');
+    fetch(`${instanceUrl}/services/apexrest/getPosters`, {
+    method: 'GET',
+    headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/json'
     }
-    carouselIndicators.appendChild(indicator);
-
-    // Getting the image URL
-    const imgSrc = item.Concert_Promotion_Image_Url__c;
-
-    // Creating the carousel item
-    const carouselItem = document.createElement('div');
-    carouselItem.classList.add('carousel-item');
-    if (index === 0) {
-        carouselItem.classList.add('active');
+    })
+    .then(response => response.json())
+    .then(data => {
+    if (data) {
+        console.log("Data Received For Corolsol>>>"+JSON.stringify(data));
+    // Reference to the carousel container
+    
+    const carouselIndicators = document.getElementById('carouselIndicators');
+    const carouselInner = document.getElementById('carouselInner');
+    
+    // Loop through the data to create indicators and carousel items
+    data.forEach((item, index) => {
+        // Create a carousel indicator
+        const indicator = document.createElement('li');
+        indicator.setAttribute('data-target', '#carouselExampleIndicators');
+        indicator.setAttribute('data-slide-to', index);
+        if (index === 0) {
+            indicator.classList.add('active');
+        }
+        carouselIndicators.appendChild(indicator);
+    
+        // Create a carousel item
+        const carouselItem = document.createElement('div');
+        carouselItem.classList.add('carousel-item');
+        if (index === 0) {
+            carouselItem.classList.add('active');
+        }
+    
+        // Create an image element
+        const imgElement = document.createElement('img');
+        imgElement.classList.add('d-block', 'w-100');
+        imgElement.setAttribute('src', item.Concert_Promotion_Image_Url__c);
+        imgElement.setAttribute('alt', `Slide ${index + 1}`);
+    
+        // Append the image to the carousel item
+        carouselItem.appendChild(imgElement);
+        carouselInner.appendChild(carouselItem);
+    });
     }
-    const imgElement = document.createElement('img');
-    imgElement.classList.add('d-block', 'w-100');
-    imgElement.setAttribute('src', imgSrc);
-    imgElement.setAttribute('alt', `Slide ${index + 1}`);
-    carouselItem.appendChild(imgElement);
-
-    carouselInner.appendChild(carouselItem);
-});  
-}
-})
-.catch(error => {
-console.error('Error fetching concert images:', error);
-});
-
-});
+    })
+    .catch(error => {
+    console.error('Error fetching concert images:', error);
+    });
 
 
 document.getElementById('getConcert').addEventListener('click', function(event) {
