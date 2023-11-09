@@ -483,9 +483,14 @@ if (event.target.classList.contains('open-modal')) {
     let concertPrice = event.target.getAttribute('data-price');
 
     // Populating the modal placeholders with the concert details
-    $('#concertName').text(concertName);
-    $('#concertDate').text(concertDate);
-    $('#concertPrice').text(concertPrice);
+    // $('#concertName').text(concertName);
+    // $('#concertDate').text(concertDate);
+    // $('#concertPrice').text(concertPrice);
+
+
+    document.getElementById('concertName').textContent = `Concert: ${concertName}`;
+        document.getElementById('concertDate').textContent = `Date: ${concertDate}`;
+        document.getElementById('concertPrice').textContent = `Price: $${concertPrice}`;
     
     // Fetching and populating the individuals in the dropdown
     fetch(`${instanceUrl}/services/apexrest/getIndividuals/`, {
@@ -538,6 +543,7 @@ document.getElementById('individualDropdown').addEventListener('click', function
 document.getElementById('modalBookButton').addEventListener('click', function() {
     if (selectedIndividualId) {
         let individualId = selectedIndividualId;
+        let numSeats = $('#numSeats').val();
         console.log("individualId: " + individualId);
         
         // Retrieve the concertId from the modal
@@ -561,7 +567,8 @@ function bookTicket(concertId, individualId) {
         },
         body: JSON.stringify({
             concertId: concertId,
-            individualId: individualId
+            individualId: individualId,
+            numSeats: numSeats
         })
     })
     .then(response => response.json())
