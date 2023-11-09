@@ -4,3 +4,20 @@
     right: 20px;
     z-index: 9999;
 }
+
+#carouselExampleIndicators2 {
+    max-height: 200px; /* Adjust the height as needed */
+    margin: 0 auto; /* Center the carousel horizontally */
+  }
+  
+  #carouselInner2 {
+    /* You can set the width of the carousel to control the blank space on the sides */
+    width: 80%; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the carousel contents horizontally */
+  }
+  
+  /* Optionally, to center the carousel indicators and controls */
+  #carouselIndicators2, .carousel-control-prev, .carousel-control-next {
+    margin: 0 auto;
+  }
+  
