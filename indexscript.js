@@ -543,7 +543,7 @@ document.getElementById('individualDropdown').addEventListener('click', function
 document.getElementById('modalBookButton').addEventListener('click', function() {
     if (selectedIndividualId) {
         let individualId = selectedIndividualId;
-        let numSeats = $('#numSeats').val();
+        let numSeats = parseInt($('#numSeats').val(), 10); 
         console.log("individualId: " + individualId);
         
         // Retrieve the concertId from the modal
