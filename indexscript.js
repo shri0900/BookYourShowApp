@@ -234,7 +234,7 @@ if (data.length > 0) {
   } else if(data.length===0) {
     // No data available for the entered city, show an alert to the user
     window.alert(`No concerts found for ${cityName}. Please try a different city.`);
-    $('#exampleModal').modal('hide');
+    
   }
 })
 .catch(error => {
