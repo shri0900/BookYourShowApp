@@ -23,9 +23,24 @@ function fetchAndDisplayReviews(instanceUrl, accessToken) {
   // Iterate through the reviews data and create the content
   data.forEach((review, index) => {
 
-    const concertName = document.createElement('h5');
-    concertName.textContent = `Concert: ${review.Concert__r.Name}`;
+    
+
+
+
+
+
+
+
+    
+    // // Create an anchor link for the navigation menu
+    const navLink = document.createElement('a');
+    navLink.className = 'nav-link';
+    navLink.href = `#scrollspyHeading${index + 1}`;
+   // navLink.textContent = `Review ${index + 1}`;
   
+   const concertName = document.createElement('h5');
+  concertName.textContent = `Concert: ${review.Concert__r.Name}`;
+
     // Create a Scrollspy heading for each review
     const heading = document.createElement('p');
     heading.id = `scrollspyHeading${index + 1}`;
@@ -37,37 +52,10 @@ function fetchAndDisplayReviews(instanceUrl, accessToken) {
   
     // Append the elements to the Scrollspy container
     scrollspyContainer.appendChild(heading);
-    scrollspyContainer.appendChild(concertName);
     scrollspyContainer.appendChild(reviewContent);
-
-
-
-
-
-
-
-    
-  //   // // Create an anchor link for the navigation menu
-  //   const navLink = document.createElement('a');
-  //   navLink.className = 'nav-link';
-  //   navLink.href = `#scrollspyHeading${index + 1}`;
-  //  // navLink.textContent = `Review ${index + 1}`;
   
-  //   // Create a Scrollspy heading for each review
-  //   const heading = document.createElement('h4');
-  //   heading.id = `scrollspyHeading${index + 1}`;
-  //   heading.textContent = review.Name;
-  
-  //   // Create a paragraph for the detailed review content
-  //   const reviewContent = document.createElement('p');
-  //   reviewContent.innerHTML = review.Detailed_Review__c;
-  
-  //   // Append the elements to the Scrollspy container
-  //   scrollspyContainer.appendChild(heading);
-  //   scrollspyContainer.appendChild(reviewContent);
-  
-  //   // Append the navigation link to the navigation menu
-  //   document.querySelector('.nav').appendChild(navLink);
+    // Append the navigation link to the navigation menu
+    document.querySelector('.nav').appendChild(navLink);
   });
       
   })
