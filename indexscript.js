@@ -316,6 +316,8 @@ if (data.length > 0) {
 
 document.addEventListener("DOMContentLoaded", function() {
 //let resultsContainer = document.getElementById('results');
+const resultsContainer = document.getElementById('results');
+const noDataAlert = document.getElementById('noDataAlert');
 document.getElementById('searchButton').addEventListener('click', function(event) {
 event.preventDefault();
 
@@ -336,11 +338,9 @@ fetch(`${instanceURL}/services/apexrest/getConcerts/${lookupInput}`, {
     console.log("Data: " + JSON.stringify(data));
 
     if (data.length === 0) {
-        const toastLiveExample = document.getElementById('liveToast');
-        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
-        toastBootstrap.show();
-        console.log("Toast shown automatically because data length is 0.");
+     noDataAlert.style.display = 'block';
     } else {
+        noDataAlert.style.display = 'none'
         data.forEach(item => {
             let cardHtml = `
                 <div class="col-md-4">
