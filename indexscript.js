@@ -650,14 +650,14 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log("Data Received For Corolsol second time>>>"+JSON.stringify(data));
     // Reference to the carousel container
     
-    const carouselIndicators = document.getElementById('carouselIndicators');
-    const carouselInner = document.getElementById('carouselInner');
+    const carouselIndicators = document.getElementById('carouselIndicators2');
+    const carouselInner = document.getElementById('carouselInner2');
     
     // Loop through the data to create indicators and carousel items
     data.forEach((item, index) => {
         // Create a carousel indicator
         const indicator = document.createElement('li');
-        indicator.setAttribute('data-target', '#carouselExampleIndicators');
+        indicator.setAttribute('data-target', '#carouselExampleIndicators2');
         indicator.setAttribute('data-slide-to', index);
         if (index === 0) {
             indicator.classList.add('active');
