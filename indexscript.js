@@ -2,6 +2,14 @@
 function getURLParameter(name) {
 return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
 }
+
+//This is a JavaScript function that takes a single parameter name, which is the name of the URL parameter you want to retrieve.
+//Inside the function, it uses regular expressions to search for
+// the specified parameter in the location.search. location.search contains the query string of
+// the current URL (the part of the URL that comes after the "?" character).
+//The regular expression is used to find a match for the parameter 
+//with its value, and it also handles various delimiters like "?" or "&" that can be present in the URL
+
 //Retrieve the access token and instance URL from the URL parameters
 let accessToken = getURLParameter('access_token');
 let instanceUrl = getURLParameter('instance_url');
@@ -11,7 +19,8 @@ if (accessToken && instanceUrl) {
     // Store the values in localStorage
     localStorage.setItem('accessToken', accessToken);
     localStorage.setItem('instanceUrl', instanceUrl);
-
+//localStorage is a web storage mechanism that allows the application to store key-value pairs in the user's browser.
+// In this case, the code stores the access token and instance URL in localStorage for later use.
     console.log("Access Token from URL parameter: " + accessToken);
     console.log("Instance URL from URL parameter: " + instanceUrl);
 } else {
@@ -202,7 +211,7 @@ const token = accessToken;
 const instanceURL = instanceUrl; 
 const cityName = document.getElementById('cityName').value; 
 
-
+//Org Name - shriraj@sselectricals.co.in >>> Class Name- ConcertAPI >>>>
 fetch(`${instanceURL}/services/apexrest/getConcerts/${cityName}`, {
 method: 'GET',
 headers: {
@@ -213,23 +222,23 @@ headers: {
 .then(response => response.json())
 .then(data => {
 console.log("Data"+JSON.stringify(data))
-if(data){
-const concert=data[0];
-document.getElementById('concert-date').textContent=concert.Date_of_Concert__c;
-document.getElementById('concert-name').textContent = concert.Name;
-document.getElementById('concert-type').textContent = concert.Concert_Type__c;
-document.getElementById('concert-venue').textContent = concert.Concert_Venue__c;
-document.getElementById('concert-price').textContent = concert.Price__c;
-document.getElementById('concert-poster').innerHTML=concert.Concert_Poster__c;
-console.log('Poster'+concert.Concert_Poster__c);
-}
-
+if (data.length > 0) {
+    const concert = data[0];
+    document.getElementById('concert-date').textContent = concert.Date_of_Concert__c;
+    document.getElementById('concert-name').textContent = concert.Name;
+    document.getElementById('concert-type').textContent = concert.Concert_Type__c;
+    document.getElementById('concert-venue').textContent = concert.Concert_Venue__c;
+    document.getElementById('concert-price').textContent = concert.Price__c;
+    document.getElementById('concert-poster').innerHTML = concert.Concert_Poster__c;
+  } else if(data.length===0) {
+    // No data available for the entered city, show an alert to the user
+    window.alert(`No concerts found for ${cityName}. Please try a different city.`);
+  }
 })
 .catch(error => {
-console.error('Error:', error);
+  console.error('Error:', error);
 });
 });
-
 
 
 // For Search lookup component   
@@ -422,12 +431,12 @@ if (event.target.classList.contains('open-modal')) {
     let concertDate = event.target.getAttribute('data-date');
     let concertPrice = event.target.getAttribute('data-price');
 
-    // Populate the modal placeholders with the concert details
+    // Populating the modal placeholders with the concert details
     $('#concertName').text(concertName);
     $('#concertDate').text(concertDate);
     $('#concertPrice').text(concertPrice);
     
-    // Fetch and populate the individuals in the dropdown
+    // Fetching and populating the individuals in the dropdown
     fetch(`${instanceUrl}/services/apexrest/getIndividuals/`, {
         method: 'GET',
         headers: {
@@ -438,9 +447,9 @@ if (event.target.classList.contains('open-modal')) {
     .then(response => response.json())
     .then(data => {
         let dropdownMenu = document.getElementById("individualDropdown");
-        dropdownMenu.innerHTML = '';  // Clear existing items
+        dropdownMenu.innerHTML = '';  
 
-    // Inside your fetch success callback:
+    // Inside  fetch success callback:
 data.forEach(individual => {
 let li = document.createElement('li');
 let button = document.createElement('button');
@@ -522,59 +531,57 @@ function bookTicket(concertId, individualId) {
 
 //logout functionality code
 
-document.addEventListener("DOMContentLoaded", function() {
-    const logoutButton = document.getElementById("logoutButton");
+// document.addEventListener("DOMContentLoaded", function() {
+//     const logoutButton = document.getElementById("logoutButton");
 
-    logoutButton.addEventListener("click", function() {
-        // Perform the logout action by making a request to Salesforce's logout endpoint
-        fetch(`${instanceUrl}/secur/logout.jsp`, {
-            method: "GET",
-            mode: "no-cors",
-            headers: {
-                'Authorization': `Bearer ${accessToken}`,
-                'Content-Type': 'application/x-www-form-urlencoded'
-            } 
-        })
-        .then(response => {
-            if (response.status === 200) {
-                // The logout request will log the user out, and the response status is typically 200 OK
-                alert("You have been logged out!");
-            } else {
-                // Handle other response status codes here
-                console.error("Logout failed with status: " + response.status);
-            }
-        })
-        .catch(error => {
-            console.error("Error during logout:", error);
-        });
-    });
-});
+//     logoutButton.addEventListener("click", function() {
+//         // Perform the logout action by making a request to Salesforce's logout endpoint
+//         fetch(`${instanceUrl}/secur/logout.jsp`, {
+//             method: "GET",
+//             mode: "no-cors",
+//             headers: {
+//                 'Authorization': `Bearer ${accessToken}`,
+//                 'Content-Type': 'application/x-www-form-urlencoded'
+//             } 
+//         })
+//         .then(response => {
+//             if (response.status === 200) {
+//                 // The logout request will log the user out, and the response status is typically 200 OK
+//                 alert("You have been logged out!");
+//             } else {
+//                 // Handle other response status codes here
+//                 console.error("Logout failed with status: " + response.status);
+//             }
+//         })
+//         .catch(error => {
+//             console.error("Error during logout:", error);
+//         });
+//     });
+// });
 
-//Function to retrive instance url and access token while changing from one page to another
-function retrieveInstanceAndAccessToken() {
-    // Retrieve the instanceUrl and accessToken from Local Storage
-    let instanceUrl = localStorage.getItem('instanceUrl');
-    let accessToken = localStorage.getItem('accessToken');
+// //Function to retrive instance url and access token while changing from one page to another
+// function retrieveInstanceAndAccessToken() {
+//     // Retrieve the instanceUrl and accessToken from Local Storage
+//     let instanceUrl = localStorage.getItem('instanceUrl');
+//     let accessToken = localStorage.getItem('accessToken');
   
-    // Check if they exist and are not null
-    if (instanceUrl && accessToken) {
-      // You can use the instanceUrl and accessToken for making API calls
-      console.log("Instance URL from Local Storage: " + instanceUrl);
-      console.log("Access Token from Local Storage: " + accessToken);
-    } else {
-      // Handle the case where they are not found in Local Storage
-      // You might want to redirect the user to the login page or perform some other action.
-      console.log("Instance URL and Access Token not found in Local Storage.");
-    }
-  }
+//     // Check if they exist and are not null
+//     if (instanceUrl && accessToken) {
+//       // We can use the instanceUrl and accessToken for making API calls
+//       console.log("Instance URL from Local Storage: " + instanceUrl);
+//       console.log("Access Token from Local Storage: " + accessToken);
+//     } else {
+//       console.log("Instance URL and Access Token not found in Local Storage.");
+//     }
+//   }
 
-  // Add an event listener to the "Review" page link
-document.getElementById('indexLink').addEventListener('click', function (event) {
-    // Prevent the default link behavior
-    event.preventDefault();
+//   // Add an event listener to the "Review" page link
+// document.getElementById('indexLink').addEventListener('click', function (event) {
+//     // Prevent the default link behavior
+//     event.preventDefault();
   
-    // Call the function to retrieve instanceUrl and accessToken
-    retrieveInstanceAndAccessToken();
+//     // Call the function to retrieve instanceUrl and accessToken
+//     retrieveInstanceAndAccessToken();
   
-    // You can also add code to load the "Review" page content here.
-  });
+//     // You can also add code to load the "Review" page content here.
+//   });
