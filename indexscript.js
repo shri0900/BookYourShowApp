@@ -255,7 +255,7 @@ document.addEventListener("DOMContentLoaded", function() {
     console.error('Error fetching concert images:', error);
     });
 
-
+});
 document.getElementById('getConcert').addEventListener('click', function(event) {
 event.preventDefault();
 
