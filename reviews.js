@@ -47,7 +47,7 @@ function fetchAndDisplayReviews(instanceUrl, accessToken) {
 
     // Append the navigation link to the navigation menu
     document.querySelector('.nav').appendChild(navLink);
-});    
+  });    
   })
   .catch(error => {
       console.error('Error fetching reviews:', error);
