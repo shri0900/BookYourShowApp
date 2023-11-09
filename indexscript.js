@@ -336,7 +336,7 @@ fetch(`${instanceURL}/services/apexrest/getConcerts/${lookupInput}`, {
 .then(data => {
     resultsContainer.innerHTML = '';
     console.log("Data: " + JSON.stringify(data));
-
+    console.log("Data length received"+data.length);
     if (data.length === 0 && Array.isArray(data)) {
      noDataAlert.style.display = 'block';
     } else {
