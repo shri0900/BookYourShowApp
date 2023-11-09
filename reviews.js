@@ -24,13 +24,18 @@ function fetchAndDisplayReviews(instanceUrl, accessToken) {
   data.forEach((review, index) => {
 
  // Create an anchor link for the navigation menu
- const navLink = document.createElement('a');
- navLink.className = 'nav-link';
- navLink.href = `#scrollspyHeading${index + 1}`;
- navLink.textContent = `Review ${index + 1}`;
+//  const navLink = document.createElement('a');
+//  navLink.className = 'nav-link';
+//  navLink.href = `#scrollspyHeading${index + 1}`;
+//  navLink.textContent = `Review ${index + 1}`;
+
+
+ // Create a paragraph to display the concert name
+ const concertName = document.createElement('h5');
+ concertName.textContent = `Concert: ${review.Concert__r.Name}`;
 
  // Create a Scrollspy heading for each review
- const heading = document.createElement('h4');
+ const heading = document.createElement('p');
  heading.id = `scrollspyHeading${index + 1}`;
  heading.textContent = review.Name;
 
@@ -38,9 +43,7 @@ function fetchAndDisplayReviews(instanceUrl, accessToken) {
  const reviewContent = document.createElement('p');
  reviewContent.innerHTML = review.Detailed_Review__c;
 
- // Create a paragraph to display the concert name
- const concertName = document.createElement('p');
- concertName.textContent = `Concert: ${review.Concert__r.Name}`;
+
 
  // Append the elements to the Scrollspy container
  scrollspyContainer.appendChild(heading);
