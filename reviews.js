@@ -36,7 +36,7 @@ function fetchAndDisplayReviews(instanceUrl, accessToken) {
     const navLink = document.createElement('a');
     navLink.className = 'nav-link';
     navLink.href = `#scrollspyHeading${index + 1}`;
-   // navLink.textContent = `Review ${index + 1}`;
+    navLink.textContent = `Review ${index + 1}`;
   
    const concertName = document.createElement('h5');
   concertName.textContent = `Concert: ${review.Concert__r.Name}`;
