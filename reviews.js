@@ -192,7 +192,7 @@ document.getElementById('submitButton').addEventListener('click', function () {
   console.log("Selected Individual"+reviewData.IndividualId);
 
   function createReview(instanceUrl, accessToken, reviewData) {
-    const apiUrl = `${instanceUrl}/services/apexrest/postReview`; // Replace with the correct endpoint URL
+    const apiUrl = `${instanceUrl}/services/apexrest/getReviews`; // Replace with the correct endpoint URL
   
     fetch(apiUrl, {
       method: 'POST',
