@@ -177,6 +177,7 @@ document.getElementById('concertselect').addEventListener('change', function () 
 
 
 document.getElementById('submitButton').addEventListener('click', function () {
+  console.log('Submit Button Clicked');
   // Retrieve the data from the input fields
   const reviewTitle = document.getElementById('formGroupExampleInput').value;
   const detailedReview = document.querySelector('textarea').value;
@@ -193,7 +194,7 @@ document.getElementById('submitButton').addEventListener('click', function () {
   console.log("Selected Individual"+reviewData.IndividualId);
 
   function createReview(instanceUrl, accessToken, reviewData) {
-    const apiUrl = `${instanceUrl}/services/apexrest/getReviews`; // Replace with the correct endpoint URL
+    const apiUrl = `${instanceUrl}/services/apexrest/getReviews/`; 
   
     fetch(apiUrl, {
       method: 'POST',
