@@ -1,3 +1,61 @@
+// Remove any existing click event listeners on the "Review" page link
+const reviewLink = document.getElementById('reviewLink');
+const newReviewLink = reviewLink.cloneNode(true);
+reviewLink.parentNode.replaceChild(newReviewLink, reviewLink);
+
+// Add a new event listener to the "Review" page link
+newReviewLink.addEventListener('click', function (event) {
+  // Prevent the default link behavior
+  event.preventDefault();
+
+  // Retrieve the instanceUrl and accessToken from Local Storage
+  let instanceUrl = localStorage.getItem('instanceUrl');
+  let accessToken = localStorage.getItem('accessToken');
+
+  // Check if they exist and are not null
+  if (instanceUrl && accessToken) {
+    // Call the function to fetch and display reviews
+    fetchAndDisplayReviews(instanceUrl, accessToken);
+    populateIndividuals(instanceUrl, accessToken);
+    populateconcerts(instanceUrl, accessToken);
+  } else {
+    // Handle the case where instanceUrl and accessToken are not found
+    console.log("Instance URL and Access Token not found in Local Storage.");
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Function to make an API call to Salesforce and display the reviews on the UI
 function fetchAndDisplayReviews(instanceUrl, accessToken) {
   
@@ -59,27 +117,27 @@ function fetchAndDisplayReviews(instanceUrl, accessToken) {
 
 
 
-// Add an event listener to the "Review" page link
-document.getElementById('reviewLink').addEventListener('click', function (event) {
-  // Prevent the default link behavior
-  event.preventDefault();
+// // Add an event listener to the "Review" page link
+// document.getElementById('reviewLink').addEventListener('click', function (event) {
+//   // Prevent the default link behavior
+//   event.preventDefault();
 
-  // Retrieve the instanceUrl and accessToken from Local Storage
-  let instanceUrl = localStorage.getItem('instanceUrl');
-  let accessToken = localStorage.getItem('accessToken');
+//   // Retrieve the instanceUrl and accessToken from Local Storage
+//   let instanceUrl = localStorage.getItem('instanceUrl');
+//   let accessToken = localStorage.getItem('accessToken');
 
-  // Check if they exist and are not null
-  if (instanceUrl && accessToken) {
-      // Call the function to fetch and display reviews
-      fetchAndDisplayReviews(instanceUrl, accessToken);
-      populateIndividuals(instanceUrl,accessToken);
-      populateconcerts(instanceUrl,accessToken);
+//   // Check if they exist and are not null
+//   if (instanceUrl && accessToken) {
+//       // Call the function to fetch and display reviews
+//       fetchAndDisplayReviews(instanceUrl, accessToken);
+//       populateIndividuals(instanceUrl,accessToken);
+//       populateconcerts(instanceUrl,accessToken);
 
-  } else {
-      // Handle the case where instanceUrl and accessToken are not found
-      console.log("Instance URL and Access Token not found in Local Storage.");
-  }
-});
+//   } else {
+//       // Handle the case where instanceUrl and accessToken are not found
+//       console.log("Instance URL and Access Token not found in Local Storage.");
+//   }
+// });
 
 //Function to get individual data for review card
 
