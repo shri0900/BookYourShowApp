@@ -175,39 +175,41 @@ document.getElementById('concertselect').addEventListener('change', function () 
 });
 
 
-// document.getElementById('submitButton').addEventListener('click', function () {
-//   // Retrieve the data from the input fields
-//   const reviewTitle = document.getElementById('formGroupExampleInput').value;
-//   const detailedReview = document.querySelector('textarea').value;
+document.getElementById('submitButton').addEventListener('click', function () {
+  // Retrieve the data from the input fields
+  const reviewTitle = document.getElementById('formGroupExampleInput').value;
+  const detailedReview = document.querySelector('textarea').value;
 
 
-//   const reviewData = {
-//     Title: reviewTitle,
-//     DetailedReview: detailedReview,
-//     IndividualId: document.getElementById('selectedIndividualId').value,
-//     ConcertId: document.getElementById('selectedconcertId').value,
-//   };
+  const reviewData = {
+    Title: reviewTitle,
+    DetailedReview: detailedReview,
+    IndividualId: document.getElementById('selectedIndividualId').value,
+    ConcertId: document.getElementById('selectedconcertId').value,
+  };
+  console.log("Selected ConcertId"+ConcertId);
+  console.log("Selected Individual"+IndividualId);
 
-//   function createReview(instanceUrl, accessToken, reviewData) {
-//     const apiUrl = `${instanceUrl}/services/apexrest/createReview`; // Replace with the correct endpoint URL
+  function createReview(instanceUrl, accessToken, reviewData) {
+    const apiUrl = `${instanceUrl}/services/apexrest/getReviews`; // Replace with the correct endpoint URL
   
-//     fetch(apiUrl, {
-//       method: 'POST',
-//       headers: {
-//         'Authorization': `Bearer ${accessToken}`,
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify(reviewData),
-//     })
-//       .then(response => response.json())
-//       .then(data => {
-//         console.log("Review created:", JSON.stringify(data));
-//       })
-//       .catch(error => {
-//         console.error('Error creating review:', error);
-//       });
-//   }
+    fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(reviewData),
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log("Review created:", JSON.stringify(data));
+      })
+      .catch(error => {
+        console.error('Error creating review:', error);
+      });
+  }
   
-//   createReview(instanceUrl, accessToken, reviewData);
+  createReview(instanceUrl, accessToken, reviewData);
   
-// });
+});
