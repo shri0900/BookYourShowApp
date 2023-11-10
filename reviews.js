@@ -172,7 +172,7 @@ function populateconcerts(instanceUrl,accessToken){
 document.getElementById('concertselect').addEventListener('change', function () {
   const selectedValue = this.value;
   document.getElementById('selectedconcertId').value = selectedValue;
-  console.log("Selected concertId");
+  
 });
 
 
