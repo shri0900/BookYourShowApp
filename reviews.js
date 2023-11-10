@@ -182,6 +182,7 @@ document.getElementById('submitButton').addEventListener('click', function () {
   // Retrieve the data from the input fields
   const reviewTitle = document.getElementById('formGroupExampleInput').value;
   const detailedReview = document.querySelector('textarea').value;
+  const selectedRating = document.getElementById('ratingSelect').value;
 
 
   const reviewData = {
@@ -189,6 +190,7 @@ document.getElementById('submitButton').addEventListener('click', function () {
     DetailedReview: detailedReview,
     IndividualId: document.getElementById('selectedIndividualId').value,
     ConcertId: document.getElementById('selectedconcertId').value,
+    Rating:selectedRating
   };
   console.log(reviewData);
   console.log("Selected ConcertId"+reviewData.ConcertId);
