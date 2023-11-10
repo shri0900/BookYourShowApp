@@ -50,8 +50,8 @@ function fetchAndDisplayReviews(instanceUrl, accessToken) {
   data.forEach((review, index) => {
     const navLink = document.createElement('a');
     navLink.className = 'nav-link';
-    navLink.href = `#scrollspyHeading${index + 1}`;
-    navLink.textContent = `Review ${index + 1}`;
+   // navLink.href = `#scrollspyHeading${index + 1}`;
+    //navLink.textContent = `Review ${index + 1}`;
 
     // Create a Scrollspy heading for each review
     const heading = document.createElement('h4');
