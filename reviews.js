@@ -172,7 +172,7 @@ function populateconcerts(instanceUrl,accessToken){
 document.getElementById('concertselect').addEventListener('change', function () {
   const selectedValue = this.value;
   document.getElementById('selectedconcertId').value = selectedValue;
-  console.log("Selected concertId"+)
+  console.log("Selected concertId");
 });
 
 
@@ -188,6 +188,7 @@ document.getElementById('submitButton').addEventListener('click', function () {
     IndividualId: document.getElementById('selectedIndividualId').value,
     ConcertId: document.getElementById('selectedconcertId').value,
   };
+  console.log(reviewData);
   console.log("Selected ConcertId"+reviewData.ConcertId);
   console.log("Selected Individual"+reviewData.IndividualId);
 
