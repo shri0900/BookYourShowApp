@@ -24,38 +24,6 @@ newReviewLink.addEventListener('click', function (event) {
   }
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Function to make an API call to Salesforce and display the reviews on the UI
 function fetchAndDisplayReviews(instanceUrl, accessToken) {
   
@@ -77,7 +45,7 @@ function fetchAndDisplayReviews(instanceUrl, accessToken) {
 
       // Reference to the Scrollspy container
   const scrollspyContainer = document.querySelector('.scrollspy-example');
-  
+  scrollspyContainer.innerHTML = '';
   // Iterate through the reviews data and create the content
   data.forEach((review, index) => {
     const navLink = document.createElement('a');
