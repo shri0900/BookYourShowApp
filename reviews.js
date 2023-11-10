@@ -202,7 +202,7 @@ document.getElementById('submitButton').addEventListener('click', function () {
         'Authorization': `Bearer ${accessToken}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(reviewData),
+      body: JSON.stringify(reviewData)
     })
       .then(response => response.json())
       .then(data => {
