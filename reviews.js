@@ -172,7 +172,7 @@ function populateconcerts(instanceUrl,accessToken){
 document.getElementById('concertSelect').addEventListener('change', function () {
   const selectedValue = this.value;
   document.getElementById('selectedconcertId').value = selectedValue;
-  console.log('Selected Value'+selectedValue);
+  console.log('Selected Value'+selectedValue)
   
 });
 
@@ -193,7 +193,8 @@ document.getElementById('submitButton').addEventListener('click', function () {
   console.log(reviewData);
   console.log("Selected ConcertId"+reviewData.ConcertId);
   console.log("Selected Individual"+reviewData.IndividualId);
-
+  let instanceUrl = localStorage.getItem('instanceUrl');
+  let accessToken = localStorage.getItem('accessToken');
   function createReview(instanceUrl, accessToken, reviewData) {
     const apiUrl = `${instanceUrl}/services/apexrest/getReviews/`; 
   
