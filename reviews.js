@@ -169,9 +169,10 @@ function populateconcerts(instanceUrl,accessToken){
     console.log("Error Finding concerts"+error);
   });
 }
-document.getElementById('concertselect').addEventListener('change', function () {
+document.getElementById('concertSelect').addEventListener('change', function () {
   const selectedValue = this.value;
   document.getElementById('selectedconcertId').value = selectedValue;
+  console.log('Selected Value'+selectedValue);
   
 });
 
