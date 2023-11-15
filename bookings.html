@@ -35,6 +35,43 @@
 </nav>
 <p>Booking page still in progress</p>
 
+
+
+<div class="container mt-5">
+  <!-- Your review form goes here -->
+  <form>
+    <div class="mb-3">
+      <label for="formGroupExampleInput2" class="form-label">Select Individual To See History:</label>
+      <select class="form-select mb-2" id="individualSelect" aria-label="Default select example">
+        <option value="" selected>Select Individual</option>
+        <!-- Add more options if needed -->
+      </select>
+      <input type="hidden" id="selectedIndividualId" name="selectedIndividualId" value="">
+    </div>
+
+    <!-- Add more form fields here -->
+
+    <div class="d-flex justify-content-center">
+      <button id="showHistoryButton" type="button" class="btn btn-info mr-2">Show Past History!</button>
+      <button id="upcomingBookingsButton" type="button" class="btn btn-warning mx-4">Upcoming Bookings!</button>
+    </div>
+  </form>
+
+  <!-- Notification container -->
+  <div id="notificationContainer" class="mt-3"></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- Footer code Starts here -->
 <footer class="container">
 <p class="float-end"><a href="#">Back to top</a></p>
