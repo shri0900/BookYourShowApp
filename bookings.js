@@ -95,3 +95,48 @@ function updateOffcanvasContent(data) {
 
   // Other code for showing the offcanvas as needed
 }
+
+
+document.getElementById('showFutureBookings').addEventListener('click', function () {
+  const selectedIndividualId = document.getElementById('selectedIndividualId').value;
+
+  if (selectedIndividualId) {
+    fetch(`${instanceUrl}/services/apexrest/futurebookings/${selectedIndividualId}`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log("Future Booking  Data:", JSON.stringify(data));
+        updateOffcanvasContentLeft(data);
+        historyOffcanvas.show();
+      })
+      .catch(error => {
+        console.error('Error fetching booking history:', error);
+      });
+  } else {
+    console.log("No individual selected.");
+  }
+});
+
+function updateOffcanvasContentLeft(data) {
+  const list = document.createElement('ul');
+  list.classList.add('list-group');
+
+  data.forEach(futurebooking => {
+    const listItem = document.createElement('li');
+    const concertDate = new Date(futurebooking.Concert__r.Date_of_Concert__c);
+
+    listItem.textContent = `${futurebooking.Name} - ${futurebooking.Concert__r.Name} - ${concertDate.toLocaleDateString()} - ${futurebooking.Price__c}`;
+    list.appendChild(listItem);
+  });
+
+  const offcanvasBody = document.querySelector('.offcanvas-body');
+  offcanvasBody.innerHTML = ''; // Clear previous content
+  offcanvasBody.appendChild(list);
+
+  // Other code for showing the offcanvas as needed
+}
