@@ -76,16 +76,22 @@ let instanceUrl;
         });
     }
 
-    function updateOffcanvasContent(data) {
-      const offcanvasBody = document.getElementById('offcanvasRight').getElementsByClassName('offcanvas-body')[0];
-      offcanvasBody.innerHTML = ''; // Clear previous content
-      const concertDate = new Date(booking.Concert__r.Date_of_Concert__c);
-      const list = document.createElement('ul');
-      data.forEach(booking => {
-        const listItem = document.createElement('li');
-        listItem.textContent = `${booking.Name} - ${booking.Concert__r.Name} - ${concertDate.toLocaleDateString()} - ${booking.Price__c}`;
-        list.appendChild(listItem);
-      });
+   // Assuming this is inside the function that updates offcanvas content
+function updateOffcanvasContent(data) {
+  const list = document.createElement('ul');
+  list.classList.add('list-group');
 
-      offcanvasBody.appendChild(list);
-    }
+  data.forEach(booking => {
+    const listItem = document.createElement('li');
+    const concertDate = new Date(booking.Concert__r.Date_of_Concert__c);
+
+    listItem.textContent = `${booking.Name} - ${booking.Concert__r.Name} - ${concertDate.toLocaleDateString()} - ${booking.Price__c}`;
+    list.appendChild(listItem);
+  });
+
+  const offcanvasBody = document.querySelector('.offcanvas-body');
+  offcanvasBody.innerHTML = ''; // Clear previous content
+  offcanvasBody.appendChild(list);
+
+  // Other code for showing the offcanvas as needed
+}
