@@ -66,7 +66,12 @@ document.getElementById('individualSelect').addEventListener('change', function 
 });
 
 // Use Bootstrap v5 syntax to trigger offcanvas
-var historyOffcanvas = new bootstrap.Offcanvas(document.getElementById('historyOffcanvas'));
-document.getElementById('showHistoryButton').addEventListener('click', function () {
+var historyOffcanvas = new bootstrap.Offcanvas(document.getElementById('offcanvasRightLabel'));
+document.getElementById('offcanvasRightLabel').addEventListener('click', function () {
+   historyOffcanvas.toggle();
+});
+
+var historyOffcanvas = new bootstrap.Offcanvas(document.getElementById('offcanvasLeftLabel'));
+document.getElementById('offcanvasLeftLabel').addEventListener('click', function () {
    historyOffcanvas.toggle();
 });

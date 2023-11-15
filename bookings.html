@@ -55,22 +55,33 @@
 
     <div class="d-flex justify-content-center">
 
-      <button id="showHistoryButton" type="button" class="btn btn-info mr-2" data-bs-toggle="offcanvas" data-bs-target="#historyOffcanvas">Show Past History!</button>
+      <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Show Past History!</button>
 
-      <button id="upcomingBookingsButton" type="button" class="btn btn-warning mx-4">Upcoming Bookings!</button>
+      <button class="btn btn-info mx-4" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft">Upcoming Bookings!</button>
     </div>
   </form>
-
-  <div class="offcanvas" tabindex="-1" id="historyOffcanvas" aria-labelledby="historyOffcanvasLabel">
+<!-- Right side Canvas-Past History -->
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="historyOffcanvasLabel">Past History</h5>
+      <h5 id="offcanvasRightLabel">Offcanvas right</h5>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-      <!-- Add content for Show Past History here -->
-      <!-- This could include a list of past history events, for example -->
+      ...
     </div>
   </div>
+
+  <!-- Left Side Canvas -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel">
+    <div class="offcanvas-header">
+        <h5 id="offcanvasLeftLabel">Offcanvas left</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <!-- Your offcanvas content goes here -->
+    </div>
+</div>
+
   <!-- Notification container -->
   <div id="notificationContainer" class="mt-3"></div>
 </div>
