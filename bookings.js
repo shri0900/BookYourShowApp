@@ -134,7 +134,7 @@ function updateOffcanvasContentLeft(data) {
     list.appendChild(listItem);
   });
 
-  const offcanvasBody = document.querySelector('.offcanvas-body');
+  const offcanvasBody = document.querySelector('.offcanvas-body left"');
   offcanvasBody.innerHTML = ''; // Clear previous content
   offcanvasBody.appendChild(list);
 
