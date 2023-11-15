@@ -22,7 +22,7 @@ document.getElementById('bookingLink').addEventListener('click', function (event
   
     // Call the function to retrieve instanceUrl and accessToken
     retrieveInstanceAndAccessToken();
-  
+  populateIndividuals();
     // You can also add code to load the "Review" page content here.
   });
   
