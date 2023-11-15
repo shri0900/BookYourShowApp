@@ -26,3 +26,36 @@ document.getElementById('bookingLink').addEventListener('click', function (event
     // You can also add code to load the "Review" page content here.
   });
   
+
+  function populateIndividuals(instanceUrl, accessToken) {
+    const apiUrl = `${instanceUrl}/services/apexrest/getIndividuals`;
+  
+    fetch(apiUrl, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${accessToken}`,
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log("Individual Options  Data:", JSON.stringify(data));
+        const individualSelect = document.getElementById('individualSelect');
+  
+        data.forEach(individual => {
+          const option = document.createElement('option');
+          option.value = individual.Id;
+          option.textContent = individual.Name;
+          individualSelect.appendChild(option);
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching individuals:', error);
+      });
+  }
+  
+  // Add an event listener to the select element
+  document.getElementById('individualSelect').addEventListener('change', function () {
+    const selectedValue = this.value;
+    document.getElementById('selectedIndividualId').value = selectedValue;
+  });
