@@ -178,7 +178,7 @@ document.getElementById('concertSelect').addEventListener('change', function () 
 
 
 document.getElementById('submitButton').addEventListener('click', function () {
-  console.log('Submit Button Clicked');
+ // console.log('Submit Button Clicked');
   // Retrieve the data from the input fields
   const reviewTitle = document.getElementById('formGroupExampleInput').value;
   const detailedReview = document.querySelector('textarea').value;
@@ -198,7 +198,7 @@ document.getElementById('submitButton').addEventListener('click', function () {
   let instanceUrl = localStorage.getItem('instanceUrl');
   let accessToken = localStorage.getItem('accessToken');
   function createReview(instanceUrl, accessToken, reviewData) {
-    const apiUrl = `${instanceUrl}/services/apexrest/getReviews/`; 
+  const apiUrl = `${instanceUrl}/services/apexrest/getReviews/`; 
   
     fetch(apiUrl, {
       method: 'POST',
@@ -218,5 +218,32 @@ document.getElementById('submitButton').addEventListener('click', function () {
   }
   
   createReview(instanceUrl, accessToken, reviewData);
-  
+
+  function showBootstrapNotification(message, alertType) {
+    const notificationContainer = document.getElementById('notificationContainer');
+
+    // Create a new alert element
+    const alert = document.createElement('div');
+    alert.classList.add('alert', `alert-${alertType}`, 'alert-dismissible', 'fade', 'show');
+
+    // Add the message to the alert
+    alert.innerHTML = `<strong>${message}</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>`;
+
+    // Append the alert to the container
+    notificationContainer.appendChild(alert);
+
+    // Automatically close the alert after 3 seconds (adjust as needed)
+    setTimeout(() => {
+      alert.classList.remove('show');
+      alert.addEventListener('transitionend', () => {
+        alert.remove();
+      });
+    }, 3000);
+  }
+
+  // Call the Bootstrap notification function after the review is successfully submitted
+  showBootstrapNotification('Thanks For Review!!', 'success');
 });
+  
+
