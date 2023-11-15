@@ -1,77 +1,91 @@
+let instanceUrl;
+    let accessToken;
 
-let instanceUrl; // Declare these variables in a scope accessible to other functions
-let accessToken;
+    function retrieveInstanceAndAccessToken() {
+      instanceUrl = localStorage.getItem('instanceUrl');
+      accessToken = localStorage.getItem('accessToken');
 
-function retrieveInstanceAndAccessToken() {
-  // Retrieve the instanceUrl and accessToken from Local Storage
-  instanceUrl = localStorage.getItem('instanceUrl');
-  accessToken = localStorage.getItem('accessToken');
-
-  // Check if they exist and are not null
-  if (instanceUrl && accessToken) {
-    // You can use the instanceUrl and accessToken for making API calls
-    console.log("Instance URL from Local Storage: " + instanceUrl);
-    console.log("Access Token from Local Storage: " + accessToken);
-  } else {
-    // Handle the case where they are not found in Local Storage
-    // You might want to redirect the user to the login page or perform some other action.
-    console.log("Instance URL and Access Token not found in Local Storage.");
-  }
-}
-
-// Add an event listener to the "Review" page link
-document.getElementById('bookingLink').addEventListener('click', function (event) {
-  // Prevent the default link behavior
-  event.preventDefault();
-
-  // Call the function to retrieve instanceUrl and accessToken
-  retrieveInstanceAndAccessToken();
-
-  // Call the function to populate individuals
-  populateIndividuals(instanceUrl, accessToken);
-  // You can also add code to load the "Review" page content here.
-});
-
-function populateIndividuals(instanceUrl, accessToken) {
-  const apiUrl = `${instanceUrl}/services/apexrest/getIndividuals`;
-
-  fetch(apiUrl, {
-    method: 'GET',
-    headers: {
-      'Authorization': `Bearer ${accessToken}`,
-      'Content-Type': 'application/json'
+      if (instanceUrl && accessToken) {
+        console.log("Instance URL from Local Storage: " + instanceUrl);
+        console.log("Access Token from Local Storage: " + accessToken);
+      } else {
+        console.log("Instance URL and Access Token not found in Local Storage.");
+      }
     }
-  })
-    .then(response => response.json())
-    .then(data => {
-      console.log("Individual Options Data:", JSON.stringify(data));
-      const individualSelect = document.getElementById('individualSelect');
 
-      data.forEach(individual => {
-        const option = document.createElement('option');
-        option.value = individual.Id;
-        option.textContent = individual.Name;
-        individualSelect.appendChild(option);
-      });
-    })
-    .catch(error => {
-      console.error('Error fetching individuals:', error);
+    document.getElementById('bookingLink').addEventListener('click', function (event) {
+      event.preventDefault();
+      retrieveInstanceAndAccessToken();
+      populateIndividuals(instanceUrl, accessToken);
     });
-}
 
-// Add an event listener to the select element
-document.getElementById('individualSelect').addEventListener('change', function () {
-  const selectedValue = this.value;
-  document.getElementById('selectedIndividualId').value = selectedValue;
-});
+    document.getElementById('individualSelect').addEventListener('change', function () {
+      const selectedValue = this.value;
+      document.getElementById('selectedIndividualId').value = selectedValue;
+    });
 
-// Use Bootstrap v5 syntax to trigger offcanvas
-var historyOffcanvas = new bootstrap.Offcanvas(document.getElementById('offcanvasRightLabel'));
-document.getElementById('offcanvasRightLabel').addEventListener('click', function () {
-   historyOffcanvas.toggle();
-});
+    document.getElementById('showHistoryButton').addEventListener('click', function () {
+      const selectedIndividualId = document.getElementById('selectedIndividualId').value;
 
-var historyOffcanvas = new bootstrap.Offcanvas(document.getElementById('offcanvasLeftLabel'));
-document.getElementById('offcanvasLeftLabel').addEventListener('click', function () {
-   historyOffcanvas.toggle();
-});
+      if (selectedIndividualId) {
+        fetch(`${instanceUrl}/services/apexrest/pastHistory/${selectedIndividualId}`, {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${accessToken}`,
+            'Content-Type': 'application/json'
+          }
+        })
+          .then(response => response.json())
+          .then(data => {
+            console.log("Booking History Data:", JSON.stringify(data));
+            updateOffcanvasContent(data);
+            historyOffcanvas.show();
+          })
+          .catch(error => {
+            console.error('Error fetching booking history:', error);
+          });
+      } else {
+        console.log("No individual selected.");
+      }
+    });
+
+    function populateIndividuals(instanceUrl, accessToken) {
+      const apiUrl = `${instanceUrl}/services/apexrest/getIndividuals`;
+
+      fetch(apiUrl, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log("Individual Options Data:", JSON.stringify(data));
+          const individualSelect = document.getElementById('individualSelect');
+
+          data.forEach(individual => {
+            const option = document.createElement('option');
+            option.value = individual.Id;
+            option.textContent = individual.Name;
+            individualSelect.appendChild(option);
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching individuals:', error);
+        });
+    }
+
+    function updateOffcanvasContent(data) {
+      const offcanvasBody = document.getElementById('offcanvasRight').getElementsByClassName('offcanvas-body')[0];
+      offcanvasBody.innerHTML = ''; // Clear previous content
+
+      const list = document.createElement('ul');
+      data.forEach(booking => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${booking.Name} - ${booking.Concert__r.Name} - ${booking.Concert__r.Date_Of_Concert__c}`;
+        list.appendChild(listItem);
+      });
+
+      offcanvasBody.appendChild(list);
+    }

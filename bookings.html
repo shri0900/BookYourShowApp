@@ -38,6 +38,7 @@
 <p>Booking page still in progress</p>
 
 
+<!-- Your existing HTML code -->
 
 <div class="container mt-5">
   <!-- Your review form goes here -->
@@ -54,53 +55,41 @@
     <!-- Add more form fields here -->
 
     <div class="d-flex justify-content-center">
-
-      <button class="btn btn-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Show Past History!</button>
-
+      <button class="btn btn-warning" id="showHistoryButton" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Show Past History!</button>
       <button class="btn btn-info mx-4" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft">Upcoming Bookings!</button>
     </div>
   </form>
-<!-- Right side Canvas-Past History -->
+
+  <!-- Right side Canvas-Past History -->
   <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
-      <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+      <h5 id="offcanvasRightLabel">Past History!🤔</h5>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-      ...
+      <!-- Content will be dynamically filled in by JavaScript -->
     </div>
   </div>
 
   <!-- Left Side Canvas -->
   <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel">
     <div class="offcanvas-header">
-        <h5 id="offcanvasLeftLabel">Offcanvas left</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      <h5 id="offcanvasLeftLabel">Upcoming Bookings!🕺</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        <!-- Your offcanvas content goes here -->
+      <!-- Your offcanvas content goes here -->
     </div>
-</div>
+  </div>
 
   <!-- Notification container -->
   <div id="notificationContainer" class="mt-3"></div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
 <!-- Footer code Starts here -->
 <footer class="container">
-<p class="float-end"><a href="#">Back to top</a></p>
-<p> Book Your Show! , Inc. <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+  <p class="float-end"><a href="#">Back to top</a></p>
+  <p> Book Your Show! , Inc. <a href="#">Privacy</a> · <a href="#">Terms</a></p>
 </footer>
 <script src="bookings.js"></script>
 <!-- Include jQuery -->
