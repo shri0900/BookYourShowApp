@@ -68,7 +68,7 @@ function fetchAndDisplayReviews(instanceUrl, accessToken) {
 
     // Create a paragraph to display the concert Average Rating
     const averageRating = document.createElement('p');
-    concertName.textContent = `Concert: ${review.Concert__r.Average_Rating__c}`;
+    concertName.textContent = `Average Rating: ${review.Concert__r.Average_Rating__c}`;
 
     // Append the elements to the Scrollspy container
     scrollspyContainer.appendChild(heading);
