@@ -136,8 +136,8 @@ function updateOffcanvasContentLeft(data) {
 
   const offcanvasBody = document.querySelector('.offcanvas-body.left');
 
-  offcanvasBody.innerHTML = ''; // Clear previous content
+  offcanvasBody.innerHTML = ''; 
   offcanvasBody.appendChild(list);
 
-  // Other code for showing the offcanvas as needed
+  
 }
