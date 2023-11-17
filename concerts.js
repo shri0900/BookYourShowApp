@@ -60,33 +60,38 @@ function renderUpcomingShows(upcomingShows) {
   // Get the container where you want to append the cards
   let container = document.getElementById('upcomingShowsContainer');
 
-
-    // Clear existing content before adding new cards
-    container.innerHTML = '';
+  // Clear existing content before adding new cards
+  container.innerHTML = '';
 
   // Loop through the upcoming shows and create a card for each
   upcomingShows.forEach(show => {
-    // Create a new card element
+    // Create a new card element with Bootstrap classes
     let card = document.createElement('div');
-    card.className = 'card';
-    card.style = 'width: 25rem;';
+    card.className = 'card mb-3';
+    card.style = 'max-width: 540px;';
 
-    // Create an image element for the card
+    // Create an image element for the card with Bootstrap class
     let img = document.createElement('img');
     img.src = show.Show_Promotion_Image_URL__c; // Assuming Promotional_Picture__c contains the image URL
     img.className = 'card-img-top';
     img.alt = show.Name;
 
-    // Create a card body element
+    // Create a card body element with Bootstrap class
     let cardBody = document.createElement('div');
     cardBody.className = 'card-body';
 
-    // Create a paragraph element for the card text
+    // Create a heading element for the card title with Bootstrap class
+    let cardTitle = document.createElement('h5');
+    cardTitle.className = 'card-title';
+    cardTitle.textContent = show.Name;
+
+    // Create a paragraph element for the card text with Bootstrap class
     let cardText = document.createElement('p');
     cardText.className = 'card-text';
     cardText.textContent = show.Show_Venue__c; // You can customize this based on your needs
 
     // Append the elements to the card
+    cardBody.appendChild(cardTitle);
     cardBody.appendChild(cardText);
     card.appendChild(img);
     card.appendChild(cardBody);
@@ -95,6 +100,7 @@ function renderUpcomingShows(upcomingShows) {
     container.appendChild(card);
   });
 }
+
 
 // Add an event listener to the "Review" page link
 document.getElementById('concertLink').addEventListener('click', function (event) {
