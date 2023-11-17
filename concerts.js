@@ -60,12 +60,16 @@ function renderUpcomingShows(upcomingShows) {
   // Get the container where you want to append the cards
   let container = document.getElementById('upcomingShowsContainer');
 
+
+    // Clear existing content before adding new cards
+    container.innerHTML = '';
+
   // Loop through the upcoming shows and create a card for each
   upcomingShows.forEach(show => {
     // Create a new card element
     let card = document.createElement('div');
     card.className = 'card';
-    card.style = 'width: 18rem;';
+    card.style = 'width: 25rem;';
 
     // Create an image element for the card
     let img = document.createElement('img');
