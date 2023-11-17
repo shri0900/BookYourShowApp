@@ -1,4 +1,4 @@
-let instanceUrl;
+    let instanceUrl;
     let accessToken;
 
     function retrieveInstanceAndAccessToken() {
