@@ -1,4 +1,6 @@
-body {
+.display-4 {
+    /* Your additional styles for the title */
+    color: #333;
     display: flex;
     align-items: center;
     justify-content: center;
