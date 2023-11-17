@@ -47,6 +47,26 @@
 
 </nav>
 
+<div class="container mt-5">
+    <h2 class="mb-4">Got Problem?We are here📞</h2>
+    <form id="createCaseForm">
+      <div class="mb-3">
+        <label for="ticketNumber" class="form-label">Ticket Number</label>
+        <input type="text" class="form-control" id="ticketNumber" required>
+      </div>
+      <div class="mb-3">
+        <label for="subject" class="form-label">Subject</label>
+        <input type="text" class="form-control" id="subject" required>
+      </div>
+      <div class="mb-3">
+        <label for="caseType" class="form-label">Case Type</label>
+        <select class="form-select" id="caseType" required></select>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <div class="mt-3" id="resultMessage"></div>
+</div>
+
 
 <!-- Footer code Starts here -->
 <footer class="container">
