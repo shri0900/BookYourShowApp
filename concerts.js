@@ -68,7 +68,7 @@ function renderUpcomingShows(upcomingShows) {
 
     // Create an image element for the card
     let img = document.createElement('img');
-    img.src = show.Promotional_Picture__c; // Assuming Promotional_Picture__c contains the image URL
+    img.src = show.Show_Promotion_Image_URL__c; // Assuming Promotional_Picture__c contains the image URL
     img.className = 'card-img-top';
     img.alt = show.Name;
 
