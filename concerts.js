@@ -44,6 +44,7 @@ function retrieveInstanceAndAccessToken() {
     })
     .then(response => response.json())
     .then(data => {
+      console.log("Data Received for Upcoming Shows>>>"+JSON.stringify(data));
       // Call a function to render the upcoming shows as cards
       renderUpcomingShows(data);
     })
