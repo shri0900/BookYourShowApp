@@ -67,13 +67,14 @@ function renderUpcomingShows(upcomingShows) {
   upcomingShows.forEach(show => {
     // Create a new card element with Bootstrap classes
     let card = document.createElement('div');
-    card.className = 'card mb-3';
-    card.style = 'max-width: 540px;';
+    card.className = 'card mb-3 my-3';
+    card.style = 'max-width: 340px;';
+    card.style='max-height: 340px;';
 
     // Create an image element for the card with Bootstrap class
     let img = document.createElement('img');
     img.src = show.Show_Promotion_Image_URL__c; // Assuming Promotional_Picture__c contains the image URL
-    img.className = 'card-img-top';
+    img.className = 'card-img-centre';
     img.alt = show.Name;
 
     // Create a card body element with Bootstrap class
