@@ -22,6 +22,4 @@ document.getElementById('contactusLink').addEventListener('click', function (eve
   
     // Call the function to retrieve instanceUrl and accessToken
     retrieveInstanceAndAccessToken();
-  
-    // You can also add code to load the "Review" page content here.
   });
