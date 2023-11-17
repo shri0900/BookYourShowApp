@@ -50,3 +50,60 @@ function retrieveInstanceAndAccessToken() {
     // Call the function to retrieve instanceUrl and accessToken
     retrieveInstanceAndAccessToken();
   });
+
+  function submitCaseForm() {
+    // Retrieve the form values
+    let ticketNumber = document.getElementById('ticketNumber').value;
+    let subject = document.getElementById('subject').value;
+    let caseType = document.getElementById('caseType').value;
+  
+    // Make sure the required fields are not empty
+    if (ticketNumber && subject && caseType) {
+      // Call the function to retrieve instanceUrl and accessToken
+      retrieveInstanceAndAccessToken();
+      
+      // Make an API call to create a case
+      createCase(instanceUrl, accessToken, subject, ticketNumber, caseType);
+    } else {
+      console.error('Please fill in all required fields.');
+    }
+  }
+  
+  function createCase(instanceUrl, accessToken, subject, ticketNumber, caseType) {
+    // Define the endpoint for creating a case
+    let createCaseEndpoint = instanceUrl + '/services/apexrest/postcase/';
+  
+    // Prepare the request body
+    let requestBody = {
+      subject: subject,
+      tickname: ticketNumber,
+      cstype: caseType
+    };
+  
+    // Make an API call to create a case
+    fetch(createCaseEndpoint, {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer ' + accessToken,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(requestBody)
+    })
+    .then(response => response.json())
+    .then(caseId => {
+      console.log("Case created successfully. Case Id:", caseId);
+      // Display the result or perform any other action
+      document.getElementById('resultMessage').innerHTML = 'Case created successfully. Case Id: ' + caseId;
+    })
+    .catch(error => console.error('Error creating case:', error));
+  }
+  
+  // Add an event listener to the submit button
+  document.getElementById('createCaseForm').addEventListener('submit', function (event) {
+    // Prevent the default form submission
+    event.preventDefault();
+  
+    // Call the function to submit the case form
+    submitCaseForm();
+  });
+  
