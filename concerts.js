@@ -67,7 +67,7 @@ function renderUpcomingShows(upcomingShows) {
   upcomingShows.forEach(show => {
     // Create a new card element with Bootstrap classes
     let card = document.createElement('div');
-    card.className = 'card mb-4'; // Added margin-bottom to create space between cards
+    card.className = 'card mb-4 my-4'; // Added margin-bottom to create space between cards
     card.style = 'max-width: 300px;'; // Reduced max-width for a smaller card
 
     // Create an image element for the card with Bootstrap class
