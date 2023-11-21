@@ -707,6 +707,6 @@ document.getElementById('logoutButton').addEventListener('click',function(event)
     //Redirect User To the github repository where login page has been stored
 
     window.location.href='https://shri0900.github.io/bookyourShowLogin/';
-    console.log("Acess Token"+accessToken);
-    console.log("Instance Url"+instanceUrl);
+    //console.log("Acess Token"+accessToken);
+    //console.log("Instance Url"+instanceUrl);
 })
