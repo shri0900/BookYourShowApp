@@ -88,7 +88,7 @@ function createCase(subject, ticketNumber, caseType) {
             console.log("Case created successfully. Case Id:", caseNumber);
 
              // Display the case number as a notification
-             showNotification('success', 'Case created successfully. Case Number: ' + caseNumber);
+             showNotification('success', 'Case created successfully,Please Notedown Case Number For Future Reference. Case Number: ' + caseNumber);
             // Display the result or perform any other action
             document.getElementById('resultMessage').innerHTML = 'Case created successfully. Case Number: ' + caseNumber;
         })
