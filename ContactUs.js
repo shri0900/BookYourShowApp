@@ -83,21 +83,24 @@ function createCase(subject, ticketNumber, caseType) {
         },
         body: JSON.stringify(requestBody)
     })
-        .then(response => response.json())
-        .then(caseId => {
-            console.log("Case created successfully. Case Id:", caseId);
+        .then(response => response.text()) //because we are expecting string response
+        .then(caseNumber => {
+            console.log("Case created successfully. Case Id:", caseNumber);
+
+             // Display the case number as a notification
+             showNotification('success', 'Case created successfully. Case Number: ' + caseNumber);
             // Display the result or perform any other action
-            document.getElementById('resultMessage').innerHTML = 'Case created successfully. Case Id: ' + caseId;
+            document.getElementById('resultMessage').innerHTML = 'Case created successfully. Case Number: ' + caseNumber;
         })
         .catch(error => console.error('Error creating case:', error));
 }
 
-// Add an event listener to the submit button
+// Adding an event listener to the submit button
 document.getElementById('createCaseForm').addEventListener('submit', function (event) {
     // Prevent the default form submission
     event.preventDefault();
 
-    // Call the function to submit the case form
+    // Calling the function to submit the case form
     submitCaseForm();
 });
 
@@ -106,6 +109,23 @@ document.getElementById('contactusLink').addEventListener('click', function (eve
     // Prevent the default link behavior
     event.preventDefault();
 
-    // Call the function to retrieve instanceUrl and accessToken
+    // Calling the function to retrieve instanceUrl and accessToken
     retrieveInstanceAndAccessToken();
 });
+
+// Function to display notifications
+function showNotification(type, message) {
+    // Create a notification element
+    let notification = document.createElement('div');
+    notification.className = 'alert alert-' + type + ' alert-dismissible fade show';
+    notification.innerHTML = '<strong>' + message + '</strong>' +
+        '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+
+    // Append the notification to the body
+    document.body.appendChild(notification);
+
+    // Automatically close the notification after a few seconds (optional)
+    setTimeout(function () {
+        notification.remove();
+    }, 5000);
+}
