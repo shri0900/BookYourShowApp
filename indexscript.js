@@ -694,3 +694,19 @@ document.addEventListener("DOMContentLoaded", function() {
     console.error('Error fetching concert images:', error);
     });
 });
+
+//Sign out functionality is tarting here
+
+document.getElementById('logoutButton').addEventListener('click',function(event){
+
+    //Remove Acess token and instance url so that no more API Calls Will Be Made
+
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('instanceUrl');
+
+    //Redirect User To the github repository where login page has been stored
+
+    window.location.href='https://shri0900.github.io/bookyourShowLogin/';
+    console.log("Acess Token"+accessToken);
+    console.log("Instance Url"+instanceUrl);
+})
