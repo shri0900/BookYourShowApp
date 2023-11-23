@@ -145,7 +145,7 @@ fetch(`${instanceURL}/services/apexrest/getConcerts/${lookupInput}`, {
 });
 
 
-//let resultsContainer = document.getElementById('results');
+let resultsContainer = document.getElementById('results');
 resultsContainer.addEventListener('click', function(event) {
 if (event.target.classList.contains('open-modal')) {
     let concertId = event.target.getAttribute('data-id');
