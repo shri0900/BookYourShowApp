@@ -37,10 +37,6 @@ if (accessToken && instanceUrl) {
     }
 }
 
-
-
-
-
 document.getElementById('getConcert').addEventListener('click', function(event) {
 event.preventDefault();
 
@@ -49,38 +45,38 @@ const instanceURL = instanceUrl;
 const cityName = document.getElementById('cityName').value; 
 
 //Org Name - shriraj@sselectricals.co.in >>> Class Name- ConcertAPI >>>>
-// fetch(`${instanceURL}/services/apexrest/getConcerts/${cityName}`, {
-// method: 'GET',
-// headers: {
-// 'Authorization': `Bearer ${token}`,
-// 'Content-Type': 'application/json'
-// }
-// })
-// .then(response => response.json())
-// .then(data => {
-// console.log("Data"+JSON.stringify(data))
-// if (data.length > 0) {
-//     const concert = data[0];
-//     document.getElementById('concert-date').textContent = concert.Date_of_Concert__c;
-//     document.getElementById('concert-name').textContent = concert.Name;
-//     document.getElementById('concert-type').textContent = concert.Concert_Type__c;
-//     document.getElementById('concert-venue').textContent = concert.Concert_Venue__c;
-//     document.getElementById('concert-price').textContent = concert.Price__c;
-//     document.getElementById('concert-poster').innerHTML = concert.Concert_Poster__c;
+fetch(`${instanceURL}/services/apexrest/getConcerts/${cityName}`, {
+method: 'GET',
+headers: {
+'Authorization': `Bearer ${token}`,
+'Content-Type': 'application/json'
+}
+})
+.then(response => response.json())
+.then(data => {
+console.log("Data"+JSON.stringify(data))
+if (data.length > 0) {
+    const concert = data[0];
+    document.getElementById('concert-date').textContent = concert.Date_of_Concert__c;
+    document.getElementById('concert-name').textContent = concert.Name;
+    document.getElementById('concert-type').textContent = concert.Concert_Type__c;
+    document.getElementById('concert-venue').textContent = concert.Concert_Venue__c;
+    document.getElementById('concert-price').textContent = concert.Price__c;
+    document.getElementById('concert-poster').innerHTML = concert.Concert_Poster__c;
 
     
-//   } else if(data.length===0) {
+  } else if(data.length===0) {
     
-//    // document.getElementById('no-concert').textContent='No Concerts Found';
-//    window.alert("No Concert Found");
+   // document.getElementById('no-concert').textContent='No Concerts Found';
+   window.alert("No Concert Found");
 
 
-//   }
-// })
-// .catch(error => {
-//   console.error('Error:', error);
-// });
-// });
+  }
+})
+.catch(error => {
+  console.error('Error:', error);
+});
+});
 
 
 
