@@ -49,7 +49,7 @@
 <!-- User can type name of concert and serach for concerts here -->
 <form class="d-flex mx-3" role="search" >
   <input class="form-control me-2" type="search" placeholder="Enter Your City" aria-label="Search" id="cityName">
-  <button  type="button" id="getConcert" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Search Concerts</button>    
+  <button  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="getConcerts">Search Concerts</button>    
 </form>
 
  <!-- Login and Signup buttons
@@ -62,45 +62,66 @@
 </nav>
 
 <!--Concert Serach Modal Box For Navigation Bar-->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
 <div class="modal-dialog" role="document">
 <div class="modal-content">
-  <div class="modal-header">
-    <h5 class="modal-title" id="exampleModalLabel">Here We Go!!🍿</h5>
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <div id="concert-info">
-      <h2>Name: <span id="concert-name"></span></h2>
-      <p>Date:<span id="concert-date"></span></p>
-      <p>Type: <span id="concert-type"></span></p>
-      <p>Venue: <span id="concert-venue"></span></p>
-      <p>Price(₹): <span id="concert-price"></span></p>
-      <div id="concert-poster"></div>
-      <style>
-        #concert-poster img {
-            height: 30%;
-            width: 30%;
-            image-rendering: auto;
-            text-align: center;
-        }
-    </style>
-  </div>
-  <div class="container mt-4">
-    <!-- Notification bar with the ID 'no-concert' -->
-    <div id="no-concert" class="alert alert-warning d-none" role="alert">
-        No Concerts Found
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">Here We Go!!🍿</h5>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div id="concert-info">
+    <h2>Name: <span id="concert-name"></span></h2>
+    <p>Date:<span id="concert-date"></span></p>
+    <p>Type: <span id="concert-type"></span></p>
+    <p>Venue: <span id="concert-venue"></span></p>
+    <p>Price(₹): <span id="concert-price"></span></p>
+    <div id="concert-poster"></div>
+    <style>
+      #concert-poster img {
+          height: 30%;
+          width: 30%;
+          image-rendering: auto;
+          text-align: center;
+      }
+  </style>
+</div>
+<div class="container mt-4">
+  Notification bar with the ID 'no-concert' -->
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="concert-info">
+          <h2>Name: <span id="concert-name"></span></h2>
+          <p>Date:<span id="concert-date"></span></p>
+          <p>Type: <span id="concert-type"></span></p>
+          <p>Venue: <span id="concert-venue"></span></p>
+          <p>Price(₹): <span id="concert-price"></span></p>
+          <div id="concert-poster"></div>
+          <style>
+            #concert-poster img {
+                height: 30%;
+                width: 30%;
+                image-rendering: auto;
+                text-align: center;
+            }
+        </style>
+      </div>
+      <div class="container mt-4">
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
     </div>
   </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-  </div>
-</div>
-</div>
-</div>
-
 </div>
 
 
@@ -117,63 +138,32 @@
     <span class="sr-only" style="color: black;">Next</span>
   </a>
 </div>
-
-
-
-
-<!-- carusel starts here --> 
- <!-- <div id="carouselExampleIndicators" class="carousel slide mb-3" data-ride="carousel" data-interval="1000">
-
-<ol class="carousel-indicators">
-<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-</ol>
-<div class="carousel-inner">
-<div class="carousel-item active">
-  <img class="d-block w-100" src="..." alt="First slide">
+  <div id="no-concert" class="alert alert-warning d-none" role="alert">
+      No Concerts Found
+  </div>
 </div>
-<div class="carousel-item">
-  <img class="d-block w-100" src="..." alt="Second slide">
-</div>
-<div class="carousel-item">
-  <img class="d-block w-100" src="..." alt="Third slide">
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 </div>
 </div>
-<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-<span class="sr-only" style="color: black;">Previous</span>
-</a>
-<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-<span class="carousel-control-next-icon" aria-hidden="true"></span>
-<span class="sr-only" style="color: black;">Next</span>
-</a>
 </div>
-<div id="carouselExampleIndicators" class="carousel slide mb-3" data-ride="carousel" data-interval="2000">
-  <ol class="carousel-indicators" id="carouselIndicators"></ol>
-  <div class="carousel-inner" id="carouselInner"></div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only" style="color: black;">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only" style="color: black;">Next</span>
-  </a>
-</div> -->
-
-<!-- //search concert using city -->
-<!-- <div class="container">
-<input type="text" class="form-control me-2" id="lookupInput" placeholder="Search...">
-
-<div class="input-group-append">
-  <button class="btn btn-primary" type="button" id="searchButton" aria-colspan="">Search</button>
 </div>
-<div id="lookupDropdown" class="dropdown-menu">
-
 
 </div>
-</div> -->
+
+
+
+<!-- Modal -->
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+
+
+
+
+
+
 <div class="container mt-3">
   <div class="row justify-content-center">
     <div class="col-md-6">
