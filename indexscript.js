@@ -68,7 +68,8 @@ if (data.length > 0) {
     document.getElementById('concert-price').textContent = concert.Price__c;
     document.getElementById('concert-poster').innerHTML = concert.Concert_Poster__c;
   } else if(data.length===0) {
-    document.getElementById('no-concert').textContent='No Concerts Found';
+   // document.getElementById('no-concert').textContent='No Concerts Found';
+   window.alert("No Concert Found");
   }
 })
 .catch(error => {
