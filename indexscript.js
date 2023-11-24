@@ -247,7 +247,7 @@ function bookTicket(concertId, individualId,numSeats) {
     .then(data => {
         
         if (data) {
-            console.log('Ticket booked successfully with ID:', data);
+            console.log('Ticket booked successfully with ID:', JSON.stringify(data));
             // Optionally, close the modal or show a success message to the user
             $('#bookingModal').modal('hide');
         } else {
