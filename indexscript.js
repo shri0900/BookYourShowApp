@@ -387,6 +387,7 @@ $(document).ready(function () {
         .then(response => response.json())
         .then(data => {
             if(data.length>0){
+                console.log("Data For Search Box"+data)
                     document.getElementById('concert-date').textContent = concert.Date_of_Concert__c;
     document.getElementById('concert-name').textContent = concert.Name;
     document.getElementById('concert-type').textContent = concert.Concert_Type__c;
