@@ -353,6 +353,7 @@ $(document).ready(function () {
         document.getElementById('profileImage').src = data.FullPhotoUrl;
         document.getElementById('userName').textContent = data.Name;
         document.getElementById('userEmail').textContent = data.Email;
+        document.getElementById('username').textContent=data.Username;
 
         profileModal.show();
     })
