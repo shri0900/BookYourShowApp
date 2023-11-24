@@ -252,7 +252,7 @@ function bookTicket(concertId, individualId,numSeats) {
             // Optionally, close the modal or show a success message to the user
             $('#bookingModal').modal('hide');
              // Display the case number as a notification
-             showNotification('success', 'Thank you for booking with us.You will Receive E-ticket on your Email'+ ticketNumber);
+             showNotification('success', 'Thank you for booking with us.You will Receive E-ticket on your Email  '+ ticketNumber);
         } else {
             console.error('Failed to book ticket.');
         }
