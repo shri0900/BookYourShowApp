@@ -326,3 +326,39 @@ document.getElementById('logoutButton').addEventListener('click',function(event)
     //console.log("Acess Token"+accessToken);
     //console.log("Instance Url"+instanceUrl);
 })
+
+$(document).ready(function () {
+    $('#profileLink').click(function () {
+       $('#profileModal').modal('show');
+    });
+ });
+
+ document.getElementById('profileLink').addEventListener('click',function(event){
+    event.preventDefault();
+    const token=accessToken;
+    const instance_url=instanceUrl;
+
+    const profileModal = new bootstrap.Modal(document.getElementById('profileModal'));
+
+    fetch(`${instance_url}/services/apexrest/getUser`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        }
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Data For Profile Modal Received",data);
+        document.getElementById('profileImage').src = data.FullPhotoUrl;
+        document.getElementById('userName').textContent = data.Name;
+        document.getElementById('userEmail').textContent = data.Email;
+
+        profileModal.show();
+    })
+    .catch(error => {
+       console.error('Error:', error);
+    });
+});
+        
+ 
