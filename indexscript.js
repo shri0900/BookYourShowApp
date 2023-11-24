@@ -159,7 +159,7 @@ if (event.target.classList.contains('open-modal')) {
     // $('#concertPrice').text(concertPrice);
 
 
-    document.getElementById('concertName').textContent = `Concert: ${concertName}`;
+          document.getElementById('concertName').textContent = `Concert: ${concertName}`;
         document.getElementById('concertDate').textContent = `Date: ${concertDate}`;
         document.getElementById('concertPrice').textContent = `Price: $${concertPrice}`;
     
@@ -245,8 +245,8 @@ function bookTicket(concertId, individualId,numSeats) {
     .then(response => response.json())
    
     .then(data => {
-        console.log("Response for fetch reserve"+response);
-        if (data && data.Id) {
+        
+        if (data) {
             console.log('Ticket booked successfully with ID:', data.Id);
             // Optionally, close the modal or show a success message to the user
             $('#bookingModal').modal('hide');
