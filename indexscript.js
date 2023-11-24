@@ -243,8 +243,9 @@ function bookTicket(concertId, individualId,numSeats) {
         })
     })
     .then(response => response.json())
-    console.log("Response for fetch reserve"+response)
+   
     .then(data => {
+        console.log("Response for fetch reserve"+response);
         if (data && data.Id) {
             console.log('Ticket booked successfully with ID:', data.Id);
             // Optionally, close the modal or show a success message to the user
