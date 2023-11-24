@@ -115,7 +115,7 @@ document.getElementById('contactusLink').addEventListener('click', function (eve
 
 // Function to display notifications
 function showNotification(type, message) {
-    // Create a notification element
+    // Created a notification element
     let notification = document.createElement('div');
     notification.className = 'alert alert-' + type + ' alert-dismissible fade show';
     notification.innerHTML = '<strong>' + message + '</strong>' +

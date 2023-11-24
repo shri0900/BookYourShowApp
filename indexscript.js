@@ -248,8 +248,11 @@ function bookTicket(concertId, individualId,numSeats) {
         
         if (data) {
             console.log('Ticket booked successfully with ID:', JSON.stringify(data));
+            var ticketNumber = data[0].Name;
             // Optionally, close the modal or show a success message to the user
             $('#bookingModal').modal('hide');
+             // Display the case number as a notification
+             showNotification('success', 'Thank you for booking with us.You will Receive E-ticket on your Email'+ ticketNumber);
         } else {
             console.error('Failed to book ticket.');
         }
@@ -410,4 +413,18 @@ $(document).ready(function () {
 
 
         
- 
+function showNotification(type, message) {
+    // Created a notification element
+    let notification = document.createElement('div');
+    notification.className = 'alert alert-' + type + ' alert-dismissible fade show';
+    notification.innerHTML = '<strong>' + message + '</strong>' +
+        '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+
+    // Append the notification to the body
+    document.body.appendChild(notification);
+
+    // Automatically close the notification after a few seconds (optional)
+    setTimeout(function () {
+        notification.remove();
+    }, 5000);
+}
