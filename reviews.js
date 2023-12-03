@@ -176,14 +176,14 @@ function populateconcerts(instanceUrl,accessToken){
 document.getElementById('concertSelect').addEventListener('change', function () {
   const selectedValue = this.value;
   document.getElementById('selectedconcertId').value = selectedValue;
-  console.log('Selected Value'+selectedValue)
+  console.log('Selected Value'+selectedValue);
   
 });
 
 
 document.getElementById('submitButton').addEventListener('click', function () {
  // console.log('Submit Button Clicked');
-  // Retrieve the data from the input fields
+// Retrieve the data from the input fields
   const reviewTitle = document.getElementById('formGroupExampleInput').value;
   const detailedReview = document.querySelector('textarea').value;
   const selectedRating = document.getElementById('ratingSelect').value;
@@ -201,6 +201,8 @@ document.getElementById('submitButton').addEventListener('click', function () {
   console.log("Selected Individual"+reviewData.IndividualId);
   let instanceUrl = localStorage.getItem('instanceUrl');
   let accessToken = localStorage.getItem('accessToken');
+
+
   function createReview(instanceUrl, accessToken, reviewData) {
   const apiUrl = `${instanceUrl}/services/apexrest/getReviews/`; 
   
@@ -237,7 +239,7 @@ document.getElementById('submitButton').addEventListener('click', function () {
     // Append the alert to the container
     notificationContainer.appendChild(alert);
 
-    // Automatically close the alert after 3 seconds (adjust as needed)
+    // Automatically close the alert after 3 seconds 
     setTimeout(() => {
       alert.classList.remove('show');
       alert.addEventListener('transitionend', () => {

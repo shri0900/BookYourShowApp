@@ -37,6 +37,8 @@ function retrieveInstanceAndAccessToken() {
     console.log("Access Token from Local Storage: " + accessToken);
 
     // Make an API call to get upcoming shows
+    //Class Name-getupcomingShows
+    //REST API Method-getupShows
     fetch(instanceUrl + '/services/apexrest/getupcomingShows', {
       headers: {
         'Authorization': 'Bearer ' + accessToken
@@ -50,14 +52,13 @@ function retrieveInstanceAndAccessToken() {
     })
     .catch(error => console.error('Error fetching upcoming shows:', error));
   } else {
-    // Handle the case where they are not found in Local Storage
-    // You might want to redirect the user to the login page or perform some other action.
+    // We Can Handle the case where they are not found in Local Storage
     console.log("Instance URL and Access Token not found in Local Storage.");
   }
 }
 
 function renderUpcomingShows(upcomingShows) {
-  // Get the container where you want to append the cards
+  // This is the  container where you want to append the cards
   let container = document.getElementById('upcomingShowsContainer');
 
   // Clear existing content before adding new cards
@@ -112,7 +113,7 @@ document.getElementById('concertLink').addEventListener('click', function (event
   // Call the function to retrieve instanceUrl and accessToken
   retrieveInstanceAndAccessToken();
 
-  // You can also add code to load the "Review" page content here.
+  
 });
 
   
