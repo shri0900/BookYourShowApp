@@ -49,7 +49,7 @@ function retrieveInstanceAndAccessToken() {
       card.innerHTML = `
         <div class="card h-100">
           
-          <img src="${offer.Offer_Poster_url__c}" class="card-img-top" alt="Offer Image">
+          <img src="${offer.Offer_Poster_url__c}" class="card-img-top" alt="Offer Image" style="width: 300px; height: 300px;">
 
           <div class="card-body">
             <h5 class="card-title">${offer.Name}</h5>
