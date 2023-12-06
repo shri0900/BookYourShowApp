@@ -49,13 +49,20 @@ function retrieveInstanceAndAccessToken() {
       card.innerHTML = `
         <div class="card h-100">
           
-          <img src="${offer.Offer_Poster_url__c}" class="card-img-top" alt="Offer Image" style="width: 300px; height: 300px;">
+          <img src="${offer.Offer_Poster_url__c}" class="card-img-top mx-auto" alt="Offer Image" style="width: 300px; height: 300px;">
 
           <div class="card-body">
             <h5 class="card-title">${offer.Name}</h5>
             <p class="card-text">Discount: ${offer.Discount_Percentage__c}%</p>
             <p class="card-text">Expiring On: ${offer.Expiring_On__c}</p>
             <p class="card-text">Use Promo Code: ${offer.Promo_Code__c}</p>
+            <p class="card-text">Applicable Concerts:</p>
+            <ul>
+            ${offer.Concert_Offers__r.records.map(concertOffer => `
+              <li>${concertOffer.Concert__r.Name}</li>
+            `).join('')}
+          </ul>
+      
           </div>
         </div>
       `;
