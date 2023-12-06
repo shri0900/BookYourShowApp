@@ -270,7 +270,7 @@ function bookTicket(concertId, individualId, numSeats, promoCode) {
             // Extract the custom error message from the response
             const errorMessage = JSON.parse(error.message)[0].message;
             showNotification('error', `Invalid promo code. ${errorMessage}`);
-            window.alert("Error:"+${errorMessage}); // Display a user-friendly error message
+           // window.alert("Error:"+${errorMessage}); // Display a user-friendly error message
         } else {
             showNotification('error', 'Error booking ticket: ' + error.message);
         }
