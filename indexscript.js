@@ -228,7 +228,6 @@ document.getElementById('modalBookButton').addEventListener('click', function() 
     }
 });
 
-
 function bookTicket(concertId, individualId, numSeats, promoCode) {
     fetch(`${instanceUrl}/services/apexrest/bookTickets/`, {
         method: 'POST',
@@ -244,12 +243,13 @@ function bookTicket(concertId, individualId, numSeats, promoCode) {
         })
     })
     .then(response => {
-        // if (!response.ok) {
-        //     throw new Error('Network response was not ok');
-        // }
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
         return response.json();
     })
     .then(data => {
+        // Check if the response indicates success
         if (data && data.length > 0) {
             console.log('Ticket booked successfully with ID:', JSON.stringify(data));
             var ticketNumber = data[0].Name;
@@ -264,12 +264,15 @@ function bookTicket(concertId, individualId, numSeats, promoCode) {
 
         // Check if the error message contains the promo code validation error
         if (error.message.includes('FIELD_CUSTOM_VALIDATION_EXCEPTION')) {
-            showNotification('error', 'Invalid promo code. Please try again.'); // Display a user-friendly error message
+            // Extract the custom error message from the response
+            const errorMessage = JSON.parse(error.message)[0].message;
+            showNotification('error', `Invalid promo code. ${errorMessage}`); // Display a user-friendly error message
         } else {
             showNotification('error', 'Error booking ticket: ' + error.message);
         }
     });
 }
+
 
 
 
