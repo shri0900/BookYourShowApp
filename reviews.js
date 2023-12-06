@@ -114,6 +114,8 @@ function fetchAndDisplayReviews(instanceUrl, accessToken) {
 //Function to get individual data for review card
 
 function populateIndividuals(instanceUrl, accessToken) {
+  //Class name-IndividualAPI
+  //MethodName-getIndividuals
   const apiUrl = `${instanceUrl}/services/apexrest/getIndividuals`;
 
   fetch(apiUrl, {
