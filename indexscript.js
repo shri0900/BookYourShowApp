@@ -245,6 +245,7 @@ function bookTicket(concertId, individualId, numSeats, promoCode) {
     .then(response => {
         if (!response.ok) {
             throw new Error('Network response was not ok');
+            
         }
         return response.json();
     })
@@ -430,10 +431,26 @@ $(document).ready(function () {
 
 
         
+// function showNotification(type, message) {
+//     // Created a notification element
+//     let notification = document.createElement('div');
+//     notification.className = 'alert alert-' + type + ' alert-dismissible fade show';
+//     notification.innerHTML = '<strong>' + message + '</strong>' +
+//         '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
+
+//     // Append the notification to the body
+//     document.body.appendChild(notification);
+
+//     // Automatically close the notification after a few seconds (optional)
+//     setTimeout(function () {
+//         notification.remove();
+//     }, 5000);
+// }
+
 function showNotification(type, message) {
     // Created a notification element
     let notification = document.createElement('div');
-    notification.className = 'alert alert-' + type + ' alert-dismissible fade show';
+    notification.className = 'alert alert-' + type + ' alert-dismissible fade show fixed-top mx-auto';
     notification.innerHTML = '<strong>' + message + '</strong>' +
         '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
 
@@ -443,5 +460,5 @@ function showNotification(type, message) {
     // Automatically close the notification after a few seconds (optional)
     setTimeout(function () {
         notification.remove();
-    }, 5000);
+    }, 6000);
 }
