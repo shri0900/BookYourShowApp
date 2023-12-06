@@ -12,7 +12,9 @@ let accessToken;
 function retrieveInstanceAndAccessToken() {
     // Retrieve the instanceUrl and accessToken from Local Storage
     let instanceUrl = localStorage.getItem('instanceUrl');
+    console.log("Instance Url REceived>>>  "+instanceUrl);
     let accessToken = localStorage.getItem('accessToken');
+    console.log("Access token Received>>>  "+accessToken);
 
     // Check if they exist and are not null
     if (instanceUrl && accessToken) {
@@ -58,11 +60,4 @@ function retrieveInstanceAndAccessToken() {
     });
   }
 
-  // Attach the event listener to the "Offers" link
-  document.getElementById('offersLink').addEventListener('click', function (event) {
-    // Prevent the default link behavior
-    event.preventDefault();
-
-    // Calling the function to retrieve instanceUrl and accessToken
-    retrieveInstanceAndAccessToken();
-  });
+  
