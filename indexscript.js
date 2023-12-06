@@ -294,8 +294,13 @@ function bookTicket(concertId, individualId, numSeats, promoCode) {
     })
     .catch(error => {
         console.error('Error booking ticket:', error);
-        // Handle the error and display it to the user
-        showNotification('error', 'Error booking ticket: ' + error.message);
+
+        // Check if the error message contains the promo code validation error
+        if (error.message.includes('FIELD_CUSTOM_VALIDATION_EXCEPTION')) {
+            showNotification('error', 'Invalid promo code. Please try again.'); // Display a user-friendly error message
+        } else {
+            showNotification('error', 'Error booking ticket: ' + error.message);
+        }
     });
 }
 
