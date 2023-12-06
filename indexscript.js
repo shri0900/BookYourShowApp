@@ -262,16 +262,21 @@ function bookTicket(concertId, individualId, numSeats, promoCode) {
     .catch(error => {
         console.error('Error booking ticket:', error);
 
+        // Log the full response in case of a network error
+        console.log('Full response:', error);
+
         // Check if the error message contains the promo code validation error
         if (error.message.includes('FIELD_CUSTOM_VALIDATION_EXCEPTION')) {
             // Extract the custom error message from the response
             const errorMessage = JSON.parse(error.message)[0].message;
-            showNotification('error', `Invalid promo code. ${errorMessage}`); // Display a user-friendly error message
+            showNotification('error', `Invalid promo code. ${errorMessage}`);
+            window.alert("Error:"+${errorMessage}); // Display a user-friendly error message
         } else {
             showNotification('error', 'Error booking ticket: ' + error.message);
         }
     });
 }
+
 
 
 
