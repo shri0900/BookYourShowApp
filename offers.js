@@ -19,7 +19,7 @@ function retrieveInstanceAndAccessToken() {
     // Check if they exist and are not null
     if (instanceUrl && accessToken) {
       // Make an API call to get offers data
-      fetch(instanceUrl + '/services/data/services/apexrest/getOffers', {
+      fetch(`${instanceUrl}/services/apexrest/getOffers/`, {
         method: 'GET',
         headers: {
           'Authorization': 'Bearer ' + accessToken
