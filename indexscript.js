@@ -229,40 +229,6 @@ document.getElementById('modalBookButton').addEventListener('click', function() 
 });
 
 
-
-// function bookTicket(concertId, individualId,numSeats) {
-//     fetch(`${instanceUrl}/services/apexrest/bookTickets/`, {
-//         method: 'POST',
-//         headers: {
-//             'Authorization': `Bearer ${accessToken}`,
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify({
-//             concertId: concertId,
-//             individualId: individualId,
-//             numSeats: numSeats
-//         })
-//     })
-//     .then(response => response.json())
-   
-//     .then(data => {
-        
-//         if (data) {
-//             console.log('Ticket booked successfully with ID:', JSON.stringify(data));
-//             var ticketNumber = data[0].Name;
-//             // Optionally, close the modal or show a success message to the user
-//             $('#bookingModal').modal('hide');
-//              // Display the case number as a notification
-//              showNotification('success', 'Thank you for booking with us.You will Receive E-ticket on your Email  '+ ticketNumber);
-//         } else {
-//             console.error('Failed to book ticket.');
-//         }
-//     })
-//     .catch(error => {
-//         console.error('Error booking ticket:', error);
-//     });
-// }
-
 function bookTicket(concertId, individualId, numSeats, promoCode) {
     fetch(`${instanceUrl}/services/apexrest/bookTickets/`, {
         method: 'POST',
@@ -278,9 +244,9 @@ function bookTicket(concertId, individualId, numSeats, promoCode) {
         })
     })
     .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
+        // if (!response.ok) {
+        //     throw new Error('Network response was not ok');
+        // }
         return response.json();
     })
     .then(data => {
