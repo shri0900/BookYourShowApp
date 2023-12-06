@@ -273,7 +273,7 @@ function bookTicket(concertId, individualId, numSeats, promoCode) {
             concertId: concertId,
             individualId: individualId,
             numSeats: numSeats,
-            promoCode: promoCode
+            promoCode: prCode
         })
     })
     .then(response => {
