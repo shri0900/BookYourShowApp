@@ -216,12 +216,13 @@ document.getElementById('modalBookButton').addEventListener('click', function() 
         let individualId = selectedIndividualId;
         let numSeats = parseInt($('#numSeats').val(), 10); 
         console.log("individualId: " + individualId);
-        
+        let promoCode = document.getElementById('prCode').value;
+        console.log("Promo Code value"+promoCode);
         // Retrieve the concertId from the modal
         let concertId = $('#bookingModal').attr('data-concert-id');
         console.log("concertId: " + concertId);
         
-        bookTicket(concertId, individualId,numSeats);
+        bookTicket(concertId, individualId,numSeats,promoCode);
     } else {
         console.error('No individual selected.');
     }
@@ -273,7 +274,7 @@ function bookTicket(concertId, individualId, numSeats, promoCode) {
             concertId: concertId,
             individualId: individualId,
             numSeats: numSeats,
-            promoCode: prCode
+            promoCode: promoCode
         })
     })
     .then(response => {
