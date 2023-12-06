@@ -28,6 +28,7 @@ function retrieveInstanceAndAccessToken() {
         .then(response => response.json())
         .then(offersData => {
           // Call the function to render offers dynamically
+          console.log("Offers Data"+JSON.stringify(offersData));
           renderOffers(offersData.records);
         })
         .catch(error => console.error('Error fetching offers data:', error));
@@ -42,6 +43,7 @@ function retrieveInstanceAndAccessToken() {
     container.innerHTML = ''; // Clear existing content
 
     offersData.forEach(offer => {
+        
       const card = document.createElement('div');
       card.className = 'col';
       card.innerHTML = `
@@ -53,7 +55,7 @@ function retrieveInstanceAndAccessToken() {
             <h5 class="card-title">${offer.Name}</h5>
             <p class="card-text">Discount: ${offer.Discount_Percentage__c}%</p>
             <p class="card-text">Expiring On: ${offer.Expiring_On__c}</p>
-            <a class="btn btn-primary">${offer.Promo_Code__c}</a>
+            <p class="card-text">Use Promo Code: ${offer.Promo_Code__c}</p>
           </div>
         </div>
       `;
