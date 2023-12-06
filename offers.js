@@ -29,7 +29,7 @@ function retrieveInstanceAndAccessToken() {
         .then(offersData => {
           // Call the function to render offers dynamically
           console.log("Offers Data"+JSON.stringify(offersData));
-          renderOffers(offersData.records);
+          renderOffers(offersData);
         })
         .catch(error => console.error('Error fetching offers data:', error));
     } else {
